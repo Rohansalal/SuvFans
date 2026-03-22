@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SUV FANS LLP Website
 
-## Getting Started
+Production-ready Next.js 14 website for **SUV FANS LLP**, an Indian HVAC and air ventilation manufacturer based in Bhiwadi, Rajasthan.
 
-First, run the development server:
+## Tech Stack
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** Tailwind CSS v4 (with OKLCH colors)
+- **UI Components:** shadcn/ui
+- **Icons:** lucide-react
+- **Animations:** Framer Motion
+- **Forms:** React Hook Form + Zod validation
+- **Fonts:** Inter (Body) + Sora (Headings) via next/font
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Project Structure
+- `app/`: Next.js App Router pages and routes
+- `components/`: Reusable UI components (layout, home, products, common)
+- `lib/`: Product data (`products.ts`), config (`config.ts`), and utilities
+- `public/`: Static assets (images, icons)
+- `styles/`: Global CSS and Tailwind configuration
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Key Features
+- **Dynamic Product Catalog:** 17+ products across 9 categories
+- **Turnkey Solutions:** Dedicated section for HVAC and Clean Room projects
+- **PURE AIR Spotlight:** Premium landing page for industrial air purifiers
+- **Interactive Coverage Calculator:** Real-time air recirculation time estimation
+- **Inquiry Flow:** Professional quote request and contact forms with validation
+- **Industrial-Modern Design:** Professional aesthetic with subtle animations and precision-driven layouts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Setup
+1. Clone the repository
+2. Install dependencies: `npm install`
+3. Run dev server: `npm run dev`
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Environment Variables
+- `NEXT_PUBLIC_PHONE`: Company phone number
+- `NEXT_PUBLIC_EMAIL`: Company contact email
+- `NEXT_PUBLIC_WHATSAPP`: WhatsApp number for inquiries
+- `CONTACT_EMAIL`: Destination email for form submissions
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+All rights reserved © SUV FANS LLP
