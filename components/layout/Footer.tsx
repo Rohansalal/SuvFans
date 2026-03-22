@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Wind, Mail, Phone, MapPin, Facebook, Linkedin, Twitter, Instagram } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, Phone, MapPin, Facebook, Linkedin, Instagram } from 'lucide-react';
 import { COMPANY_CONFIG } from '@/lib/config';
 import { PRODUCT_CATEGORIES } from '@/lib/products';
 
@@ -14,17 +15,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <Link href="/" className="flex items-center gap-2 group w-fit">
-              <div className="bg-primary p-1.5 rounded-lg text-white">
-                <Wind size={24} />
-              </div>
-              <div>
-                <span className="text-xl font-bold tracking-tight block leading-none text-white">
-                  SUV FANS
-                </span>
-                <span className="text-[10px] text-primary uppercase tracking-widest font-semibold block leading-none">
-                  LLP
-                </span>
-              </div>
+              <Image 
+                src="/logo.png" 
+                alt="SUV FANS" 
+                width={200} 
+                height={70} 
+                className="h-14 w-auto brightness-0 invert" 
+              />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">
               At SUV Fans, we are committed to providing innovative, efficient, and high-quality air ventilation solutions for all your needs.
