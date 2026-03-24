@@ -2,8 +2,19 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Users, Award, Shield, CheckCircle, Globe } from 'lucide-react';
+import { Building2, Users, Award, CheckCircle, Globe } from 'lucide-react';
 import { COMPANY_CONFIG } from '@/lib/config';
+
+const clientLogos = [
+  { name: "Tata Steel", src: "/clients/tata.png" },
+  { name: "JSW Steel", src: "/clients/jsw.png" },
+  { name: "Essar", src: "/clients/essar.png" },
+  { name: "Jindal", src: "/clients/jindal.png" },
+  { name: "Adani", src: "/clients/adani.png" },
+  { name: "Bhilai", src: "/clients/bhilai.png" },
+  { name: "SAIL", src: "/clients/sail.png" },
+  { name: "Vedanta", src: "/clients/vedanta.png" },
+];
 
 const TrustSection = () => {
   const trustItems = [
@@ -41,8 +52,45 @@ const TrustSection = () => {
   ];
 
   return (
-    <section className="py-16 bg-[#0B2A3C]">
-      <div className="container mx-auto px-4 md:px-6">
+    <section className="bg-[#0B2A3C]">
+      {/* Client Logos Marquee */}
+      <div className="py-8 border-b border-[#2E86B8]/30 bg-white">
+        <div className="container mx-auto px-4 mb-4">
+          <p className="text-center text-[#0B2A3C]/60 text-sm font-medium uppercase tracking-wide">
+            Trusted by Leading Companies
+          </p>
+        </div>
+        <div className="relative overflow-hidden">
+          <div className="marquee-container flex">
+            <div className="marquee-content flex">
+              {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+                <div
+                  key={idx}
+                  className="flex-shrink-0 mx-8"
+                >
+                  <div className="w-40 h-16 flex items-center justify-center bg-gray-50 border border-gray-200 rounded-lg hover:border-[#F5A02E] hover:shadow-md transition-all">
+                    <span className="text-[#0B2A3C] font-semibold text-base">{logo.name}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="marquee-content flex" aria-hidden="true">
+              {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
+                <div
+                  key={`dup-${idx}`}
+                  className="flex-shrink-0 mx-8"
+                >
+                  <div className="w-40 h-16 flex items-center justify-center bg-gray-50 border border-gray-200 rounded-lg">
+                    <span className="text-[#0B2A3C] font-semibold text-base">{logo.name}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 py-16">
         {/* Trust Numbers */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
           {trustItems.map((item, idx) => (

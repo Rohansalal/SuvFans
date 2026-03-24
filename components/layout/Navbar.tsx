@@ -42,19 +42,18 @@ const Navbar = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300",
-      scrolled ? "bg-white shadow-lg py-2" : "bg-[#0B2A3C] py-3"
+      "fixed top-0 w-full z-50 transition-all duration-300 bg-white shadow-lg py-2"
     )}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
+          <Link href="/" className="flex items-center gap-2 group ml-2">
             <Image 
               src="/logo.png" 
               alt="SUV FANS" 
-              width={200} 
+              width={260} 
               height={70} 
-              className="h-14 w-auto"
+              className="h-16 w-auto"
               priority
             />
           </Link>
@@ -68,7 +67,7 @@ const Navbar = () => {
                   href={link.href}
                   className={cn(
                     "text-sm font-semibold uppercase tracking-wide transition-colors hover:text-[#F5A02E]",
-                    scrolled ? "text-[#0B2A3C]" : "text-white",
+                    "text-[#0B2A3C]",
                     pathname === link.href && "text-[#F5A02E]"
                   )}
                 >
@@ -79,7 +78,7 @@ const Navbar = () => {
               {/* Products Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide transition-colors outline-none hover:text-[#F5A02E]">
-                  <span className={scrolled ? "text-[#0B2A3C]" : "text-white"}>Products</span> <ChevronDown size={14} />
+                  <span className="text-[#0B2A3C]">Products</span> <ChevronDown size={14} />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-72 p-0 bg-white shadow-2xl border-2 border-[#D1D5DB] z-[60]">
                   <DropdownMenuItem asChild>
@@ -101,7 +100,7 @@ const Navbar = () => {
               {/* Industries Dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-1 text-sm font-semibold uppercase tracking-wide transition-colors outline-none hover:text-[#F5A02E]">
-                  <span className={scrolled ? "text-[#0B2A3C]" : "text-white"}>Industries</span> <ChevronDown size={14} />
+                  <span className="text-[#0B2A3C]">Industries</span> <ChevronDown size={14} />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="start" className="w-80 p-0 bg-white shadow-2xl border-2 border-[#D1D5DB] z-[60]">
                   <DropdownMenuItem asChild>
@@ -127,7 +126,7 @@ const Navbar = () => {
                   href={link.href}
                   className={cn(
                     "text-sm font-semibold uppercase tracking-wide transition-colors hover:text-[#F5A02E]",
-                    scrolled ? "text-[#0B2A3C]" : "text-white",
+                    "text-[#0B2A3C]",
                     pathname === link.href && "text-[#F5A02E]"
                   )}
                 >
@@ -141,7 +140,7 @@ const Navbar = () => {
                 href={`tel:${COMPANY_CONFIG.phone}`}
                 className={cn(
                   "hidden xl:flex items-center gap-2 text-sm font-bold transition-colors hover:text-[#F5A02E]",
-                  scrolled ? "text-[#0B2A3C]" : "text-white"
+                  "text-[#0B2A3C]"
                 )}
               >
                 <Phone size={16} className="text-[#2E86B8]" />
@@ -155,7 +154,7 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button
-            className={scrolled ? "lg:hidden p-2 text-[#0B2A3C]" : "lg:hidden p-2 text-white"}
+            className="lg:hidden p-2 text-[#0B2A3C]"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -170,14 +169,14 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-[#0B2A3C] border-t border-[#2E86B8]/30 overflow-hidden"
+            className="lg:hidden bg-white border-t border-gray-200 overflow-hidden"
           >
             <div className="container mx-auto px-4 py-6 flex flex-col gap-4 max-h-[80vh] overflow-y-auto">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-lg font-semibold uppercase tracking-wide py-3 border-b border-[#2E86B8]/30 text-white hover:text-[#F5A02E] transition-colors"
+                  className="text-lg font-semibold uppercase tracking-wide py-3 border-b border-gray-200 text-[#0B2A3C] hover:text-[#F5A02E] transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   {link.name}
@@ -186,7 +185,7 @@ const Navbar = () => {
               <div className="mt-4 flex flex-col gap-4">
                 <a
                   href={`tel:${COMPANY_CONFIG.phone}`}
-                  className="flex items-center gap-3 text-lg font-semibold text-white"
+                  className="flex items-center gap-3 text-lg font-semibold text-[#0B2A3C]"
                 >
                   <Phone size={20} className="text-[#2E86B8]" />
                   {COMPANY_CONFIG.phone}
