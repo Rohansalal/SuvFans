@@ -31,8 +31,9 @@ const FeaturedProducts = () => {
   const featured = PRODUCTS.filter(p => p.id === '1' || p.id === '6' || p.id === '7' || p.id === '14' || p.id === '17');
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-[#F4F6F8] overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,12 +41,14 @@ const FeaturedProducts = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#1A1A2E] mb-4">
-              Our Featured Products
+            {/* H2: Montserrat */}
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#0B2A3C] mb-4">
+              Featured Products
             </h2>
-            <div className="w-20 h-1.5 bg-primary mx-auto mb-6"></div>
-            <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-              Explore our premium range of industrial fans and ventilation solutions engineered for superior performance.
+            <div className="w-24 h-1.5 bg-[#F5A02E] mx-auto mb-6"></div>
+            {/* Body: Inter */}
+            <p className="font-body text-[#6B7280] max-w-2xl mx-auto text-lg leading-relaxed">
+              Explore our premium range of <strong>high-airflow industrial fans</strong> and ventilation solutions engineered for superior performance.
             </p>
           </motion.div>
         </div>
@@ -54,33 +57,37 @@ const FeaturedProducts = () => {
           <div className="embla__container flex">
             {featured.map((product) => (
               <div key={product.id} className="embla__slide flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-4">
-                <Card className="h-full border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-300 group overflow-hidden">
+                <Card className="h-full border-2 border-[#D1D5DB] bg-white shadow-sm hover:shadow-2xl hover:border-[#F5A02E] transition-all duration-300 group overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="aspect-[4/3] bg-gradient-to-br from-[#1A1A2E] to-[#0A2E5C] relative overflow-hidden flex items-center justify-center">
-                      <Fan size={80} className="text-white/10 group-hover:text-primary/30 transition-colors duration-500" />
+                    <div className="h-56 bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] relative overflow-hidden flex items-center justify-center">
+                      <Fan size={72} className="text-white/10 group-hover:text-[#F5A02E]/30 transition-colors duration-500" />
                       
                       {product.badge && (
-                        <div className="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+                        <div className="absolute top-4 left-4 bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-heading font-bold uppercase tracking-widest px-3 py-1 shadow-lg">
                           {product.badge}
                         </div>
                       )}
                     </div>
-                    <div className="p-8">
-                      <div className="text-xs font-bold text-primary uppercase tracking-wider mb-2">
+                    <div className="p-6">
+                      {/* Category Label */}
+                      <div className="font-body text-xs font-bold text-[#2E86B8] uppercase tracking-wider mb-2">
                         {product.category}
                       </div>
-                      <h3 className="text-xl font-heading font-bold text-[#1A1A2E] mb-4 line-clamp-1 group-hover:text-primary transition-colors">
+                      {/* H3: Montserrat - Product Name */}
+                      <h3 className="font-heading text-lg font-bold text-[#0B2A3C] mb-3 line-clamp-1 group-hover:text-[#F5A02E] transition-colors">
                         {product.name}
                       </h3>
-                      <p className="text-gray-500 text-sm mb-6 line-clamp-2">
+                      {/* Body: Inter */}
+                      <p className="font-body text-[#6B7280] text-sm mb-4 line-clamp-2 leading-relaxed">
                         {product.description}
                       </p>
-                      <div className="flex items-center gap-2 mb-6">
-                        <span className="text-[10px] font-bold bg-primary/10 text-[#1A1A2E] px-3 py-1.5 rounded uppercase tracking-tighter">
+                      {/* Key Spec Highlight */}
+                      <div className="flex items-center gap-2 mb-4">
+                        <span className="font-body text-[11px] font-bold bg-[#0B2A3C]/10 text-[#0B2A3C] px-3 py-1.5 rounded uppercase tracking-tight">
                           {product.specs.capacityRange}
                         </span>
                       </div>
-                      <Button asChild variant="outline" className="w-full border-2 border-[#1A1A2E] text-[#1A1A2E] hover:bg-[#1A1A2E] hover:text-white group">
+                      <Button asChild variant="outline" className="font-body w-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white group font-semibold">
                         <Link href={`/products/${product.categorySlug}/${product.slug}`}>
                           View Details
                           <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
@@ -99,7 +106,7 @@ const FeaturedProducts = () => {
             variant="outline" 
             size="icon" 
             onClick={scrollPrev}
-            className="rounded-full border-2 border-[#1A1A2E] text-[#1A1A2E] hover:bg-[#1A1A2E] hover:text-white w-12 h-12"
+            className="rounded-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white w-12 h-12"
           >
             <ChevronLeft size={24} />
           </Button>
@@ -107,14 +114,14 @@ const FeaturedProducts = () => {
             variant="outline" 
             size="icon" 
             onClick={scrollNext}
-            className="rounded-full border-2 border-[#1A1A2E] text-[#1A1A2E] hover:bg-[#1A1A2E] hover:text-white w-12 h-12"
+            className="rounded-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white w-12 h-12"
           >
             <ChevronRight size={24} />
           </Button>
         </div>
 
         <div className="mt-12 text-center">
-          <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 h-12 font-bold">
+          <Button asChild className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-bold uppercase tracking-wide px-8 h-12">
             <Link href="/products">View All Products</Link>
           </Button>
         </div>

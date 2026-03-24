@@ -32,10 +32,11 @@ const Testimonials = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10 -mr-32 -mt-32" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -z-10 -ml-32 -mb-32" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#2E86B8]/5 rounded-full blur-3xl -z-10 -mr-32 -mt-32" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F5A02E]/5 rounded-full blur-3xl -z-10 -ml-32 -mb-32" />
 
       <div className="container mx-auto px-4 md:px-6">
+        {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -43,11 +44,13 @@ const Testimonials = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#0A2E5C] mb-4 uppercase">
-              What Our <span className="text-primary italic">Clients Say</span>
+            {/* H2: Montserrat */}
+            <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#0B2A3C] mb-4 uppercase">
+              What Our <span className="text-[#F5A02E]">Clients Say</span>
             </h2>
-            <div className="w-24 h-1.5 bg-primary mx-auto mb-6 rounded-full" />
-            <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+            <div className="w-24 h-1.5 bg-[#F5A02E] mx-auto mb-6" />
+            {/* Body: Inter */}
+            <p className="font-body text-[#6B7280] max-w-2xl mx-auto text-lg leading-relaxed">
               Trusted by leading industries across India for superior air movement and ventilation excellence.
             </p>
           </motion.div>
@@ -61,29 +64,34 @@ const Testimonials = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-[#F8FAFC] p-10 rounded-[2.5rem] border border-gray-100 shadow-xl relative group hover:bg-white hover:border-primary/20 transition-all duration-500"
+              className="bg-[#F4F6F8] p-8 rounded-sm border-2 border-[#D1D5DB] shadow-lg relative group hover:border-[#F5A02E] hover:shadow-xl transition-all duration-300"
             >
-              <div className="absolute top-8 right-10 text-primary/10 group-hover:text-primary/20 transition-colors">
-                <Quote size={60} fill="currentColor" />
+              <div className="absolute top-6 right-8 text-[#0B2A3C]/10 group-hover:text-[#F5A02E]/20 transition-colors">
+                <Quote size={48} fill="currentColor" />
               </div>
               
-              <div className="flex gap-1 mb-6">
+              {/* Star Rating */}
+              <div className="flex gap-1 mb-4">
                 {[...Array(t.rating)].map((_, i) => (
-                  <Star key={i} size={18} className="text-orange-400 fill-orange-400" />
+                  <Star key={i} size={16} className="text-[#F5A02E] fill-[#F5A02E]" />
                 ))}
               </div>
 
-              <p className="text-gray-600 italic mb-8 leading-relaxed relative z-10">
+              {/* Testimonial Text - Body: Inter */}
+              <p className="font-body text-[#6B7280] italic mb-6 leading-relaxed relative z-10">
                 "{t.text}"
               </p>
 
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-black text-xl border border-primary/20">
+              {/* Client Info */}
+              <div className="flex items-center gap-3 pt-4 border-t border-[#D1D5DB]">
+                <div className="w-12 h-12 rounded bg-[#0B2A3C] flex items-center justify-center text-white font-heading font-bold text-lg shrink-0">
                   {t.name.charAt(0)}
                 </div>
                 <div>
-                  <h4 className="font-bold text-[#0A2E5C] leading-none mb-1">{t.name}</h4>
-                  <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest leading-none">
+                  {/* Name - Montserrat */}
+                  <h4 className="font-heading font-bold text-[#0B2A3C] leading-none mb-1">{t.name}</h4>
+                  {/* Role & Company - Inter */}
+                  <p className="font-body text-xs font-semibold text-[#6B7280] uppercase tracking-wide leading-none">
                     {t.role} · {t.company}
                   </p>
                 </div>

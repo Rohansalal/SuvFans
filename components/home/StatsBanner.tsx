@@ -41,16 +41,21 @@ const StatsBanner = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#1A1A2E] text-white overflow-hidden relative">
-      {/* Background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
-        style={{ backgroundImage: 'url(https://suvfans.weblok.in/wp-content/uploads/2024/12/Black-and-White-Fan-Fathers-Day-Landscape-na-Card-1-1.png)' }}
-      />
-      <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E] via-[#1A1A2E]/90 to-[#1A1A2E]" />
+    <section className="py-20 bg-[#0B2A3C] text-white overflow-hidden relative">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#2E86B8" strokeWidth="1" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
       
       {/* Decorative Element */}
-      <div className="absolute left-[-5%] top-[-50%] w-1/3 h-[200%] bg-primary/5 -rotate-12 blur-3xl pointer-events-none"></div>
+      <div className="absolute left-[-5%] top-[-50%] w-1/3 h-[200%] bg-[#F5A02E]/5 -rotate-12 blur-3xl pointer-events-none"></div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
@@ -63,16 +68,21 @@ const StatsBanner = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="text-center"
             >
-              <div className="text-4xl md:text-6xl font-heading font-bold text-primary mb-3">
+              {/* Stats: Montserrat Bold for numbers */}
+              <div className="font-heading text-4xl md:text-6xl font-bold text-[#F5A02E] mb-3">
                 <StatCounter value={stat.value} suffix={stat.suffix} />
               </div>
-              <div className="text-gray-300 font-medium uppercase tracking-widest text-xs md:text-sm">
+              {/* Label: Inter */}
+              <div className="font-body text-[#D1D5DB] font-semibold uppercase tracking-widest text-xs md:text-sm">
                 {stat.label}
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+
+      {/* Bottom accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#F5A02E] via-[#2E86B8] to-[#0B2A3C]" />
     </section>
   );
 };
