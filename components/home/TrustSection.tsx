@@ -54,42 +54,7 @@ const TrustSection = () => {
   return (
     <section className="bg-[#0B2A3C]">
       {/* Client Logos Marquee */}
-      <div className="py-8 border-b border-[#2E86B8]/30 bg-white">
-        <div className="container mx-auto px-4 mb-4">
-          <p className="text-center text-[#0B2A3C]/60 text-sm font-medium uppercase tracking-wide">
-            Trusted by Leading Companies
-          </p>
-        </div>
-        <div className="relative overflow-hidden">
-          <div className="marquee-container flex">
-            <div className="marquee-content flex">
-              {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
-                <div
-                  key={idx}
-                  className="flex-shrink-0 mx-8"
-                >
-                  <div className="w-40 h-16 flex items-center justify-center bg-gray-50 border border-gray-200 rounded-lg hover:border-[#F5A02E] hover:shadow-md transition-all">
-                    <span className="text-[#0B2A3C] font-semibold text-base">{logo.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div className="marquee-content flex" aria-hidden="true">
-              {[...clientLogos, ...clientLogos, ...clientLogos, ...clientLogos].map((logo, idx) => (
-                <div
-                  key={`dup-${idx}`}
-                  className="flex-shrink-0 mx-8"
-                >
-                  <div className="w-40 h-16 flex items-center justify-center bg-gray-50 border border-gray-200 rounded-lg">
-                    <span className="text-[#0B2A3C] font-semibold text-base">{logo.name}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-
+    
       <div className="container mx-auto px-4 md:px-6 py-16">
         {/* Trust Numbers */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">

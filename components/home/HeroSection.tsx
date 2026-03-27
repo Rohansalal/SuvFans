@@ -9,11 +9,11 @@ import { COMPANY_CONFIG } from '@/lib/config';
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#0B2A3C]">
+    <section className="relative min-h-[90vh] flex items-start overflow-hidden bg-[#0B2A3C] pt-[64px] md:pt-[80px]">
       {/* Background Industrial Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1920&q=80)' }}
+        style={{ backgroundImage: 'url(/home.webp)' }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B2A3C]/95 via-[#0B2A3C]/80 to-[#0B2A3C]/60" />
       </div>
@@ -69,7 +69,7 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 0 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
@@ -77,12 +77,12 @@ const HeroSection = () => {
             <motion.div 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.2 }}
-              className="flex items-center gap-3 mb-8 pt-8"
+                transition={{ delay: 0.2 }}
+              className="flex items-center gap-2 mb-0"
             >
               <div className="h-px w-20 bg-[#F5A02E]" />
               <span className="font-heading text-[#F5A02E] font-bold uppercase tracking-[0.3em] text-base bg-[#0B2A3C]/50 px-4 py-2 rounded border border-[#F5A02E]/30">
-                {COMPANY_CONFIG.iso} Certified
+                {COMPANY_CONFIG.iso}
               </span>
               <div className="h-px w-20 bg-[#F5A02E]" />
             </motion.div>
@@ -155,7 +155,7 @@ const HeroSection = () => {
             </div>
 
             {/* Trust Indicators */}
-            <motion.div 
+            {/* <motion.div 
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.7 }}
@@ -183,7 +183,7 @@ const HeroSection = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
         </div>
       </div>

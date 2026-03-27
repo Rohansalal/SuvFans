@@ -8,6 +8,7 @@ import ApplicationsSection from '@/components/home/ApplicationsSection';
 import IndustriesSection from '@/components/home/IndustriesSection';
 import Testimonials from '@/components/home/Testimonials';
 import ContactCTAStrip from '@/components/home/ContactCTAStrip';
+import PureAirSpotlight from '@/components/home/PureAirSpotlight';
 
 export default function Home() {
   return (
@@ -17,8 +18,9 @@ export default function Home() {
       <ProductCategoriesGrid />
       <WhyChooseUs />
       <ApplicationsSection />
-      <FeaturedProducts />
+      {/* <FeaturedProducts /> */}
       <IndustriesSection />
+      <PureAirSpotlight />
       <Testimonials />
       <ContactCTAStrip />
     </>

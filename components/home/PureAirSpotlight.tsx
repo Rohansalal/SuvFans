@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
+import Image from 'next/image';
 import { Airplay, Check, ArrowRight } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 
@@ -73,28 +74,29 @@ const PureAirSpotlight = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end">
-              <div className="w-full max-w-md aspect-[4/5] bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] rounded-sm shadow-2xl p-4 relative overflow-hidden group">
-                {/* Product Visualization */}
-                <div className="absolute inset-0 flex items-center justify-center p-12">
-                   <motion.div
-                    animate={{ y: [0, -10, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="w-full h-full bg-white/10 rounded flex items-center justify-center relative backdrop-blur-sm"
-                   >
-                     <Airplay size={140} className="text-white/30" />
-                     <div className="absolute top-8 right-8 w-12 h-12 rounded-full border-4 border-[#F5A02E]/30 border-t-[#F5A02E] animate-spin"></div>
-                   </motion.div>
-                </div>
+              <div className="w-full max-w-md aspect-square bg-white rounded-2xl shadow-2xl relative overflow-hidden group border-8 border-white">
+                {/* Product Visualization with the new Image */}
+                <Image
+                  src="/pureair.webp"
+                  alt="PURE AIR Commercial Air Purifier"
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
                 
                 {/* Overlay Text */}
                 <div className="absolute bottom-6 right-6 text-right">
-                   <div className="font-heading text-4xl font-bold text-white/10 select-none">PURE AIR</div>
+                   <div className="font-heading text-4xl font-bold text-white/20 select-none uppercase tracking-tighter">PURE AIR</div>
                 </div>
               </div>
               
               {/* Floating Badge */}
               <motion.div
-                className="absolute -top-6 -right-6 bg-[#F5A02E] text-[#0B2A3C] p-6 shadow-xl flex flex-col items-center justify-center hidden md:flex"
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="absolute -top-6 -right-6 bg-[#F5A02E] text-[#0B2A3C] p-6 shadow-xl flex flex-col items-center justify-center hidden md:flex z-20"
               >
                  <span className="font-heading text-2xl font-black">German</span>
                  <span className="font-body text-[10px] font-bold uppercase tracking-widest text-[#0B2A3C]/70">Filtration</span>

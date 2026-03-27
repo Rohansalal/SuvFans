@@ -42,23 +42,24 @@ const Navbar = () => {
 
   return (
     <nav className={cn(
-      "fixed top-0 w-full z-50 transition-all duration-300 bg-white shadow-lg py-2"
+      "fixed top-0 w-full z-50 transition-all duration-300",
+      "bg-white shadow-lg py-2"
     )}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group ml-2">
+          {/* Logo - Shifted slightly to the right */}
+          <Link href="/" className="flex items-center gap-2 group ml-4 md:ml-8 lg:ml-12">
             <Image 
               src="/logo.png" 
               alt="SUV FANS" 
-              width={260} 
-              height={70} 
-              className="h-16 w-auto"
+              width={320} 
+              height={112} 
+              className="h-20 md:h-24 w-auto"
               priority
             />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Navigation - Moved to the right */}
           <div className="hidden lg:flex items-center gap-8">
             <div className="flex items-center gap-6">
               {navLinks.slice(0, 2).map((link) => (
@@ -135,7 +136,7 @@ const Navbar = () => {
               ))}
             </div>
 
-            <div className="flex items-center gap-4 border-l pl-6 border-[#6B7280]/30">
+            <div className="flex items-center gap-4 border-l pl-6 border-[#6B7280]/30 mr-4 md:mr-8 lg:mr-12">
               <a
                 href={`tel:${COMPANY_CONFIG.phone}`}
                 className={cn(
