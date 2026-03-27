@@ -138,7 +138,7 @@ const ContactPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-4xl md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase tracking-tighter"
+              className="text-white text-4xl md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase tracking-tighter"
             >
               Engineering Support & <br className="hidden md:block" /> 
               <span className="text-[#2E86B8]">Technical Inquiries</span>
