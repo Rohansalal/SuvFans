@@ -19,7 +19,6 @@ export default function Home() {
       <WhyChooseUs />
       <ApplicationsSection />
       {/* <FeaturedProducts /> */}
-      <IndustriesSection />
       <PureAirSpotlight />
       <Testimonials />
       <ContactCTAStrip />

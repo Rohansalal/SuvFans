@@ -73,7 +73,7 @@ const CareersPage = () => {
                 <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
                   Join SUV FANS
                 </span> 
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase">
+                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
                   Shape the Future of <br className="hidden md:block" /> 
                   <span className="text-[#2E86B8]">Air Technology</span>
                 </h1>
@@ -157,8 +157,8 @@ const CareersPage = () => {
       <section id="culture" className="py-24 container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.3em] mb-4 block">Our Culture</span>
-          <h2 className="text-4xl md:text-5xl font-black font-montserrat text-[#0B2A3C] uppercase tracking-tighter mb-6">
-            Why Build Your <span className="text-[#2E86B8]">Career Here?</span>
+          <h2 className="text-4xl md:text-5xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter mb-6">
+            Life at SUV FANS
           </h2>
           <div className="h-1.5 w-24 bg-[#F5A02E] mx-auto rounded-full" />
         </div>
@@ -173,9 +173,9 @@ const CareersPage = () => {
               <div className="w-20 h-20 rounded-[1.5rem] bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] mb-8 group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-500 mx-auto">
                 <v.icon size={36} />
               </div>
-              <h3 className="text-2xl font-black font-montserrat text-[#0B2A3C] mb-4 uppercase tracking-tighter">
-                {v.title}
-              </h3>
+              <h3 className="text-2xl font-black font-heading text-[#0B2A3C] mb-4 uppercase tracking-tighter">
+                 {v.title}
+               </h3>
               <p className="text-gray-500 font-body text-base leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                 {v.desc}
               </p>
@@ -190,7 +190,7 @@ const CareersPage = () => {
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.4em] mb-4 block">Current Openings</span>
-              <h2 className="text-4xl md:text-5xl font-black font-montserrat text-[#0B2A3C] uppercase tracking-tighter">
+              <h2 className="text-4xl md:text-5xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter">
                 Join Our <span className="text-[#2E86B8]">Expert Team</span>
               </h2>
             </div>
@@ -214,7 +214,7 @@ const CareersPage = () => {
                       {job.department}
                     </span>
                   </div>
-                  <h3 className="text-2xl font-black font-montserrat text-[#0B2A3C] group-hover:text-[#2E86B8] transition-colors uppercase tracking-tight">
+                  <h3 className="text-2xl font-black font-heading text-[#0B2A3C] group-hover:text-[#2E86B8] transition-colors uppercase tracking-tight">
                     {job.title}
                   </h3>
                   <p className="text-gray-500 font-body text-sm leading-relaxed line-clamp-2">
@@ -250,7 +250,7 @@ const CareersPage = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
             <div>
-              <h2 className="text-3xl md:text-5xl font-black text-white font-montserrat mb-8 uppercase tracking-tighter leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-white font-heading mb-8 uppercase tracking-tighter leading-tight">
                 Send Us Your <br />
                 <span className="text-[#F5A02E]">Resume Today</span>
               </h2>

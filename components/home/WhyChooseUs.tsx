@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Check, Award, Shield, Zap, Wrench, Clock, ArrowRight } from 'lucide-react';
 import { COMPANY_CONFIG } from '@/lib/config';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 
 const WhyChooseUs = () => {
@@ -98,65 +99,53 @@ const WhyChooseUs = () => {
             {/* Feature List */}
             <div className="space-y-3 mb-8">
               {[
-                `${COMPANY_CONFIG.yearsOfExperience}+ Years of Expertise in HVAC Industry`,
-                "ISO 9001:2015 Certified Manufacturing",
-                "Pan India Supply & Installation"
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded bg-[#F5A02E]/10 flex items-center justify-center shrink-0">
-                    <Check className="text-[#F5A02E]" size={14} />
+                "AMCA-compliant testing procedures",
+                "Advanced aerodynamic impeller designs",
+                "Pan-India installation and support"
+              ].map((feature, i) => (
+                <div key={i} className="flex items-center gap-3 text-[#0B2A3C] font-body font-bold">
+                  <div className="w-5 h-5 rounded-full bg-green-50 text-green-500 flex items-center justify-center shrink-0">
+                    <Check size={12} strokeWidth={3} />
                   </div>
-                  <span className="font-body text-[#0B2A3C] font-semibold text-sm">{item}</span>
+                  {feature}
                 </div>
               ))}
             </div>
 
-            <Link 
-              href="/about"
-              className="font-heading inline-flex items-center gap-2 bg-[#0B2A3C] text-white px-8 py-4 font-bold uppercase tracking-wide hover:bg-[#2E86B8] transition-all duration-300 group"
-            >
-              Learn More
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <Button asChild size="lg" className="bg-[#0B2A3C] hover:bg-[#2E86B8] text-white font-heading font-bold uppercase tracking-wide px-8 h-14">
+              <Link href="/about" className="flex items-center gap-2">
+                Our Engineering Journey <ArrowRight size={20} />
+              </Link>
+            </Button>
           </motion.div>
 
-          {/* Right - Image & Stats */}
+          {/* Right - Visual Representation */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="relative">
-              <div className="aspect-[4/3] relative rounded-sm overflow-hidden shadow-2xl border-4 border-[#D1D5DB]">
-                <img 
-                  src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop" 
-                  alt="Industrial Fan Manufacturing - SUV Fans Factory"
-                  className="object-cover w-full h-full"
-                />
-              </div>
-
-              {/* Stats Overlay */}
-              <div className="absolute -bottom-8 -left-8 bg-[#0B2A3C] text-white p-6 shadow-2xl">
-                <div className="grid grid-cols-2 gap-6">
-                  {stats.map((stat, idx) => (
-                    <div key={idx} className="text-center">
-                      <span className="font-heading text-2xl font-bold block text-[#F5A02E]">{stat.value}</span>
-                      <span className="font-body text-xs text-[#D1D5DB] uppercase tracking-wide">{stat.label}</span>
-                    </div>
-                  ))}
+            <div className="aspect-square relative rounded-sm overflow-hidden border-8 border-[#F4F6F8] shadow-2xl">
+              <Image 
+                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" 
+                alt="Industrial Engineering Excellence"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-tr from-[#0B2A3C]/40 to-transparent" />
+            </div>
+            
+            {/* Floating Stats */}
+            {/* <div className="absolute -bottom-10 -left-10 grid grid-cols-2 gap-4">
+              {stats.slice(0, 4).map((stat, i) => (
+                <div key={i} className="bg-white p-6 rounded-sm shadow-xl border-b-4 border-[#F5A02E] text-center min-w-[140px]">
+                  <div className="text-[#0B2A3C] font-heading font-bold text-2xl mb-1">{stat.value}</div>
+                  <div className="text-[#6B7280] font-body text-xs uppercase tracking-widest">{stat.label}</div>
                 </div>
-              </div>
-            </div>
-
-            {/* Experience Badge */}
-            <div className="absolute -top-4 -right-4 bg-[#F5A02E] text-[#0B2A3C] p-6 shadow-xl">
-              <div className="text-center">
-                <span className="font-heading text-4xl font-black block">{COMPANY_CONFIG.yearsOfExperience}</span>
-                <span className="font-body text-xs font-bold uppercase tracking-wider">Years of Excellence</span>
-              </div>
-            </div>
+              ))}
+            </div> */}
           </motion.div>
         </div>
       </div>

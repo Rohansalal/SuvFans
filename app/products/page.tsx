@@ -7,6 +7,8 @@ import { PRODUCTS, PRODUCT_CATEGORIES } from '@/lib/products';
 import { ArrowRight, Wind, ShieldCheck, Zap, Settings, BarChart3, Download, Search, ChevronDown, Filter, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Send, CheckCircle2 } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,6 +19,30 @@ import {
 const ProductsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    }, 1500);
+  };
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS.filter((product) => {
@@ -55,7 +81,7 @@ const ProductsPage = () => {
                 <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
                   Industrial Ventilation Solutions
                 </span> 
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase">
+                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
                   Precision Engineered <br className="hidden md:block" /> 
                   <span className="text-[#2E86B8]">Air Systems</span>
                 </h1>
@@ -78,49 +104,97 @@ const ProductsPage = () => {
               </div>
             </div>
 
-            {/* Right Image - Research & Development choice */}
+            {/* Right Side - Inquiry Form Card */}
             <div className="lg:col-span-5 relative mt-8 lg:mt-0">
-              <div className="relative aspect-square w-full max-w-[450px] mx-auto">
-                {/* Decorative glow behind image */}
-                <div className="absolute inset-0 bg-[#2E86B8]/30 blur-[120px] rounded-full animate-pulse" />
-                
-                {/* 
-                  R&D Image Selection: 
-                  A high-performance industrial centrifugal blower is the gold standard for 
-                  "Industrial Ventilation Solutions". It conveys power, engineering precision, 
-                  and the core business of SUV FANS.
-                */}
-                <div className="relative h-full w-full rounded-3xl overflow-hidden border-2 border-white/10 shadow-2xl transition-all duration-700 hover:scale-[1.02]">
-                  <Image
-                    src="/ProductImage.webp"
-                    alt="Industrial Centrifugal Blower Engineering"
-                    fill
-                    className="object-cover brightness-110 contrast-110"
-                    priority
-                  />
-                  {/* Overlay Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0B2A3C]/40 via-transparent to-transparent" />
-                </div>
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-[2.5rem] border border-white/20 shadow-2xl">
+                 {isSubmitted ? (
+                   <div className="text-center py-12">
+                     <div className="w-20 h-20 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center mb-6 mx-auto">
+                       <CheckCircle2 size={40} />
+                     </div>
+                     <h3 className="text-2xl font-black font-heading text-white mb-4 uppercase tracking-tighter">Inquiry Received!</h3>
+                     <p className="text-gray-400 text-sm mb-8 font-body">
+                       Our technical engineers will contact you shortly with the catalog and quote.
+                     </p>
+                     <Button 
+                       onClick={() => setIsSubmitted(false)} 
+                       className="bg-white text-[#0B2A3C] hover:bg-gray-100 w-full h-14 rounded-xl font-black uppercase text-xs tracking-widest transition-all"
+                     >
+                       Send New Request
+                     </Button>
+                   </div>
+                 ) : (
+                   <>
+                     <div className="flex items-center gap-3 mb-8">
+                       <div className="w-1.5 h-8 bg-[#F5A02E] rounded-full" />
+                       <h3 className="text-2xl font-black font-heading text-white uppercase tracking-tighter">Instant Catalog Request</h3>
+                     </div>
 
-                {/* Floating Technical Badge */}
-                {/* <div className="absolute -bottom-4 -left-4 bg-white p-4 rounded-2xl shadow-2xl border border-gray-100 hidden sm:flex items-center gap-3 animate-bounce-slow">
-                  <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-                    <ShieldCheck className="text-green-600" size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">Certified</p>
-                    <p className="text-[#0B2A3C] font-black text-sm">AMCA Standards</p>
-                  </div>
-                </div> */}
+                     <form onSubmit={handleSubmit} className="space-y-6">
+                       <div className="space-y-2">
+                         <label className="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Your Full Name</label>
+                         <Input 
+                           placeholder="e.g. Robert Smith" 
+                           className="h-14 bg-white/5 border-white/10 focus:border-[#F5A02E] rounded-2xl px-6 font-bold text-white placeholder:text-white/20 transition-all"
+                           value={formData.name}
+                           onChange={(e) => handleChange('name', e.target.value)}
+                           required
+                         />
+                       </div>
 
-                {/* Performance Stat */}
-                {/* <div className="absolute -top-4 -right-4 bg-[#2E86B8] p-4 rounded-2xl shadow-2xl border border-white/20 hidden sm:block">
-                  <div className="flex flex-col items-center">
-                    <Zap className="text-[#F5A02E] mb-1" size={20} />
-                    <p className="text-white font-black text-lg leading-none">98%</p>
-                    <p className="text-[10px] text-white/70 font-bold uppercase tracking-widest mt-1">Efficiency</p>
-                  </div>
-                </div> */}
+                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                         <div className="space-y-2">
+                           <label className="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Business Email</label>
+                           <Input 
+                             type="email"
+                             placeholder="email@company.com" 
+                             className="h-14 bg-white/5 border-white/10 focus:border-[#F5A02E] rounded-2xl px-6 font-bold text-white placeholder:text-white/20 transition-all"
+                             value={formData.email}
+                             onChange={(e) => handleChange('email', e.target.value)}
+                             required
+                           />
+                         </div>
+                         <div className="space-y-2">
+                           <label className="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Phone Number</label>
+                           <Input 
+                             placeholder="+91-XXXXX-XXXXX" 
+                             className="h-14 bg-white/5 border-white/10 focus:border-[#F5A02E] rounded-2xl px-6 font-bold text-white placeholder:text-white/20 transition-all"
+                             value={formData.phone}
+                             onChange={(e) => handleChange('phone', e.target.value)}
+                             required
+                           />
+                         </div>
+                       </div>
+
+                       <div className="space-y-2">
+                         <label className="text-[10px] font-black text-white/70 uppercase tracking-widest ml-1">Interest Category</label>
+                         <Textarea 
+                           placeholder="Tell us about your project requirements..." 
+                           className="min-h-[120px] bg-white/5 border-white/10 focus:border-[#F5A02E] rounded-3xl p-6 font-bold text-white placeholder:text-white/20 transition-all resize-none"
+                           value={formData.message}
+                           onChange={(e) => handleChange('message', e.target.value)}
+                         />
+                       </div>
+
+                       <Button 
+                         type="submit" 
+                         className="w-full bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-16 text-xs font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#F5A02E]/20 transition-all active:scale-[0.98]" 
+                         disabled={isLoading}
+                       >
+                         {isLoading ? (
+                           <span className="flex items-center gap-2">
+                             <div className="w-4 h-4 border-2 border-[#0B2A3C]/30 border-t-[#0B2A3C] rounded-full animate-spin" />
+                             Sending Request...
+                           </span>
+                         ) : (
+                           <span className="flex items-center gap-2">
+                             <Send size={16} /> Get Catalog & Quote
+                           </span>
+                         )}
+                       </Button>
+                     </form>
+                   </>
+                 )}
               </div>
             </div>
           </div>
@@ -135,7 +209,7 @@ const ProductsPage = () => {
             {/* Category Dropdown */}
             <div className="w-full lg:w-auto shrink-0">
               <DropdownMenu>
-                <DropdownMenuTrigger>
+                <DropdownMenuTrigger asChild>
                   <Button variant="outline" className="w-full lg:w-72 h-12 border-2 border-gray-100 flex items-center justify-between px-4 bg-white hover:bg-gray-50 transition-all">
                     <span className="flex items-center gap-2">
                       <Filter size={16} className="text-[#2E86B8]" />
@@ -251,7 +325,7 @@ const ProductsPage = () => {
                       </span>
                     </div>
                     
-                    <h3 className="text-2xl font-black font-montserrat text-[#0B2A3C] mb-4 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
+                    <h3 className="text-2xl font-black font-heading text-[#0B2A3C] mb-4 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
                       {product.name}
                     </h3>
                     
@@ -309,7 +383,7 @@ const ProductsPage = () => {
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
               <div>
-                <h2 className="text-3xl md:text-4xl font-black text-white font-montserrat mb-6 uppercase tracking-tighter">
+                <h2 className="text-3xl md:text-4xl font-black text-white font-heading mb-6 uppercase tracking-tighter">
                   Need Expert Engineering <span className="text-[#F5A02E]">Consultation?</span>
                 </h2>
                 <p className="text-gray-400 text-lg mb-8 leading-relaxed">

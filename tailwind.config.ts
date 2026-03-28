@@ -57,8 +57,9 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['var(--font-inter)', 'sans-serif'],
-  			heading: ['var(--font-sora)', 'sans-serif'],
+  			sans: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
+  			heading: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
+  			roboto: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: "var(--radius)",

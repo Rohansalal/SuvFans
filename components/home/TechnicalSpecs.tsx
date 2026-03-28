@@ -98,37 +98,16 @@ const TechnicalSpecs = () => {
                 {spec.details.map((detail, dIdx) => (
                   <div key={dIdx} className="flex justify-between items-center py-2 border-b border-[#D1D5DB]/50 last:border-0">
                     <span className="font-body text-[#6B7280] text-sm">{detail.label}</span>
-                    <span className="font-heading text-[#F5A02E] font-bold text-sm">{detail.value}</span>
+                    <span className="font-body text-[#0B2A3C] font-bold">{detail.value}</span>
                   </div>
                 ))}
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Compliance Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-12 flex flex-wrap justify-center gap-6"
-        >
-          {[
-            "ISO 9001:2015 Certified",
-            "CE Marked",
-            "ISI Tested",
-            "Quality Assured"
-          ].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-2 bg-[#0B2A3C]/5 px-4 py-2 rounded">
-              <CheckCircle className="text-[#F5A02E]" size={16} />
-              <span className="font-body text-[#0B2A3C] text-sm font-semibold">{item}</span>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
 };
-
+                    
 export default TechnicalSpecs;

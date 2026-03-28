@@ -3,43 +3,49 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Factory, Warehouse, Building2, Waves, ArrowRight, ChevronRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Factory, Building2, School, Home, Users, ArrowRight, ChevronRight, CheckCircle2 } from 'lucide-react';
 
 const applications = [
   {
     icon: Factory,
-    title: "Manufacturing & Factories",
-    description: "Heavy-duty ventilation for industrial plants, assembly lines, and production floors. Removes heat, fumes, and dust for worker safety.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80",
-    products: ["Centrifugal Fans", "Axial Fans", "Exhaust Systems"]
-  },
-  {
-    icon: Warehouse,
-    title: "Warehouses & Logistics",
-    description: "Large area cooling and air circulation for storage facilities. HVLS fans provide uniform cooling across vast spaces.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80",
-    products: ["HVLS Fans", "Industrial Coolers", "Air Circulators"]
+    title: "Industrial",
+    description: "Heavy-duty ventilation for manufacturing plants, assembly lines, and high-temperature production floors. Engineered for durability and maximum air exchange in demanding environments.",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    features: ["Heat & Smoke Exhaust", "Dust Collection Systems", "Process Cooling", "Corrosion Resistance"]
   },
   {
     icon: Building2,
-    title: "Commercial Spaces",
-    description: "Ventilation for malls, offices, hotels, and public buildings. Quiet, efficient solutions for customer comfort.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-    products: ["Box Fans", "Air Purifiers", "AHU Systems"]
+    title: "Commercial",
+    description: "Premium ventilation solutions for shopping malls, office complexes, hotels, and restaurants. Focused on customer comfort, air quality, and ultra-quiet operation.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    features: ["Kitchen Grease Exhaust", "Office Fresh Air Supply", "Basement Ventilation", "Energy Efficient AHUs"]
   },
   {
-    icon: Waves,
-    title: "HVAC Systems",
-    description: "Integration with heating, ventilation, and air conditioning systems. Custom ducting and hoods for complete solutions.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80",
-    products: ["HVAC Ducts", "Turnkey Solutions", "Custom Fabrication"]
+    icon: School,
+    title: "Institutional",
+    description: "Reliable airflow management for hospitals, educational institutions, and government facilities. Ensuring healthy indoor air quality (IAQ) for students, patients, and staff.",
+    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+    features: ["Hospital Grade Filtration", "Silent Lab Exhaust", "Classroom Ventilation", "Clean Room Solutions"]
+  },
+  {
+    icon: Home,
+    title: "Residential",
+    description: "Discreet and efficient ventilation for premium residential complexes and high-rise apartments. Designed to blend seamlessly with modern architecture while providing superior air quality.",
+    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+    features: ["Toilet Exhaust Systems", "Circular Inline Fans", "Compact Cabinet Fans", "Low Power Consumption"]
+  },
+  {
+    icon: Users,
+    title: "For OEM Customers",
+    description: "Custom-designed fan components and sub-assemblies for original equipment manufacturers. We provide precision-engineered impellers, motors, and housings tailored to your specifications.",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    features: ["Custom Fan Wheels", "Precision Balancing", "Special Grade Coatings", "Volume Manufacturing"]
   }
 ];
 
 const ApplicationsSection = () => {
   return (
-    <section className="py-24 bg-[#F4F6F8]">
+    <section className="py-24 bg-[#F8FAFC]">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -49,89 +55,82 @@ const ApplicationsSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="font-body text-[#2E86B8] font-bold uppercase tracking-[0.2em] text-sm mb-4 block">
-              Applications
+            <span className="font-body text-[#2E86B8] font-black uppercase tracking-[0.25em] text-xs mb-4 block">
+              Market Applications
             </span>
-            <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#0B2A3C] mb-4">
-              Where Our Fans Excel
+            <h2 className="font-heading text-4xl md:text-6xl font-black text-[#0B2A3C] mb-6 uppercase tracking-tight">
+              Where Our <span className="text-[#F5A02E]">Solutions Excel</span>
             </h2>
-            <div className="w-24 h-1.5 bg-[#F5A02E] mx-auto mb-6"></div>
-            <p className="font-body text-[#6B7280] max-w-2xl mx-auto text-lg leading-relaxed">
-              Proven ventilation solutions across diverse industries. From heavy manufacturing to commercial spaces, we deliver optimal airflow.
+            <div className="w-24 h-1.5 bg-[#F5A02E] mx-auto mb-8"></div>
+            <p className="font-body text-gray-500 max-w-3xl mx-auto text-lg md:text-xl leading-relaxed font-medium">
+              Proven ventilation excellence across diverse sectors. From heavy manufacturing to residential complexes, we deliver optimized airflow for every environment.
             </p>
           </motion.div>
         </div>
 
-        {/* Applications Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Applications Grid - Professional List/Card Hybrid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {applications.map((app, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="group bg-white rounded-sm overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300"
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className={`group bg-white rounded-3xl overflow-hidden shadow-xl border border-gray-100 hover:border-[#2E86B8]/30 transition-all duration-500 ${idx === 4 ? 'lg:col-span-2' : ''}`}
             >
-              <div className="flex flex-col md:flex-row">
-                {/* Image */}
-                <div className="md:w-2/5 relative h-48 md:h-auto overflow-hidden">
+              <div className={`flex flex-col ${idx === 4 ? 'lg:flex-row' : 'md:flex-row'}`}>
+                {/* Image Area */}
+                <div className={`relative h-64 ${idx === 4 ? 'lg:w-1/2 lg:h-auto' : 'md:w-2/5 md:h-auto'} overflow-hidden`}>
                   <div 
-                    className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
+                    className="absolute inset-0 bg-cover bg-center group-hover:scale-110 transition-transform duration-1000"
                     style={{ backgroundImage: `url(${app.image})` }}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#0B2A3C]/80 to-transparent" />
-                  <div className="absolute bottom-4 left-4">
-                    <div className="w-14 h-14 rounded bg-[#F5A02E] flex items-center justify-center">
-                      <app.icon className="text-[#0B2A3C]" size={28} />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#0B2A3C]/90 via-[#0B2A3C]/40 to-transparent" />
+                  
+                  {/* Icon Overlay */}
+                  <div className="absolute top-8 left-8">
+                    <div className="w-16 h-16 rounded-2xl bg-[#F5A02E] flex items-center justify-center shadow-2xl transform -rotate-3 group-hover:rotate-0 transition-transform">
+                      <app.icon className="text-[#0B2A3C]" size={32} strokeWidth={2.5} />
                     </div>
                   </div>
                 </div>
 
-                {/* Content */}
-                <div className="md:w-3/5 p-6 flex flex-col justify-center">
-                  <h3 className="font-heading text-xl font-bold text-[#0B2A3C] mb-3 group-hover:text-[#F5A02E] transition-colors">
+                {/* Content Area */}
+                <div className={`p-8 md:p-10 flex flex-col justify-center ${idx === 4 ? 'lg:w-1/2' : 'md:w-3/5'}`}>
+                  <h3 className="font-heading text-2xl md:text-3xl font-black text-[#0B2A3C] mb-4 group-hover:text-[#F5A02E] transition-colors uppercase tracking-tight">
                     {app.title}
                   </h3>
-                  <p className="font-body text-[#6B7280] text-sm mb-4 leading-relaxed">
+                  <p className="font-body text-gray-500 text-sm md:text-base mb-6 leading-relaxed font-medium">
                     {app.description}
                   </p>
                   
-                  {/* Related Products */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {app.products.map((product, pIdx) => (
-                      <span key={pIdx} className="text-xs font-body font-semibold bg-[#F4F6F8] text-[#0B2A3C] px-2 py-1 rounded">
-                        {product}
-                      </span>
+                  {/* Features List */}
+                  <div className="grid grid-cols-2 gap-3 mb-8">
+                    {app.features.map((feature, fIdx) => (
+                      <div key={fIdx} className="flex items-center gap-2">
+                        <CheckCircle2 size={14} className="text-[#F5A02E] shrink-0" strokeWidth={3} />
+                        <span className="font-body text-[10px] md:text-xs font-black uppercase tracking-tight text-[#0B2A3C]/70">
+                          {feature}
+                        </span>
+                      </div>
                     ))}
                   </div>
 
-                  <Link 
-                    href="/products" 
-                    className="inline-flex items-center gap-2 text-[#F5A02E] font-bold text-sm hover:gap-3 transition-all"
-                  >
-                    Explore Products <ArrowRight size={16} />
-                  </Link>
+                  <div className="mt-auto">
+                    <Link 
+                      href="/contact" 
+                      className="inline-flex items-center gap-2 font-heading text-xs font-black text-[#2E86B8] hover:text-[#F5A02E] uppercase tracking-[0.2em] transition-all group/link"
+                    >
+                      Engineering Consultation
+                      <ArrowRight className="group-hover/link:translate-x-2 transition-transform" size={16} />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button asChild className="bg-[#0B2A3C] hover:bg-[#2E86B8] font-heading font-bold uppercase tracking-wide px-8 h-12">
-            <Link href="/industries">
-              View All Industries <ChevronRight className="ml-2" size={18} />
-            </Link>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

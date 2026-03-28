@@ -76,7 +76,7 @@ const AboutPage = () => {
                 <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
                   Who we are
                 </span> 
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase">
+                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
                   The Best <br className="hidden md:block" /> 
                   <span className="text-[#2E86B8]">Air Tech Company</span>
                 </h1>
@@ -163,7 +163,7 @@ const AboutPage = () => {
               <div className="w-12 h-12 rounded-xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] mb-4 group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-500">
                 <Target size={24} />
               </div>
-              <h2 className="text-xl font-black font-montserrat text-[#0B2A3C] mb-3 uppercase tracking-tighter">
+              <h2 className="text-xl font-black font-heading text-[#0B2A3C] mb-3 uppercase tracking-tighter">
                 Our <span className="text-[#2E86B8]">Vision</span>
               </h2>
               <p className="text-gray-500 font-body text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
@@ -174,9 +174,9 @@ const AboutPage = () => {
             {/* Mission */}
             <div className="group bg-[#0B2A3C] p-6 lg:p-8 rounded-[2rem] shadow-2xl border border-white/5 hover:shadow-[0_20px_50px_rgba(245,160,46,0.15)] transition-all duration-700">
               <div className="w-12 h-12 rounded-xl bg-[#F5A02E]/10 flex items-center justify-center text-[#F5A02E] mb-4 group-hover:bg-[#F5A02E] group-hover:text-[#0B2A3C] transition-all duration-500">
-                <Globe size={24} />
+                <Globe size="24" />
               </div>
-              <h2 className="text-xl font-black font-montserrat text-white mb-3 uppercase tracking-tighter">
+              <h2 className="text-xl font-black font-heading text-white mb-3 uppercase tracking-tighter">
                 Our <span className="text-[#F5A02E]">Mission</span>
               </h2>
               <p className="text-gray-300 font-body text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
@@ -233,7 +233,7 @@ const AboutPage = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-black font-montserrat text-[#0B2A3C] uppercase tracking-tighter"
+                className="text-4xl md:text-5xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter"
               >
                 A Journey of <span className="text-[#2E86B8]">Excellence</span>
               </motion.h2>
@@ -306,7 +306,7 @@ const AboutPage = () => {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
             <div>
-              <h2 className="text-3xl md:text-5xl font-black text-white font-montserrat mb-8 uppercase tracking-tighter leading-tight">
+              <h2 className="text-3xl md:text-5xl font-black text-white font-heading mb-8 uppercase tracking-tighter leading-tight">
                 Committed to a <br />
                 <span className="text-[#F5A02E]">Sustainable Future</span>
               </h2>

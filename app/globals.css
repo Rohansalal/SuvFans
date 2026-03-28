@@ -7,8 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-body: var(--font-inter);
-  --font-heading: var(--font-montserrat);
+  --font-sans: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
   
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -46,7 +47,7 @@
   --accent-foreground: #0B2A3C;
   
   --background: #F4F6F8;
-  --foreground: #0B2A3C;
+  --foreground: #444; /* Changed from #0B2A3C for better readability with Roboto Condensed */
   
   --card: #FFFFFF;
   --card-foreground: #0B2A3C;
@@ -64,6 +65,10 @@
 @layer base {
   * {
     @apply border-border outline-accent/50;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Condensed", var(--font-roboto-condensed), sans-serif !important;
   }
   
   html {
@@ -72,51 +77,49 @@
   
   body {
     @apply bg-background text-foreground font-body antialiased;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 1.6;
   }
   
   /* Typography Hierarchy */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-heading font-bold text-[#0B2A3C];
+    @apply font-heading text-[#111]; /* Changed from #0B2A3C to #111 as per recommendation */
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     line-height: 1.3;
   }
   
   /* H1: 40-48px - Main page titles */
   h1 {
     font-size: 2.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.05em; /* Adjusted for condensed font */
   }
   
   /* H2: 28-32px - Section titles */
   h2 {
     font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.03em;
   }
   
   /* H3: 20-24px - Card titles */
   h3 {
     font-size: 1.375rem;
-    font-weight: 600;
   }
-  
-  /* H4: Subheadings */
-  h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-  }
-  
-  /* Body text: 16-18px */
-  p {
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  
-  /* Links */
-  a {
-    @apply transition-colors duration-200;
-  }
+}
+
+/* Mechanical Website Styling */
+.navbar, 
+.button, 
+.specs { 
+  font-family: var(--font-roboto-condensed); 
+  text-transform: uppercase; 
+  letter-spacing: 1px; 
+} 
+
+.specs { 
+  font-size: 14px; 
 }
 
 @layer utilities {
@@ -143,11 +146,11 @@
   
   /* Typography utilities */
   .font-heading {
-    font-family: var(--font-montserrat), system-ui, sans-serif;
+    font-family: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
   }
   
   .font-body {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
   }
   
   /* Line height utilities */

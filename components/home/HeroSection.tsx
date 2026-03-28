@@ -51,20 +51,7 @@ const HeroSection = () => {
         ))}
       </div>
 
-      {/* Rotating Fan Visual */}
-      <div className="absolute right-[2%] top-1/2 -translate-y-1/2 opacity-10 pointer-events-none hidden xl:block">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-        >
-          <div className="relative w-[600px] h-[600px]">
-            <Wind size={600} strokeWidth={0.2} className="text-[#2E86B8]" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-40 h-40 rounded-full border-4 border-[#F5A02E] animate-spin-slow" />
-            </div>
-          </div>
-        </motion.div>
-      </div>
+     
 
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="max-w-4xl">
@@ -129,11 +116,11 @@ const HeroSection = () => {
                 <Button 
                   asChild 
                   size="lg" 
-                  className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-bold uppercase tracking-wide text-base px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
+                  className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-bold uppercase tracking-wide text-sm px-7 py-4 h-auto shadow-lg hover:shadow-xl transition-all hover:-translate-y-1"
                 >
                   <Link href="/get-quote">
                     Get Quote
-                    <ArrowRight className="ml-2" />
+                    <ArrowRight className="ml-2" size={18} />
                   </Link>
                 </Button>
               </motion.div>
@@ -145,45 +132,14 @@ const HeroSection = () => {
                 <Button 
                   asChild 
                   size="lg" 
-                  className="bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-heading font-bold uppercase tracking-wide text-base px-8 py-6 h-auto transition-all"
+                  className="bg-transparent hover:bg-white/10 border-2 border-white/30 text-white font-heading font-bold uppercase tracking-wide text-sm px-7 py-4 h-auto transition-all"
                 >
                   <Link href="/products">
-                    View Products <ChevronRight className="ml-1" />
+                    View Products <ChevronRight className="ml-1" size={18} />
                   </Link>
                 </Button>
               </motion.div>
             </div>
-
-            {/* Trust Indicators */}
-            {/* <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap items-center gap-8 pt-8 border-t border-[#6B7280]/30"
-            >
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded bg-[#2E86B8]/20 flex items-center justify-center border border-[#2E86B8]/40 shrink-0">
-                  <Phone className="text-[#2E86B8]" size={20} />
-                </div>
-                <div>
-                  <span className="font-body text-[#6B7280] text-xs block uppercase tracking-wide">Call us 24/7</span>
-                  <a href={`tel:${COMPANY_CONFIG.phone}`} className="font-heading text-white font-bold hover:text-[#F5A02E] transition-colors">
-                    {COMPANY_CONFIG.phone}
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded bg-[#2E86B8]/20 flex items-center justify-center border border-[#2E86B8]/40 shrink-0">
-                  <Mail className="text-[#2E86B8]" size={20} />
-                </div>
-                <div>
-                  <span className="font-body text-[#6B7280] text-xs block uppercase tracking-wide">Email us</span>
-                  <a href={`mailto:${COMPANY_CONFIG.email}`} className="font-heading text-white font-bold hover:text-[#F5A02E] transition-colors">
-                    {COMPANY_CONFIG.email}
-                  </a>
-                </div>
-              </div>
-            </motion.div> */}
           </motion.div>
         </div>
       </div>

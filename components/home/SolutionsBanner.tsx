@@ -8,85 +8,84 @@ import { Shield, CheckCircle2, ArrowRight, Wrench, Users } from 'lucide-react';
 
 const SolutionsBanner = () => {
   return (
-    <section className="py-24 bg-[#F4F6F8] overflow-hidden relative">
+    <section className="py-24 bg-[#F8FAFC] overflow-hidden relative">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             {/* Label */}
-            <span className="font-body text-[#2E86B8] font-bold tracking-[0.2em] uppercase text-sm mb-4 block">Premium Services</span>
+            <span className="font-body text-[#2E86B8] font-black tracking-[0.25em] uppercase text-xs mb-4 block">Premium Services</span>
             
             {/* H2: Montserrat */}
-            <h2 className="font-heading text-3xl md:text-5xl font-bold text-[#0B2A3C] mb-6 leading-tight">
+            <h2 className="font-heading text-4xl md:text-6xl font-black text-[#0B2A3C] mb-8 leading-tight uppercase tracking-tight">
               Turnkey HVAC <span className="text-[#F5A02E]">Solutions</span>
             </h2>
             
             {/* Body: Inter - Broken into readable blocks */}
-            <p className="font-body text-[#6B7280] mb-6 text-lg leading-relaxed">
-              At SUV Fans, customer satisfaction is our top priority. We aim to deliver products that not only meet but exceed your expectations.
-            </p>
-            <p className="font-body text-[#6B7280] mb-8 text-lg leading-relaxed">
-              From product selection to after-sales service, we are here to support you every step of the way.
+            <p className="font-body text-gray-500 mb-10 text-lg md:text-xl leading-relaxed max-w-lg font-medium">
+              At SUV Fans, customer satisfaction is our top priority. We deliver solutions that exceed expectations from selection to after-sales support.
             </p>
             
-            {/* Feature List */}
-            <ul className="space-y-4 mb-10">
+            {/* Feature List - Larger */}
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
               {[
                 "Unmatched Expertise",
-                "Comprehensive Product Range",
-                "Quality Assured Products",
-                "Pan India Service Network"
+                "Comprehensive Range",
+                "Quality Assured",
+                "Pan India Network"
               ].map((item) => (
-                <li key={item} className="flex items-center gap-3 font-body text-[#0B2A3C] font-medium">
-                  <CheckCircle2 className="text-[#F5A02E] shrink-0" size={20} />
+                <li key={item} className="flex items-center gap-3 font-body text-[#0B2A3C] font-black uppercase tracking-tight text-xs">
+                  <div className="w-6 h-6 rounded-full bg-green-500/10 text-green-500 flex items-center justify-center shrink-0">
+                    <CheckCircle2 size={14} strokeWidth={3} />
+                  </div>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
 
-            <Button asChild className="font-heading bg-[#0B2A3C] hover:bg-[#2E86B8] text-white h-14 px-8 text-lg font-bold uppercase tracking-wide group">
-              <Link href="/contact">
-                Contact Now
-                <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+            <Button asChild className="font-heading bg-[#0B2A3C] hover:bg-[#2E86B8] text-white h-14 px-10 text-xs font-black uppercase tracking-[0.2em] group rounded-xl transition-all shadow-lg hover:shadow-[#2E86B8]/20">
+              <Link href="/contact" className="flex items-center gap-2">
+                Contact Engineering
+                <ArrowRight className="ml-1 group-hover:translate-x-1 transition-transform" size={16} />
               </Link>
             </Button>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="relative"
           >
-            <div className="aspect-square bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] rounded-sm p-8 relative overflow-hidden group">
-              <div className="absolute inset-0 flex items-center justify-center opacity-10">
+            <div className="aspect-square bg-gradient-to-br from-[#0B2A3C] to-[#1a3a52] rounded-[2.5rem] p-12 relative overflow-hidden group shadow-2xl border border-white/10">
+              <div className="absolute inset-0 flex items-center justify-center opacity-5">
                 <Shield size={300} className="text-white" />
               </div>
               <div className="relative z-10 flex flex-col h-full justify-center items-center text-center">
-                <div className="w-24 h-24 rounded bg-[#F5A02E] flex items-center justify-center text-[#0B2A3C] mb-8 shadow-xl">
-                  <Wrench size={48} />
+                <div className="w-28 h-28 rounded-2xl bg-[#F5A02E] flex items-center justify-center text-[#0B2A3C] mb-8 shadow-xl group-hover:scale-110 transition-transform duration-500">
+                  <Wrench size={40} />
                 </div>
                 {/* H3: Montserrat */}
-                <h3 className="font-heading text-2xl font-bold text-white mb-4">Professional Service</h3>
+                <h3 className="font-heading text-3xl font-black text-white mb-4 uppercase tracking-tight">Professional Service</h3>
                 {/* Body: Inter */}
-                <p className="font-body text-[#D1D5DB] max-w-xs leading-relaxed">
-                  Expert installation and after-sales support for all our products across India.
+                <p className="font-body text-gray-400 max-w-xs leading-relaxed text-sm font-medium uppercase tracking-widest">
+                  Expert installation and after-sales support across India.
                 </p>
               </div>
             </div>
             
-            {/* Floating card */}
-            <div className="absolute -bottom-6 -right-6 bg-[#0B2A3C] text-white p-6 shadow-2xl max-w-[200px]">
-              <div className="flex items-center gap-3 mb-2">
-                <Users size={24} className="text-[#F5A02E]" />
-                <span className="font-heading text-3xl font-bold">500+</span>
+            {/* Floating card - Larger */}
+            <div className="absolute -bottom-6 -right-6 bg-white p-8 rounded-2xl shadow-2xl border border-gray-100 min-w-[200px]">
+              <div className="flex items-center gap-4 mb-2">
+                <Users size={28} className="text-[#F5A02E]" />
+                <span className="font-heading text-4xl font-black text-[#0B2A3C] tracking-tighter">500+</span>
               </div>
-              <div className="font-body text-sm font-medium uppercase tracking-wider text-[#D1D5DB]">Happy Clients</div>
+              <div className="font-body text-xs font-black uppercase tracking-[0.2em] text-gray-400">Happy Clients</div>
             </div>
           </motion.div>
         </div>

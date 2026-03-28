@@ -2,34 +2,23 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { PRODUCT_CATEGORIES } from '@/lib/products';
+import { PRODUCT_CATEGORIES, PRODUCTS } from '@/lib/products';
 import { ArrowRight, Fan, Wind, Box, Thermometer, Maximize, Scissors, Shield, Airplay, ArrowUpRight, Zap, Gauge } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
 const categoryIcons: { [key: string]: any } = {
-  'centrifugal-fans': Fan,
-  'fume-exhaust-fans': Wind,
-  'axial-flow-fans': Fan,
-  'insulated-box-fans': Box,
-  'industrial-coolers': Thermometer,
+  'centrifugal-inline-cubic-fans': Fan,
+  'axial-wall-exhaust-supply-fans': Fan,
+  'insulated-housing-cabinet-fan': Box,
+  'tube-axial-fans': Fan,
+  'belt-driven-cabinet-fans': Fan,
   'hvls-fans': Maximize,
-  'hvac-ducts': Scissors,
-  'turnkey-solutions': Shield,
+  'hvac-air-duct-kitchen-hoods': Scissors,
+  'turnkey-hvac-products': Shield,
   'air-purifiers': Airplay,
-};
-
-const categorySpecs: { [key: string]: string[] } = {
-  'centrifugal-fans': ['Up to 25,000 CMH', 'High Pressure', 'Industrial Grade'],
-  'fume-exhaust-fans': ['Up to 120°C', 'Corrosion Resistant', 'Heavy Duty'],
-  'axial-flow-fans': ['Up to 100,000 CFM', 'Low Noise', 'Energy Efficient'],
-  'insulated-box-fans': ['Ultra Quiet', 'Ceiling Mount', 'Commercial'],
-  'industrial-coolers': ['30,000 CMH', 'Water Cooled', 'Energy Saving'],
-  'hvls-fans': ['Up to 200,000 CFM', 'Large Coverage', 'Low Speed'],
-  'hvac-ducts': ['Custom Built', 'All Sizes', 'Professional'],
-  'turnkey-solutions': ['End-to-End', 'Pan-India', 'Expert Team'],
-  'air-purifiers': ['HEPA Filter', 'PM0.1 Removal', 'Silent'],
 };
 
 const ProductCategoriesGrid = () => {
@@ -58,10 +47,17 @@ const ProductCategoriesGrid = () => {
         </div>
 
         {/* Product Grid - Premium Card Design */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {PRODUCT_CATEGORIES.map((cat, index) => {
             const Icon = categoryIcons[cat.slug] || Fan;
-            const specs = categorySpecs[cat.slug] || [];
+            
+            // Find a representative image from the PRODUCTS array
+            // The user changed cat.slug to be product slugs, so we search by p.slug first
+            const product = PRODUCTS.find(p => p.slug === cat.slug || p.categorySlug === cat.slug);
+            const categoryImage = product?.image || (cat.slug === 'air-purifiers' ? '/pureair.webp' : null);
+            
+            // Special handling for air-purifiers route which is top-level
+            const href = cat.slug === 'air-purifiers' ? '/air-purifiers' : `/products/${cat.slug}`;
             
             return (
               <motion.div
@@ -71,47 +67,48 @@ const ProductCategoriesGrid = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Link href={`/products/${cat.slug}`} className="group block h-full">
-                  <Card className="h-full border-2 border-[#D1D5DB] bg-white shadow-sm hover:shadow-2xl hover:border-[#F5A02E] transition-all duration-300 overflow-hidden relative group-hover:-translate-y-2">
-                    <CardContent className="p-0 flex flex-col">
-                      {/* Image/Icon Area */}
-                      <div className="h-44 bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] relative overflow-hidden flex items-center justify-center">
-                        <Icon size={64} className="text-white/20 group-hover:text-[#F5A02E]/40 transition-colors duration-500" />
-                        <div className="absolute inset-0 bg-[#F5A02E]/0 group-hover:bg-[#F5A02E]/10 transition-colors duration-300" />
-                        <ArrowUpRight className="absolute top-4 right-4 text-white/60 group-hover:text-[#F5A02E] group-hover:scale-110 transition-all duration-300" size={24} />
+                <Link href={href} className="group block h-full">
+                  <Card className="h-full border-2 border-[#D1D5DB] bg-white shadow-sm hover:shadow-2xl hover:border-[#F5A02E] transition-all duration-300 overflow-hidden relative group-hover:-translate-y-2 rounded-2xl">
+                    <CardContent className="p-0 flex flex-col h-full">
+                      {/* Image/Icon Area - Made significantly larger */}
+                      <div className="h-72 relative overflow-hidden flex items-center justify-center bg-gray-100">
+                        {categoryImage ? (
+                          <Image
+                            src={categoryImage}
+                            alt={cat.name}
+                            fill
+                            className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        ) : (
+                          <div className="absolute inset-0 bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] flex items-center justify-center">
+                            <Icon size={80} className="text-white/20 group-hover:text-[#F5A02E]/40 transition-colors duration-500" />
+                          </div>
+                        )}
+                        
+                        {/* Overlay elements */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
                         
                         {/* Category Badge */}
-                        <div className="absolute top-4 left-4 bg-[#F5A02E]/20 text-white text-xs font-bold uppercase tracking-wider px-3 py-1">
-                          {cat.slug.replace('-', ' ')}
+                        <div className="absolute top-6 left-6 bg-[#F5A02E] text-[#0B2A3C] text-[11px] font-heading font-black uppercase tracking-widest px-4 py-1.5 z-10 shadow-lg rounded-sm">
+                          {cat.name}
+                        </div>
+
+                        {/* Hover Reveal Button Overlay */}
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-[#0B2A3C]/40 backdrop-blur-[2px] z-20">
+                          <Button className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-black uppercase tracking-widest px-6 py-4 rounded-xl shadow-2xl transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                             View Details
+                          </Button>
                         </div>
                       </div>
                       
                       {/* Content */}
-                      <div className="p-6 flex flex-col flex-grow">
-                        <h3 className="font-heading text-xl font-bold text-[#0B2A3C] mb-3 group-hover:text-[#F5A02E] transition-colors">
+                      <div className="p-8 flex flex-col flex-grow bg-white relative z-10">
+                        <h3 className="font-heading text-2xl font-black text-[#0B2A3C] mb-4 group-hover:text-[#F5A02E] transition-colors uppercase tracking-tight">
                           {cat.name}
                         </h3>
                         
-                        {/* Quick Specs - Highlighted */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {specs.slice(0, 3).map((spec, idx) => (
-                            <span key={idx} className="flex items-center gap-1 text-[11px] font-body font-semibold bg-[#F4F6F8] text-[#0B2A3C] px-2 py-1 rounded">
-                              <Zap size={10} className="text-[#F5A02E]" />
-                              {spec}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        <p className="font-body text-[#6B7280] text-sm mb-4 leading-relaxed flex-grow">
-                          High-performance {cat.name.toLowerCase()} designed for industrial and commercial applications.
-                        </p>
-                        
-                        {/* View Details CTA */}
-                        <div className="flex items-center justify-between pt-4 border-t border-[#D1D5DB]">
-                          <span className="font-body text-sm font-bold text-[#F5A02E] group-hover:gap-3 transition-all flex items-center gap-2">
-                            View Details 
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                          </span>
+                        <div className="mt-auto flex items-center text-xs font-heading font-black text-[#2E86B8] group-hover:text-[#F5A02E] transition-colors uppercase tracking-[0.2em]">
+                          Explore Category <ArrowRight size={18} className="ml-3 group-hover:translate-x-2 transition-transform" />
                         </div>
                       </div>
                     </CardContent>
@@ -121,21 +118,6 @@ const ProductCategoriesGrid = () => {
             );
           })}
         </div>
-
-        {/* View All CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mt-12"
-        >
-          <Button asChild className="bg-[#0B2A3C] hover:bg-[#2E86B8] font-heading font-bold uppercase tracking-wide px-8 h-12">
-            <Link href="/products">
-              View All Products <ArrowRight className="ml-2" size={18} />
-            </Link>
-          </Button>
-        </motion.div>
       </div>
     </section>
   );

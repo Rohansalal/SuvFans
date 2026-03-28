@@ -51,14 +51,14 @@ export interface Product {
 }
 
 export const PRODUCT_CATEGORIES = [
-  { name: 'Centrifugal Fans', slug: 'centrifugal-fans' },
-  { name: 'Fume Exhaust Fans', slug: 'fume-exhaust-fans' },
-  { name: 'Axial Flow Fans', slug: 'axial-flow-fans' },
-  { name: 'Insulated Box Fans', slug: 'insulated-box-fans' },
-  { name: 'Industrial Coolers', slug: 'industrial-coolers' },
+  { name: 'Centrifugal Fans', slug: 'centrifugal-inline-cubic-fans' },
+  { name: 'Axial Flow Fans', slug: 'axial-wall-exhaust-supply-fans' },
+  { name: 'Insulated Box Fans', slug: 'insulated-housing-cabinet-fan' },
+  { name: 'Tube Axial Fans', slug: 'tube-axial-fans' },
+  { name: 'Belt Driven Cabinet Fans', slug: 'belt-driven-cabinet-fans' },
   { name: 'Large Diameter HVLS Fans', slug: 'hvls-fans' },
-  { name: 'HVAC Air Ducts & Hoods', slug: 'hvac-ducts' },
-  { name: 'Turnkey HVAC Solutions', slug: 'turnkey-solutions' },
+  { name: 'HVAC Air Ducts & Hoods', slug: 'hvac-air-duct-kitchen-hoods' },
+  { name: 'Turnkey HVAC Solutions', slug: 'turnkey-hvac-products' },
   { name: 'PURE AIR Purifiers', slug: 'air-purifiers' },
 ];
 
@@ -91,23 +91,19 @@ export const PRODUCTS: Product[] = [
     details: [
       {
         title: 'Housing Construction',
-        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.',
-        image: '/products/centrifugal-inline-cubic-fans/construction.png'
+        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.'
       },
       {
         title: 'Wheel',
-        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.',
-        image: '/products/centrifugal-inline-cubic-fans/wheel.png'
+        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.'
       },
       {
         title: 'Duct Collars',
-        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.',
-        image: '/products/centrifugal-inline-cubic-fans/duct.png'
+        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.'
       },
       {
         title: 'Motor',
-        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.',
-        image: '/products/centrifugal-inline-cubic-fans/motor.png'
+        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.'
       }
     ],
     whyChooseContent: [
@@ -176,7 +172,7 @@ export const PRODUCTS: Product[] = [
     slug: 'power-roof-ventilators-upblast-fan',
     name: 'Power Roof Ventilators Upblast Fan',
     category: 'Centrifugal Fans',
-    categorySlug: 'centrifugal-fans',
+    categorySlug: 'centrifugal-inline-cubic-fans',
     description: 'Weather-tight vertical discharge roof ventilators designed for high-efficiency exhaust in commercial buildings.',
     longDescription: 'Our Power Roof Ventilators (PRV) with Upblast discharge are the ideal solution for vertical exhaust applications. Designed to throw air high above the roofline, they prevent re-entrainment of odors and pollutants into the building. The aerodynamic Rhombus hood is engineered to withstand high wind speeds while maintaining a weather-tight seal. Built with non-overloading backward inclined aluminum impellers, these fans provide reliable performance even in high-static pressure situations common in ducted roof exhaust systems.',
     applications: ['Roof-top Exhaust', 'Commercial Kitchen Grease Exhaust', 'Warehouse Ventilation', 'Multi-story Building Exhaust'],
@@ -223,23 +219,19 @@ export const PRODUCTS: Product[] = [
     details: [
       {
         title: 'Housing Construction',
-        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.',
-        image: '/products/ceiling-exhaust-cabinet-fans/construction.png'
+        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.'
       },
       {
         title: 'Wheel',
-        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.',
-        image: '/products/ceiling-exhaust-cabinet-fans/wheel.png'
+        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.'
       },
       {
         title: 'Duct Collars',
-        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.',
-        image: '/products/ceiling-exhaust-cabinet-fans/duct.png'
+        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.'
       },
       {
         title: 'Motor',
-        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.',
-        image: '/products/ceiling-exhaust-cabinet-fans/motor.png'
+        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.'
       }
     ],
     whyChooseContent: [
@@ -275,7 +267,7 @@ export const PRODUCTS: Product[] = [
       coverage: 'Up to 20,000 sq. ft per fan'
     },
     seoKeywords: ['HVLS fan India', 'industrial ceiling fan', 'large warehouse fan', 'energy efficient cooling', 'big diameter fan manufacturer', 'HVLS fan specifications', 'industrial cooling destratification'],
-    image: '/products/hvls-fans/main.png'
+    image: '/products/hvls-fans/main.webp'
   },
   {
     id: '7',
@@ -301,7 +293,7 @@ export const PRODUCTS: Product[] = [
       sizes: ['100mm', '150mm', '200mm', '250mm', '300mm', '450mm']
     },
     seoKeywords: ['flexible ducting', 'insulated HVAC duct', 'aluminum flex duct', 'ventilation connector', 'flexible air pipe India'],
-    image: '/products/flexible-ducts/main.png'
+    image: '/products/flexible-ducts/main.webp'
   },
   {
     id: '8',
@@ -326,7 +318,7 @@ export const PRODUCTS: Product[] = [
       voltage: '220V/415V'
     },
     seoKeywords: ['insulated cabinet fan', 'double skin box fan', 'quiet air handler', 'acoustic_fan_housing', 'industrial cabinet blower'],
-    image: '/products/insulated-housing-cabinet-fan/main.png'
+    image: '/products/insulated-housing-cabinet-fan/main.webp'
   },
   {
     id: '9',
@@ -351,7 +343,7 @@ export const PRODUCTS: Product[] = [
       temperatureRating: 'Up to 120°C'
     },
     seoKeywords: ['kitchen exhaust fan', 'commercial kitchen blower', 'grease exhaust fan', 'restaurant ventilation', 'high temperature fan India'],
-    image: '/products/kitchen-exhaust-fan/main.png' 
+    image: '/products/kitchen-exhaust-fan/main.webp' 
   },
   {
     id: '10',
@@ -376,7 +368,7 @@ export const PRODUCTS: Product[] = [
       voltage: '220V/415V'
     },
     seoKeywords: ['laundry exhaust fan', 'commercial laundry blower', 'humid air exhaust', 'lint resistant fan', 'industrial dryer exhaust'],
-    image: '/products/laundry-fan/main.png'
+    image: '/products/laundry-fan/main.webp'
   },
   {
     id: '11',
@@ -401,7 +393,7 @@ export const PRODUCTS: Product[] = [
       voltage: '220V Single Phase'
     },
     seoKeywords: ['toilet exhaust fan', 'bathroom ventilation system', 'commercial restroom fan', 'centralized toilet exhaust', 'quiet washroom fan'],
-    image: '/products/toilet-exhaust/main.png'
+    image: '/ProductImage.webp'
   },
   {
     id: '12',
@@ -426,7 +418,7 @@ export const PRODUCTS: Product[] = [
       coverage: 'Complete facility HVAC'
     },
     seoKeywords: ['turnkey HVAC India', 'air handling unit service', 'industrial HVAC installation', 'complete ventilation solution', 'AHU commissioning'],
-    image: '/products/turnkey-hvac-products/main.png'
+    image: '/products/turnkey-hvac-products/main.webp'
   },
   {
     id: '13',
@@ -451,7 +443,7 @@ export const PRODUCTS: Product[] = [
       shapes: ['Rectangular', 'Round', 'Spiral', 'Flat Oval']
     },
     seoKeywords: ['HVAC ducting manufacturer', 'commercial kitchen hood', 'GI ducting India', 'SS kitchen exhaust', 'industrial air ducts'],
-    image: '/products/hvac-air-duct-kitchen-hoods/main.png'
+    image: '/products/hvac-air-duct-kitchen-hoods/main.webp'
   },
   {
     id: '14',
@@ -476,7 +468,7 @@ export const PRODUCTS: Product[] = [
       voltage: '415V 3-Phase'
     },
     seoKeywords: ['tube axial fan', 'ducted axial blower', 'industrial exhaust blower', 'tunnel fan manufacturer', 'heavy duty axial fan'],
-    image: '/products/tube-axial-fans/main.png'
+    image: '/products/tube-axial-fans/main.webp'
   },
   {
     id: '15',
@@ -500,7 +492,7 @@ export const PRODUCTS: Product[] = [
       staticPressure: 'Up to 120 mmwg',
       voltage: '415V 3-Phase'
     },
-    seoKeywords: ['belt driven fan', 'cabinet blower', 'adjustable speed fan', 'industrial air handler', 'high capacity HVAC fan'],
-    image: '/products/belt-driven-cabinet-fans/main.png'
+    seoKeywords: ['belt driven fan', 'adjustable speed blower', 'cabinet exhaust fan', 'industrial HVAC supply', 'belt drive centrifugal fan'],
+    image: '/products/belt-driven-cabinet-fans/main.webp'
   }
 ];

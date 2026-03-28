@@ -1,16 +1,59 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/lib/products';
 import { COMPANY_CONFIG } from '@/lib/config';
-import { CheckCircle2, ArrowRight, ShieldCheck, Zap, Thermometer, Wind, FileText, Download, Settings, BarChart3, Ruler, Phone } from 'lucide-react';
+import { 
+  CheckCircle2, 
+  ArrowRight, 
+  ShieldCheck, 
+  Zap, 
+  Thermometer, 
+  Wind, 
+  FileText, 
+  Download, 
+  Settings, 
+  BarChart3, 
+  Ruler, 
+  Phone,
+  Send,
+  MessageSquare
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
 
 interface ProductDetailProps {
   product: Product;
 }
 
 const ProductDetail = ({ product }: ProductDetailProps) => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  const handleChange = (field: string, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      setIsSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    }, 1500);
+  };
+
   return (
     <div className="bg-white min-h-screen pt-[72px] md:pt-[88px]">
       {/* Breadcrumbs */}
@@ -31,37 +74,24 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Image Side - 7 columns */}
-            <div className="lg:col-span-7 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group border-8 border-gray-50">
-              <Image
-                src={product.image || 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop'}
-                alt={product.name}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-                priority
-              />
-              {product.badge && (
-                <div className="absolute top-6 left-6 bg-[#F5A02E] text-[#0B2A3C] font-bold px-4 py-1 rounded-full text-sm shadow-lg">
-                  {product.badge}
-                </div>
-              )}
-            </div>
-
-            {/* Content Side - 5 columns */}
-            <div className="lg:col-span-5 space-y-8">
-              <div>
-                <span className="inline-block px-3 py-1 rounded-md bg-[#0B2A3C]/10 text-[#0B2A3C] text-xs font-bold uppercase tracking-wider mb-4">
-                  {product.category}
-                </span>
-                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-montserrat text-[#0B2A3C] mb-6 leading-tight">
-                  {product.name}
-                </h1>
-                <p className="text-lg text-gray-600 font-body mb-8 leading-relaxed">
-                  {product.description}
-                </p>
+            <div className="lg:col-span-7 space-y-8">
+              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group border-8 border-gray-50">
+                <Image
+                  src={product.image || 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop'}
+                  alt={product.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  priority
+                />
+                {product.badge && (
+                  <div className="absolute top-6 left-6 bg-[#F5A02E] text-[#0B2A3C] font-bold px-4 py-1 rounded-full text-sm shadow-lg">
+                    {product.badge}
+                  </div>
+                )}
               </div>
-              
-              {/* Technical Spec Grid */}
-              <div className="grid grid-cols-2 gap-4">
+
+              {/* Technical Spec Grid - Moved here */}
+              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4 gap-4">
                 {[
                   { label: 'Capacity Range', value: product.specs.capacityRange, icon: Wind },
                   { label: 'Static Pressure', value: product.specs.staticPressure, icon: BarChart3 },
@@ -77,26 +107,126 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                   </div>
                 ))}
               </div>
+            </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-col gap-4">
-                <Button asChild size="lg" className="bg-[#0B2A3C] hover:bg-[#1a3a52] text-white font-bold h-14 w-full">
-                  <Link href="/get-quote" className="flex items-center justify-center gap-2">
-                    Request Technical Datasheet <ArrowRight size={18} />
+            {/* Content Side - 5 columns */}
+            <div className="lg:col-span-5 space-y-8 sticky top-[100px]">
+              <div>
+                <span className="inline-block px-3 py-1 rounded-md bg-[#0B2A3C]/10 text-[#0B2A3C] text-xs font-bold uppercase tracking-wider mb-4">
+                  {product.category}
+                </span>
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold font-heading text-[#0B2A3C] mb-6 leading-tight">
+                  {product.name}
+                </h1>
+                <p className="text-lg text-gray-600 font-body mb-8 leading-relaxed">
+                  {product.description}
+                </p>
+              </div>
+              
+              {/* Inquiry Form Card */}
+              <div className="bg-white p-6 md:p-8 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100">
+                {isSubmitted ? (
+                  <div className="text-center py-8">
+                    <div className="w-16 h-16 rounded-full bg-green-50 text-green-500 flex items-center justify-center mb-4 mx-auto">
+                      <CheckCircle2 size={32} />
+                    </div>
+                    <h3 className="text-xl font-black font-heading text-[#0B2A3C] mb-2 uppercase tracking-tighter">Inquiry Sent!</h3>
+                    <p className="text-gray-500 text-sm mb-6 font-body">
+                      Our engineering team will contact you shortly with the technical details.
+                    </p>
+                    <Button 
+                      onClick={() => setIsSubmitted(false)} 
+                      className="bg-[#0B2A3C] hover:bg-[#2E86B8] text-white w-full h-12 rounded-xl font-black uppercase text-[10px] tracking-widest"
+                    >
+                      New Inquiry
+                    </Button>
+                  </div>
+                ) : (
+                  <>
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="w-1 h-6 bg-[#F5A02E] rounded-full" />
+                      <h3 className="text-xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter">Quick Inquiry</h3>
+                    </div>
+
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-widest ml-1">Full Name</label>
+                        <Input 
+                          placeholder="Your Name" 
+                          className="h-12 bg-gray-50/50 border-gray-100 focus:border-[#2E86B8] rounded-xl px-4 font-bold text-sm text-[#0B2A3C]"
+                          value={formData.name}
+                          onChange={(e) => handleChange('name', e.target.value)}
+                          required
+                        />
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-widest ml-1">Business Email</label>
+                          <Input 
+                            type="email"
+                            placeholder="Email" 
+                            className="h-12 bg-gray-50/50 border-gray-100 focus:border-[#2E86B8] rounded-xl px-4 font-bold text-sm text-[#0B2A3C]"
+                            value={formData.email}
+                            onChange={(e) => handleChange('email', e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-widest ml-1">Phone</label>
+                          <Input 
+                            placeholder="Phone" 
+                            className="h-12 bg-gray-50/50 border-gray-100 focus:border-[#2E86B8] rounded-xl px-4 font-bold text-sm text-[#0B2A3C]"
+                            value={formData.phone}
+                            onChange={(e) => handleChange('phone', e.target.value)}
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-widest ml-1">Requirements</label>
+                        <Textarea 
+                          placeholder="Capacity, pressure, or application..." 
+                          className="min-h-[100px] bg-gray-50/50 border-gray-100 focus:border-[#2E86B8] rounded-2xl p-4 font-bold text-sm text-[#0B2A3C] resize-none"
+                          value={formData.message}
+                          onChange={(e) => handleChange('message', e.target.value)}
+                        />
+                      </div>
+
+                      <Button 
+                        type="submit" 
+                        className="w-full bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-14 text-[10px] font-black uppercase tracking-widest rounded-xl shadow-lg shadow-[#F5A02E]/10 transition-all" 
+                        disabled={isLoading}
+                      >
+                        {isLoading ? (
+                          <span className="flex items-center gap-2">
+                            <div className="w-3 h-3 border-2 border-[#0B2A3C]/30 border-t-[#0B2A3C] rounded-full animate-spin" />
+                            Sending...
+                          </span>
+                        ) : (
+                          <span className="flex items-center gap-2">
+                            <Send size={14} /> Get Technical Quote
+                          </span>
+                        )}
+                      </Button>
+                    </form>
+                  </>
+                )}
+              </div>
+
+              {/* Action Buttons - Compact */}
+              <div className="grid grid-cols-2 gap-3">
+                <Button variant="outline" asChild className="border-gray-200 text-[#0B2A3C] hover:bg-gray-50 font-bold h-10 text-[10px] uppercase tracking-wider rounded-lg">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    <Phone size={14} /> Talk to Expert
                   </Link>
                 </Button>
-                <div className="grid grid-cols-2 gap-4">
-                  <Button variant="outline" asChild className="border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C]/5 font-bold h-12">
-                    <Link href="/contact" className="flex items-center gap-2">
-                      <Phone size={16} /> Talk to Expert
-                    </Link>
-                  </Button>
-                  <Button variant="outline" asChild className="border-2 border-[#2E86B8] text-[#2E86B8] hover:bg-[#2E86B8]/5 font-bold h-12">
-                    <Link href="/contact" className="flex items-center gap-2">
-                      <Settings size={16} /> Engineering Support
-                    </Link>
-                  </Button>
-                </div>
+                <Button variant="outline" asChild className="border-gray-200 text-[#2E86B8] hover:bg-blue-50/30 font-bold h-10 text-[10px] uppercase tracking-wider rounded-lg">
+                  <Link href="/contact" className="flex items-center gap-2">
+                    <Settings size={14} /> Engineering
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
@@ -109,9 +239,9 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             <div className="lg:col-span-2">
-              <h2 className="text-3xl font-bold font-montserrat mb-6 flex items-center gap-3">
-                <Settings className="text-[#F5A02E]" /> Engineering Excellence
-              </h2>
+              <h2 className="text-3xl font-bold font-heading mb-6 flex items-center gap-3">
+                 <Settings className="text-[#F5A02E]" /> Engineering Excellence
+               </h2>
               <p className="text-gray-300 text-lg mb-8 max-w-2xl leading-relaxed">
                 Our fans are designed and tested in compliance with <span className="text-white font-bold">AMCA standards</span>. We provide comprehensive selection support, including fan curves, acoustic analysis, and system effect considerations to ensure optimal performance in your specific application.
               </p>
@@ -168,9 +298,9 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold font-montserrat text-[#0B2A3C] mb-8 border-l-4 border-[#F5A02E] pl-6">
-              Product Overview
-            </h2>
+            <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-8 border-l-4 border-[#F5A02E] pl-6">
+               Product Overview
+             </h2>
             <div className="prose prose-lg max-w-none text-gray-600 font-body leading-relaxed mb-12">
               <p className="mb-6 whitespace-pre-line">
                 {product.longDescription || product.description}
@@ -193,9 +323,9 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                       </div>
                     )}
                     <div className="p-6">
-                      <h3 className="text-xl font-bold font-montserrat text-[#0B2A3C] mb-3">
-                        {detail.title}
-                      </h3>
+                      <h3 className="text-xl font-bold font-heading text-[#0B2A3C] mb-3">
+                         {detail.title}
+                       </h3>
                       <p className="text-gray-600 font-body leading-relaxed text-sm">
                         {detail.content}
                       </p>
@@ -212,7 +342,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {product.whyChooseContent && (
         <section className="py-16 bg-white border-b">
           <div className="container mx-auto px-4 md:px-6 text-center">
-            <h2 className="text-3xl font-bold font-montserrat text-[#0B2A3C] mb-12 relative inline-block">
+            <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-12 relative inline-block">
               Why {product.slug.includes('cubic') ? 'Cubic' : 'our'} Fans?
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#F5A02E]"></span>
             </h2>
@@ -231,7 +361,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                 return (
                   <div key={idx} className="group p-4 transition-all duration-300 hover:-translate-y-1">
                     {iconMap[item] || <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4"><CheckCircle2 className="text-[#0B2A3C]" /></div>}
-                    <p className="font-montserrat font-bold text-[#0B2A3C] group-hover:text-[#F5A02E] transition-colors">
+                    <p className="font-heading font-bold text-[#0B2A3C] group-hover:text-[#F5A02E] transition-colors">
                       {item}
                     </p>
                   </div>
@@ -248,7 +378,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Features */}
             <div>
-              <h2 className="text-2xl font-bold font-montserrat text-[#0B2A3C] mb-8 flex items-center gap-3">
+              <h2 className="text-2xl font-bold font-heading text-[#0B2A3C] mb-8 flex items-center gap-3">
                 <Zap className="text-[#F5A02E]" /> Key Features & Benefits
               </h2>
               <ul className="space-y-4">
@@ -263,7 +393,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
             {/* Applications */}
             <div>
-              <h2 className="text-2xl font-bold font-montserrat text-[#0B2A3C] mb-8 flex items-center gap-3">
+              <h2 className="text-2xl font-bold font-heading text-[#0B2A3C] mb-8 flex items-center gap-3">
                 <Wind className="text-[#2E86B8]" /> Common Applications
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -305,7 +435,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Related Products CTA */}
       <section className="py-20 bg-gray-50 border-t">
         <div className="container mx-auto px-4 md:px-6 text-center">
-          <h2 className="text-3xl font-bold font-montserrat text-[#0B2A3C] mb-6">
+          <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-6">
             Explore Other Products
           </h2>
           <p className="text-gray-600 font-body mb-10 max-w-2xl mx-auto">

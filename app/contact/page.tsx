@@ -138,7 +138,7 @@ const ContactPage = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="text-white text-4xl md:text-6xl lg:text-7xl font-black font-montserrat mb-6 leading-[1.1] uppercase tracking-tighter"
+              className="text-white text-4xl md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase tracking-tighter"
             >
               Engineering Support & <br className="hidden md:block" /> 
               <span className="text-[#2E86B8]">Technical Inquiries</span>
@@ -168,7 +168,7 @@ const ContactPage = () => {
               viewport={{ once: true }}
               className="bg-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/80"
             >
-              <h3 className="text-xl font-black font-montserrat text-[#0B2A3C] mb-8 uppercase tracking-tight flex items-center gap-3">
+              <h3 className="text-xl font-black font-heading text-[#0B2A3C] mb-8 uppercase tracking-tight flex items-center gap-3">
                 <HeadphonesIcon size={20} className="text-[#F5A02E]" />
                 Direct Channels
               </h3>
@@ -230,10 +230,10 @@ const ContactPage = () => {
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#2E86B8]/10 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl" />
               
-              <h3 className="text-xl font-black font-montserrat text-white mb-6 uppercase tracking-tight flex items-center gap-3 relative z-10">
-                <MapPin size={20} className="text-[#F5A02E]" />
-                Headquarters
-              </h3>
+              <h3 className="text-xl font-black font-heading text-white mb-6 uppercase tracking-tight flex items-center gap-3 relative z-10">
+                 <MapPin size={20} className="text-[#F5A02E]" />
+                 Headquarters
+               </h3>
               
               <div className="relative z-10">
                 <p className="text-gray-400 font-body text-sm leading-relaxed mb-6">
@@ -285,7 +285,7 @@ const ContactPage = () => {
                    <div className="w-24 h-24 rounded-full bg-green-50 text-green-500 flex items-center justify-center mb-8 shadow-inner">
                       <CheckCircle2 size={56} />
                    </div>
-                   <h2 className="text-3xl md:text-4xl font-black font-montserrat text-[#0B2A3C] mb-4 uppercase tracking-tighter">Inquiry Submitted!</h2>
+                   <h2 className="text-3xl md:text-4xl font-black font-heading text-[#0B2A3C] mb-4 uppercase tracking-tighter">Inquiry Submitted!</h2>
                    <p className="text-gray-500 max-w-sm mb-10 text-lg">
                      Thank you for reaching out. An engineering expert will contact you within 24 business hours.
                    </p>
@@ -300,7 +300,7 @@ const ContactPage = () => {
                 <>
                   <div className="flex items-center gap-3 mb-10">
                     <div className="w-1.5 h-8 bg-[#F5A02E] rounded-full" />
-                    <h3 className="text-2xl md:text-3xl font-black font-montserrat text-[#0B2A3C] uppercase tracking-tighter">Send an Engineering Request</h3>
+                    <h3 className="text-2xl md:text-3xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter">Send an Engineering Request</h3>
                   </div>
 
                   <form onSubmit={handleSubmit} className="space-y-8">
@@ -437,7 +437,7 @@ const ContactPage = () => {
                
                {/* Overlay Map Badge */}
                <div className="absolute top-8 left-8 bg-[#0B2A3C] text-white p-6 rounded-3xl shadow-2xl border border-white/10 hidden md:block max-w-xs">
-                 <h4 className="text-lg font-black font-montserrat uppercase tracking-tight mb-2">Visit Our Works</h4>
+                 <h4 className="text-lg font-black font-heading uppercase tracking-tight mb-2">Visit Our Works</h4>
                  <p className="text-gray-400 text-xs leading-relaxed mb-4">
                    Experience our state-of-the-art manufacturing facility in Bhiwadi.
                  </p>

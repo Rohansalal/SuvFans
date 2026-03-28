@@ -53,75 +53,74 @@ const FeaturedProducts = () => {
           </motion.div>
         </div>
 
-        <div className="embla" ref={emblaRef}>
-          <div className="embla__container flex">
-            {featured.map((product) => (
-              <div key={product.id} className="embla__slide flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-4">
-                <Card className="h-full border-2 border-[#D1D5DB] bg-white shadow-sm hover:shadow-2xl hover:border-[#F5A02E] transition-all duration-300 group overflow-hidden">
-                  <CardContent className="p-0">
-                    <div className="h-56 bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] relative overflow-hidden flex items-center justify-center">
-                      <Fan size={72} className="text-white/10 group-hover:text-[#F5A02E]/30 transition-colors duration-500" />
-                      
-                      {product.badge && (
-                        <div className="absolute top-4 left-4 bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-heading font-bold uppercase tracking-widest px-3 py-1 shadow-lg">
-                          {product.badge}
+        <div className="relative">
+          <div className="embla" ref={emblaRef}>
+            <div className="embla__container flex">
+              {featured.map((product) => (
+                <div key={product.id} className="embla__slide flex-[0_0_100%] min-w-0 md:flex-[0_0_50%] lg:flex-[0_0_33.33%] px-4">
+                  <Card className="h-full border-2 border-[#D1D5DB] bg-white shadow-sm hover:shadow-2xl hover:border-[#F5A02E] transition-all duration-300 group overflow-hidden">
+                    <CardContent className="p-0">
+                      <div className="h-56 bg-gradient-to-br from-[#0B2A3C] to-[#2E86B8] relative overflow-hidden flex items-center justify-center">
+                        <Fan size={72} className="text-white/10 group-hover:text-[#F5A02E]/30 transition-colors duration-500" />
+                        
+                        {product.badge && (
+                          <div className="absolute top-4 left-4 bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-heading font-bold uppercase tracking-widest px-3 py-1 shadow-lg">
+                            {product.badge}
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-6">
+                        {/* Category Label */}
+                        <div className="font-body text-xs font-bold text-[#2E86B8] uppercase tracking-wider mb-2">
+                          {product.category}
                         </div>
-                      )}
-                    </div>
-                    <div className="p-6">
-                      {/* Category Label */}
-                      <div className="font-body text-xs font-bold text-[#2E86B8] uppercase tracking-wider mb-2">
-                        {product.category}
+                        {/* H3: Montserrat - Product Name */}
+                        <h3 className="font-heading text-lg font-bold text-[#0B2A3C] mb-3 line-clamp-1 group-hover:text-[#F5A02E] transition-colors">
+                          {product.name}
+                        </h3>
+                        {/* Body: Inter */}
+                        <p className="font-body text-[#6B7280] text-sm mb-4 line-clamp-2 leading-relaxed">
+                          {product.description}
+                        </p>
+                        {/* Key Spec Highlight */}
+                        <div className="flex items-center gap-2 mb-4">
+                          <span className="font-body text-[11px] font-bold bg-[#0B2A3C]/10 text-[#0B2A3C] px-3 py-1.5 rounded uppercase tracking-tight">
+                            {product.specs.capacityRange}
+                          </span>
+                        </div>
+                        <Button asChild variant="outline" className="font-body w-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white group font-semibold">
+                          <Link href={`/products/${product.slug}`}>
+                            View Details
+                            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+                          </Link>
+                        </Button>
                       </div>
-                      {/* H3: Montserrat - Product Name */}
-                      <h3 className="font-heading text-lg font-bold text-[#0B2A3C] mb-3 line-clamp-1 group-hover:text-[#F5A02E] transition-colors">
-                        {product.name}
-                      </h3>
-                      {/* Body: Inter */}
-                      <p className="font-body text-[#6B7280] text-sm mb-4 line-clamp-2 leading-relaxed">
-                        {product.description}
-                      </p>
-                      {/* Key Spec Highlight */}
-                      <div className="flex items-center gap-2 mb-4">
-                        <span className="font-body text-[11px] font-bold bg-[#0B2A3C]/10 text-[#0B2A3C] px-3 py-1.5 rounded uppercase tracking-tight">
-                          {product.specs.capacityRange}
-                        </span>
-                      </div>
-                      <Button asChild variant="outline" className="font-body w-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white group font-semibold">
-                        <Link href={`/products/${product.categorySlug}/${product.slug}`}>
-                          View Details
-                          <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-                        </Link>
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            ))}
+                    </CardContent>
+                  </Card>
+                </div>
+              ))}
+            </div>
+          </div>
+          
+          {/* Navigation Controls */}
+          <div className="flex justify-center gap-4 mt-8">
+            <button 
+              onClick={scrollPrev}
+              className="w-12 h-12 rounded-full border-2 border-[#0B2A3C] flex items-center justify-center text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white transition-colors"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={scrollNext}
+              className="w-12 h-12 rounded-full border-2 border-[#0B2A3C] flex items-center justify-center text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white transition-colors"
+            >
+              <ChevronRight size={24} />
+            </button>
           </div>
         </div>
 
-        <div className="mt-12 flex justify-center gap-4">
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={scrollPrev}
-            className="rounded-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white w-12 h-12"
-          >
-            <ChevronLeft size={24} />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="icon" 
-            onClick={scrollNext}
-            className="rounded-full border-2 border-[#0B2A3C] text-[#0B2A3C] hover:bg-[#0B2A3C] hover:text-white w-12 h-12"
-          >
-            <ChevronRight size={24} />
-          </Button>
-        </div>
-
         <div className="mt-12 text-center">
-          <Button asChild className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-bold uppercase tracking-wide px-8 h-12">
+          <Button asChild className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-heading font-bold uppercase tracking-wide px-7 h-11 text-sm shadow-md transition-all hover:-translate-y-0.5">
             <Link href="/products">View All Products</Link>
           </Button>
         </div>

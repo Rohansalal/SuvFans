@@ -52,59 +52,59 @@ const TrustSection = () => {
   ];
 
   return (
-    <section className="bg-[#0B2A3C]">
-      {/* Client Logos Marquee */}
-    
-      <div className="container mx-auto px-4 md:px-6 py-16">
-        {/* Trust Numbers */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+    <section className="bg-[#0B2A3C] py-24 border-t border-white/5">
+      <div className="container mx-auto px-4 md:px-6">
+        {/* Trust Numbers - Large Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {trustItems.map((item, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="text-center"
+              transition={{ duration: 0.5, delay: idx * 0.05 }}
+              className="text-center p-10 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm group hover:border-[#F5A02E]/30 transition-all duration-500"
             >
-              <div className="w-16 h-16 mx-auto mb-4 rounded bg-[#F5A02E]/10 flex items-center justify-center border border-[#F5A02E]/30">
-                <item.icon className="text-[#F5A02E]" size={28} />
+              <div className="w-14 h-14 mx-auto mb-6 rounded-xl bg-[#F5A02E]/10 flex items-center justify-center border border-[#F5A02E]/20 group-hover:scale-110 transition-transform">
+                <item.icon className="text-[#F5A02E]" size={24} />
               </div>
-              <div className="font-heading text-3xl md:text-4xl font-bold text-white mb-1">
+              <div className="font-heading text-4xl md:text-5xl font-black text-white mb-2 uppercase tracking-tight group-hover:text-[#F5A02E] transition-colors">
                 {item.number}
               </div>
-              <div className="font-body text-[#F5A02E] font-semibold text-sm uppercase tracking-wide">
+              <div className="font-body text-[#2E86B8] font-black text-xs uppercase tracking-[0.2em] mb-3">
                 {item.label}
               </div>
-              <div className="font-body text-[#6B7280] text-xs mt-1">
+              <div className="font-body text-gray-500 text-sm font-medium leading-relaxed">
                 {item.description}
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Trust Badges */}
+        {/* Trust Badges - Larger */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="bg-white/5 rounded-sm p-6 md:p-8 border border-[#2E86B8]/30"
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-white/5 rounded-3xl p-10 md:p-16 border border-white/10 backdrop-blur-sm"
         >
-          <div className="text-center mb-6">
-            <h3 className="font-heading text-xl font-bold text-white mb-2">
+          <div className="text-center mb-12">
+            <h3 className="font-heading text-3xl font-black text-white mb-4 uppercase tracking-tight">
               Why Leading Industries Trust SUV Fans
             </h3>
-            <p className="font-body text-[#6B7280] text-sm">
+            <p className="font-body text-gray-500 text-sm font-bold uppercase tracking-[0.15em]">
               Certified quality and proven performance for mission-critical ventilation
             </p>
           </div>
           
-          <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-            {certifications.map((cert, idx) => (
-              <div key={idx} className="flex items-center gap-2">
-                <CheckCircle className="text-[#F5A02E] shrink-0" size={18} />
-                <span className="font-body text-[#D1D5DB] text-sm font-medium">{cert}</span>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {certifications.map((cert, i) => (
+              <div key={i} className="flex items-center gap-4 bg-[#0B2A3C] p-6 rounded-xl border border-white/5 group hover:border-[#F5A02E]/30 transition-all">
+                <div className="w-8 h-8 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">
+                  <CheckCircle size={18} strokeWidth={3} />
+                </div>
+                <span className="font-body text-white/80 text-xs font-black uppercase tracking-widest">{cert}</span>
               </div>
             ))}
           </div>

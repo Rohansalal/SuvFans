@@ -1,21 +1,16 @@
 import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import WhatsAppButton from '@/components/common/WhatsAppButton';
+import { Roboto_Condensed } from 'next/font/google';
 import { COMPANY_CONFIG } from '@/lib/config';
 
-const inter = Inter({ 
+const robotoCondensed = Roboto_Condensed({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-roboto-condensed',
   display: 'swap',
-});
-
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  variable: '--font-montserrat',
-  display: 'swap',
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -38,12 +33,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} ${montserrat.variable} font-body bg-[#F4F6F8] text-[#0B2A3C]`}>
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+      <head>
+        <link 
+          href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" 
+          rel="stylesheet" 
+        />
+      </head>
+      <body className={`${robotoCondensed.variable} font-body bg-[#F4F6F8] text-[#0B2A3C]`}>
         <Navbar />
         <main className="min-h-screen pt-[72px]">
           {children}
         </main>
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>
