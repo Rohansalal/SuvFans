@@ -9,7 +9,7 @@ Production-ready Next.js 14 website for **SUV FANS LLP**, an Indian HVAC and air
 - **Icons:** lucide-react
 - **Animations:** Framer Motion
 - **Forms:** React Hook Form + Zod validation
-- **Fonts:** Inter (Body) + Sora (Headings) via next/font
+- **Fonts:** Roboto Condensed (Body) + Sora (Headings, Subheadings) via next/font
 
 ## Project Structure
 - `app/`: Next.js App Router pages and routes
