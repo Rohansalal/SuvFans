@@ -22,7 +22,7 @@ const WhatsAppButton = () => {
         >
           {/* Tooltip */}
           <div className="absolute left-full ml-4 top-1/2 -translate-y-1/2 bg-[#0B2A3C] text-white text-[10px] font-heading font-black uppercase tracking-[0.2em] px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-xl border border-white/10">
-            Chat with Engineering
+            Chat with Engineer
             <div className="absolute right-full top-1/2 -translate-y-1/2 border-8 border-transparent border-r-[#0B2A3C]"></div>
           </div>
 
@@ -34,13 +34,13 @@ const WhatsAppButton = () => {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center justify-center w-16 h-16 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_12px_40px_rgb(37,211,102,0.6)] transition-all border-4 border-white"
+            className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_12px_40px_rgb(37,211,102,0.6)] transition-all border-4 border-white"
           >
             <Image
               src="/whatsapp.1897bfc4.svg"
               alt="WhatsApp"
-              width={32}
-              height={32}
+              width={28}
+              height={28}
               className="brightness-0 invert group-hover:rotate-[15deg] transition-transform duration-300"
             />
           </a>

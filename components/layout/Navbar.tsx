@@ -52,9 +52,9 @@ const Navbar = () => {
             <Image 
               src="/logo.png" 
               alt="SUV FANS" 
-              width={320} 
-              height={112} 
-              className="h-20 md:h-24 w-auto"
+              width={180} 
+              height={62} 
+              className="h-12 md:h-14 w-auto"
               priority
             />
           </Link>
