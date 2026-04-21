@@ -3,6 +3,7 @@ import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/common/WhatsAppButton';
+import Providers from '@/components/Providers';
 import { Roboto_Condensed } from 'next/font/google';
 import { COMPANY_CONFIG } from '@/lib/config';
 
@@ -33,20 +34,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth">
+    <html lang="en" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
         <link 
           href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" 
           rel="stylesheet" 
         />
       </head>
-      <body className={`${robotoCondensed.variable} font-body bg-[#F4F6F8] text-[#0B2A3C]`}>
-        <Navbar />
-        <main className="min-h-screen pt-[72px]">
-          {children}
-        </main>
-        <WhatsAppButton />
-        <Footer />
+      <body className={`${robotoCondensed.variable} font-body bg-[#F4F6F8] text-[#0B2A3C] dark:bg-[#0B1A26] dark:text-white`}>
+        <Providers>
+          <Navbar />
+          <main className="min-h-screen pt-[72px]">
+            {children}
+          </main>
+          <WhatsAppButton />
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

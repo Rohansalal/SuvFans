@@ -76,14 +76,13 @@ const HeroSection = () => {
 
             {/* H1: Main Value Proposition */}
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              High-Performance <span className="text-[#F5A02E]">Industrial Fans</span> <br />
-              <span className="text-2xl md:text-3xl font-semibold">for Maximum Airflow</span>
+              Manufactured in Bhiwadi. <br />
+              <span className="text-[#F5A02E]">Powering Industries Across India.</span>
             </h1>
-            
+
             {/* Subtext */}
             <p className="font-body text-lg md:text-xl text-[#D1D5DB] mb-8 max-w-2xl leading-relaxed">
-              Engineered for <strong className="text-white">durability, efficiency, and performance</strong>. 
-              Our heavy-duty industrial fans deliver superior airflow solutions for factories, warehouses, and commercial spaces across India.
+              From <strong className="text-white">centrifugal blowers to 24-ft HVLS giants</strong> — SUV FANS designs and manufactures 9 categories of industrial fans, purpose-built for factories, warehouses, cold chains, and mission-critical facilities across India.
             </p>
 
             {/* Key Benefits */}

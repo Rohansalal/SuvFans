@@ -67,10 +67,10 @@ const Footer = () => {
               <span className="absolute -bottom-1 left-0 w-6 h-0.5 bg-[#F5A02E]" />
             </h4>
             <ul className="font-body space-y-2 text-sm">
-              {['Home', 'About Us', 'Products', 'Industries', 'Careers', 'Contact Us'].map((item) => (
+              {['Home', 'About Us', 'Products', 'Applications', 'Careers', 'Contact Us'].map((item) => (
                 <li key={item}>
                   <Link 
-                    href={item === 'Home' ? '/' : `/${item.toLowerCase().replace(' ', '-')}`} 
+                    href={item === 'Home' ? '/' : item === 'Applications' ? '/application' : `/${item.toLowerCase().replace(' ', '-')}`} 
                     className="text-[#D1D5DB] hover:text-[#F5A02E] transition-all flex items-center gap-2 group"
                   >
                     <div className="w-1 h-1 rounded-full bg-[#2E86B8] group-hover:bg-[#F5A02E] transition-all" />

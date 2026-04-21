@@ -10,8 +10,9 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, CheckCircle2, Zap, ArrowRight } from 'lucide-react';
 
-const IndustryDetailPage = ({ params }: { params: { slug: string } }) => {
-  const industry = INDUSTRIES.find(i => i.slug === params.slug);
+const IndustryDetailPage = ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = React.use(params);
+  const industry = INDUSTRIES.find(i => i.slug === slug);
 
   if (!industry) {
     notFound();

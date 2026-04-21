@@ -3,12 +3,13 @@ import HeroSection from '@/components/home/HeroSection';
 import TrustSection from '@/components/home/TrustSection';
 import ProductCategoriesGrid from '@/components/home/ProductCategoriesGrid';
 import WhyChooseUs from '@/components/home/WhyChooseUs';
-import FeaturedProducts from '@/components/home/FeaturedProducts';
 import ApplicationsSection from '@/components/home/ApplicationsSection';
 import IndustriesSection from '@/components/home/IndustriesSection';
+import PureAirSpotlight from '@/components/home/PureAirSpotlight';
+import VideoSection from '@/components/home/VideoSection';
+import CaseStudies from '@/components/home/CaseStudies';
 import Testimonials from '@/components/home/Testimonials';
 import ContactCTAStrip from '@/components/home/ContactCTAStrip';
-import PureAirSpotlight from '@/components/home/PureAirSpotlight';
 
 export default function Home() {
   return (
@@ -18,8 +19,10 @@ export default function Home() {
       <ProductCategoriesGrid />
       <WhyChooseUs />
       <ApplicationsSection />
-      {/* <FeaturedProducts /> */}
+      <IndustriesSection />
       <PureAirSpotlight />
+      <VideoSection />
+      <CaseStudies />
       <Testimonials />
       <ContactCTAStrip />
     </>

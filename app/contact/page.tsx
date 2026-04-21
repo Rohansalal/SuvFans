@@ -92,21 +92,38 @@ const ContactPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       return;
     }
 
     setIsLoading(true);
-    
-    // Simulate API call
-    setTimeout(() => {
+    setSubmitError(null);
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+      } else {
+        setIsSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
       setIsLoading(false);
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 1500);
+    }
   };
 
   const handleChange = (field: keyof FormData, value: string) => {
@@ -256,17 +273,23 @@ const ContactPage = () => {
               <h3 className="text-sm font-black text-[#0B2A3C] uppercase tracking-widest mb-6">Technical Resources</h3>
               <div className="space-y-4">
                 {[
-                  { label: 'Download Catalog', icon: Zap },
-                  { label: 'Engineering Guide', icon: ShieldCheck },
-                  { label: 'Project Portfolio', icon: Globe }
+                  { label: 'Download Catalog', icon: Zap, href: '/catalog.pdf', download: true },
+                  { label: 'Engineering Guide', icon: ShieldCheck, href: '/engineering-guide.pdf', download: true },
+                  { label: 'Project Portfolio', icon: Globe, href: '/contact', download: false }
                 ].map((item, i) => (
-                  <button key={i} className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#2E86B8]/30 hover:bg-blue-50/30 transition-all text-left group">
+                  <a
+                    key={i}
+                    href={item.href}
+                    download={item.download ? item.label : undefined}
+                    target={!item.download ? '_self' : undefined}
+                    className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#2E86B8]/30 hover:bg-blue-50/30 transition-all text-left group"
+                  >
                     <div className="flex items-center gap-3">
                       <item.icon size={16} className="text-[#2E86B8]" />
                       <span className="text-xs font-bold text-[#0B2A3C]">{item.label}</span>
                     </div>
                     <ArrowRight size={14} className="text-gray-300 group-hover:text-[#2E86B8] transition-colors" />
-                  </button>
+                  </a>
                 ))}
               </div>
             </motion.div>
@@ -390,9 +413,15 @@ const ContactPage = () => {
                       {errors.message && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.message}</p>}
                     </div>
 
-                    <Button 
-                      type="submit" 
-                      className="w-full bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-16 text-xs font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#F5A02E]/20 transition-all active:scale-[0.98] disabled:opacity-70" 
+                    {submitError && (
+                      <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">
+                        {submitError}
+                      </div>
+                    )}
+
+                    <Button
+                      type="submit"
+                      className="w-full bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-16 text-xs font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#F5A02E]/20 transition-all active:scale-[0.98] disabled:opacity-70"
                       disabled={isLoading}
                     >
                       {isLoading ? (

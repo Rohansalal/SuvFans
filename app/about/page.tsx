@@ -4,352 +4,538 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { 
-  Award, 
-  ShieldCheck, 
-  Zap, 
-  Wind, 
-  Users, 
-  Target, 
-  History, 
-  ArrowRight, 
-  CheckCircle2, 
-  Star,
+import {
+  Award,
+  ShieldCheck,
+  Zap,
+  Wind,
+  Users,
+  Target,
+  ArrowRight,
+  CheckCircle2,
+  Factory,
+  MapPin,
+  Gauge,
+  Thermometer,
+  Box,
+  Maximize,
+  Scissors,
+  Airplay,
+  ChevronRight,
+  Building2,
   Globe,
-  Leaf
+  BarChart3,
+  Wrench,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { COMPANY_CONFIG } from '@/lib/config';
 
-const AboutPage = () => {
-  const stats = [
-    { label: 'Project Completed Last Years', value: '5k', icon: CheckCircle2 },
-    { label: 'Happy Customer', value: '4k', icon: Users },
-  ];
+const stats = [
+  { value: `${COMPANY_CONFIG.yearsOfExperience}+`, label: 'Years of Manufacturing', icon: Factory },
+  { value: '9', label: 'Fan Categories', icon: Wind },
+  { value: '500+', label: 'Clients Served', icon: Users },
+  { value: 'ISO 9001', label: 'Quality Certified', icon: ShieldCheck },
+];
 
-  const timeline = [
-    {
-      year: '2021',
-      title: 'Start Company',
-      icon: Wind,
-      description: 'Established as a trusted name in the air ventilation industry with a focus on delivering high-quality and efficient ventilation solutions.'
-    },
-    {
-      year: '2022',
-      title: 'Expanding Horizons',
-      icon: Globe,
-      description: 'Introduced energy-efficient models to align with global sustainability goals, reducing energy consumption by up to 25%.'
-    },
-    {
-      year: '2023',
-      title: 'Innovation and Recognition',
-      icon: Award,
-      description: 'Earned certification for quality management and environmental standards, reinforcing our commitment to excellence.'
-    },
-    {
-      year: '2024',
-      title: 'Going Global',
-      icon: Target,
-      description: 'Celebrated the milestone of 1,000+ projects completed with exceptional customer satisfaction.'
-    },
-    {
-      year: '2025',
-      title: 'Future-Forward Leadership',
-      icon: Zap,
-      description: 'Announced plans for a green initiative to make all manufacturing processes carbon-neutral by 2030.'
-    }
-  ];
+const productCategories = [
+  { name: 'Centrifugal Inline Cubic Fans', icon: Wind },
+  { name: 'Axial Wall Exhaust & Supply Fans', icon: Gauge },
+  { name: 'Insulated Housing Cabinet Fans', icon: Box },
+  { name: 'Tube Axial Fans', icon: Wind },
+  { name: 'Belt Driven Cabinet Fans', icon: Wrench },
+  { name: 'HVLS Fans (up to 24 ft)', icon: Maximize },
+  { name: 'HVAC Air Duct & Kitchen Hoods', icon: Scissors },
+  { name: 'Turnkey HVAC Products', icon: Building2 },
+  { name: 'Commercial Air Purifiers', icon: Airplay },
+];
 
+const values = [
+  {
+    icon: ShieldCheck,
+    title: 'Quality First',
+    description: 'Every fan is manufactured to ISO 9001:2015 standards with rigorous in-house testing before dispatch.',
+  },
+  {
+    icon: Zap,
+    title: 'Energy Efficiency',
+    description: 'We engineer fans with IE3-rated motors and aerodynamic impellers that reduce running costs by up to 40%.',
+  },
+  {
+    icon: Wrench,
+    title: 'Custom Engineering',
+    description: 'Our in-house design team engineers bespoke solutions for non-standard temperature, pressure, and corrosion requirements.',
+  },
+  {
+    icon: Globe,
+    title: 'Pan-India Reach',
+    description: 'From Bhiwadi we serve factories, hospitals, malls, tunnels, and infrastructure projects across every Indian state.',
+  },
+];
+
+const timeline = [
+  {
+    year: '2021',
+    title: 'Company Founded',
+    icon: Factory,
+    description:
+      'SUV FANS LLP was established in Bhiwadi, Rajasthan with a focused mandate: design and manufacture industrial-grade ventilation equipment for India\'s growing industrial sector.',
+  },
+  {
+    year: '2022',
+    title: 'Product Range Expanded',
+    icon: Wind,
+    description:
+      'Launched the HVLS fan range — including fans up to 24 ft diameter — targeting large-footprint warehouses, logistics hubs, and automobile assembly plants.',
+  },
+  {
+    year: '2023',
+    title: 'ISO 9001:2015 Certified',
+    icon: Award,
+    description:
+      'Achieved ISO 9001:2015 quality management certification and ISHRAE membership, establishing formal benchmarks for manufacturing consistency and engineering excellence.',
+  },
+  {
+    year: '2024',
+    title: 'HVAC & Turnkey Division',
+    icon: Building2,
+    description:
+      'Added turnkey HVAC solutions and commercial kitchen hood systems to the portfolio, enabling us to serve complete project requirements rather than just equipment supply.',
+  },
+  {
+    year: '2025',
+    title: 'Air Purification Launch',
+    icon: Airplay,
+    description:
+      'Introduced the PURE AIR commercial air purifier range featuring German Mann+Hummel filtration technology, targeting pharmaceutical, healthcare, and premium commercial facilities.',
+  },
+];
+
+const certifications = [
+  { name: 'ISO 9001:2015', description: 'Quality Management System' },
+  { name: 'ISHRAE Member', description: 'Indian Society of Heating, Refrigerating & Air Conditioning Engineers' },
+  { name: 'BEE Compliant', description: 'Bureau of Energy Efficiency Standards' },
+  { name: 'IE3 Motors', description: 'Premium Motor Efficiency Class' },
+];
+
+export default function AboutPage() {
   return (
-    <div className="bg-[#F8FAFC] min-h-screen">
-      {/* Hero Section - Matching Product Page Design */}
-      <section className="relative bg-[#0B2A3C] text-white pt-[84px] md:pt-[104px] pb-12 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
+    <div className="bg-background min-h-screen">
+
+      {/* ── Hero ── */}
+      <section className="bg-primary relative overflow-hidden pt-20 pb-32">
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="aboutGrid" width="50" height="50" patternUnits="userSpaceOnUse">
+                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#aboutGrid)" />
+          </svg>
         </div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-8 lg:pb-16">
-            {/* Left Content */}
-            <div className="lg:col-span-7 text-center lg:text-left">
-              <div className="max-w-4xl mx-auto lg:mx-0">
-                <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-                  Who we are
-                </span> 
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
-                  The Best <br className="hidden md:block" /> 
-                  <span className="text-[#2E86B8]">Air Tech Company</span>
-                </h1>
-                <p className="text-lg md:text-xl font-body text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  At SUV Fans, we are driven by a singular vision: to become the leading provider of innovative and reliable air ventilation solutions. Established with a passion for enhancing air quality and environmental comfort, we have grown to become a trusted name in the industry.
-                </p>
-                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                  <Button asChild size="lg" className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black h-14 px-8 uppercase tracking-wide shadow-lg shadow-[#F5A02E]/20">
-                    <Link href="/products">
-                      Discover More
-                    </Link>
-                  </Button>
-                  <Button asChild size="lg" variant="outline" className="border-2 border-white/20 text-white hover:bg-white/10 font-black h-14 px-8 uppercase tracking-wide backdrop-blur-sm">
-                    <Link href="/contact">
-                      Our Expertise
-                    </Link>
-                  </Button>
-                </div>
 
-                {/* Quick Stats Overlay */}
-                <div className="mt-12 grid grid-cols-2 gap-8 max-w-md mx-auto lg:mx-0 border-t border-white/10 pt-8">
-                  {stats.map((stat, i) => (
-                    <div key={i} className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-xl bg-[#2E86B8]/20 flex items-center justify-center text-[#2E86B8]">
-                        <stat.icon size={24} />
-                      </div>
-                      <div>
-                        <div className="text-3xl font-black text-white">{stat.value}</div>
-                        <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider leading-tight">{stat.label}</div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Right Side - Image/Certification */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative aspect-square w-full max-w-[450px] mx-auto">
-                <div className="absolute inset-0 bg-[#2E86B8]/30 blur-[120px] rounded-full animate-pulse" />
-                
-                {/* ISHRAE Certification Image Container */}
-                <div className="relative h-full w-full rounded-[2.5rem] overflow-hidden border-2 border-white/10 shadow-2xl bg-white p-4 group transition-all duration-700 hover:scale-[1.02]">
-                  <div className="relative h-full w-full rounded-2xl overflow-hidden bg-gray-50 flex items-center justify-center">
-                    <Image
-                      src="/Aboutus.webp"
-                      alt="ISHRAE Membership Certificate"
-                      fill
-                      className="object-contain p-4"
-                      priority
-                    />
-                  </div>
-                  {/* Overlay Branding */}
-                  <div className="absolute inset-0 bg-gradient-to-tr from-[#0B2A3C]/10 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* Floating Badges */}
-                <div className="absolute -bottom-6 -left-6 bg-white p-5 rounded-2xl shadow-2xl border border-gray-100 hidden sm:flex items-center gap-4 animate-bounce-slow">
-                  <div className="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center">
-                    <ShieldCheck className="text-green-600" size={28} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Certified By</p>
-                    <p className="text-[#0B2A3C] font-black text-base">ISHRAE Member</p>
-                  </div>
-                </div>
-
-                <div className="absolute -top-6 -right-6 bg-[#F5A02E] p-5 rounded-2xl shadow-2xl border border-white/20 hidden sm:block">
-                  <Star className="text-[#0B2A3C]" size={24} />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision & Mission Section - Professional Layout */}
-      <section className="py-16 container mx-auto px-4 md:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Content Column */}
-          <div className="lg:col-span-6 space-y-4">
-            {/* Vision */}
-            <div className="group bg-white p-6 lg:p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 hover:shadow-[0_20px_50px_rgba(46,134,184,0.1)] transition-all duration-700">
-              <div className="w-12 h-12 rounded-xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] mb-4 group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-500">
-                <Target size={24} />
-              </div>
-              <h2 className="text-xl font-black font-heading text-[#0B2A3C] mb-3 uppercase tracking-tighter">
-                Our <span className="text-[#2E86B8]">Vision</span>
-              </h2>
-              <p className="text-gray-500 font-body text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-                SUV Fans aims to lead the air ventilation industry by continuing to innovate, expanding our product portfolio, and building lasting relationships with clients worldwide.
-              </p>
-            </div>
-
-            {/* Mission */}
-            <div className="group bg-[#0B2A3C] p-6 lg:p-8 rounded-[2rem] shadow-2xl border border-white/5 hover:shadow-[0_20px_50px_rgba(245,160,46,0.15)] transition-all duration-700">
-              <div className="w-12 h-12 rounded-xl bg-[#F5A02E]/10 flex items-center justify-center text-[#F5A02E] mb-4 group-hover:bg-[#F5A02E] group-hover:text-[#0B2A3C] transition-all duration-500">
-                <Globe size="24" />
-              </div>
-              <h2 className="text-xl font-black font-heading text-white mb-3 uppercase tracking-tighter">
-                Our <span className="text-[#F5A02E]">Mission</span>
-              </h2>
-              <p className="text-gray-300 font-body text-sm leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-                To deliver state-of-the-art air ventilation systems that cater to diverse industries and spaces, ensuring cleaner, healthier, and more comfortable environments for our clients.
-              </p>
-            </div>
-          </div>
-
-          {/* Certificate Column */}
-          <div className="lg:col-span-6 relative">
-            <div className="group relative bg-white p-6 rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden transition-all duration-700 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0B2A3C]/5" />
-              <div className="relative aspect-[1536/954] w-full rounded-2xl overflow-hidden border border-gray-100 bg-gray-50">
-                <Image
-                  src="/certificated/certificate-1536x954.webp"
-                  alt="SUV FANS Industry Certification"
-                  fill
-                  className="object-contain p-2"
-                />
-              </div>
-              <div className="mt-6 flex items-center justify-between px-2">
-                <div>
-                  <h4 className="text-[#0B2A3C] font-black text-sm uppercase tracking-wider">Quality Assurance</h4>
-                  <p className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em] mt-1">Industry Certified Excellence</p>
-                </div>
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-                  <ShieldCheck className="text-green-600" size={20} />
-                </div>
-              </div>
-            </div>
-            {/* Decorative Accent */}
-            <div className="absolute -z-10 -bottom-6 -right-6 w-32 h-32 bg-[#F5A02E]/10 rounded-full blur-3xl" />
-          </div>
-        </div>
-      </section>
-
-      {/* History Timeline Section - Premium Showcase */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        {/* Background Subtle Accent */}
-        <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-gray-50/50 to-white pointer-events-none" />
-        
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-20 gap-8">
-            <div className="max-w-2xl">
-              <motion.span 
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.4em] mb-4 block"
-              >
-                Our Legacy
-              </motion.span>
-              <motion.h2 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-4xl md:text-5xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter"
-              >
-                A Journey of <span className="text-[#2E86B8]">Excellence</span>
-              </motion.h2>
-            </div>
-            <motion.div 
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-4 text-gray-400 font-bold text-xs uppercase tracking-widest"
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-16 bg-accent" />
+                <span className="text-accent font-bold uppercase tracking-widest text-sm">Who We Are</span>
+                <div className="h-px w-16 bg-accent" />
+              </div>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight uppercase">
+                Industrial Ventilation <br />
+                <span className="text-accent">Built in India.</span>
+              </h1>
+              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-xl">
+                SUV FANS LLP is a Bhiwadi-based manufacturer of heavy-duty industrial fans and HVAC equipment. We design, engineer, and manufacture 9 categories of ventilation products — from centrifugal blowers to 24-ft HVLS giants — serving factories, warehouses, hospitals, malls, and infrastructure projects across India.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-bold uppercase tracking-wide text-sm px-7 h-11 rounded-sm">
+                  <Link href="/products">View Our Products <ArrowRight className="ml-2" size={16} /></Link>
+                </Button>
+                <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-wide text-sm px-7 h-11 rounded-sm">
+                  <Link href="/contact">Contact Us</Link>
+                </Button>
+              </div>
+            </motion.div>
+
+            {/* Right – Image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="relative"
             >
-              <div className="h-px w-12 bg-gray-200" />
-              Established 2021
+              <div className="relative rounded-sm overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
+                <Image
+                  src="/Aboutus.webp"
+                  alt="SUV FANS manufacturing facility"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                  priority
+                />
+                <div className="absolute inset-0 bg-primary/20" />
+              </div>
+
+              {/* Floating badge */}
+              <div className="absolute -bottom-5 -left-5 bg-card border border-border shadow-xl p-4 rounded-sm flex items-center gap-3">
+                <div className="w-10 h-10 bg-accent/10 rounded-sm flex items-center justify-center">
+                  <ShieldCheck size={20} className="text-accent" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Certified</div>
+                  <div className="font-bold text-primary text-sm">ISO 9001:2015</div>
+                </div>
+              </div>
+
+              <div className="absolute -top-5 -right-5 bg-accent p-4 rounded-sm shadow-xl">
+                <MapPin size={20} className="text-primary" />
+                <div className="text-xs font-bold text-primary uppercase tracking-tight mt-1">Bhiwadi<br />Rajasthan</div>
+              </div>
             </motion.div>
           </div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {timeline.map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative"
-              >
-                {/* Connector Line for Desktop */}
-                {i < timeline.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 w-8 h-px bg-gray-100 z-0" />
-                )}
-
-                <div className="relative z-10 bg-white p-10 rounded-[2.5rem] shadow-[0_4px_20px_rgb(0,0,0,0.03)] border border-gray-100 hover:shadow-[0_20px_50px_rgba(46,134,184,0.1)] hover:border-[#2E86B8]/30 transition-all duration-700 flex flex-col h-full overflow-hidden">
-                  {/* Decorative Background Icon */}
-                  <item.icon className="absolute -right-4 -top-4 w-24 h-24 text-gray-50 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -rotate-12" />
-
-                  <div className="flex items-center justify-between mb-8">
-                    <div className="flex flex-col">
-                      <span className="text-4xl font-black text-[#2E86B8] group-hover:text-[#0B2A3C] transition-colors duration-500">
-                        {item.year}
-                      </span>
-                      <div className="h-1 w-8 bg-[#F5A02E] mt-2 rounded-full" />
-                    </div>
-                    <div className="w-14 h-14 rounded-2xl bg-gray-50 flex items-center justify-center text-[#0B2A3C] group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-500 shadow-inner">
-                      <item.icon size={24} />
-                    </div>
-                  </div>
-
-                  <h3 className="text-xl font-black text-[#0B2A3C] uppercase mb-4 tracking-tight leading-tight min-h-[3rem] flex items-center">
-                    {item.title}
-                  </h3>
-                  
-                  <p className="text-gray-500 text-sm leading-relaxed font-body opacity-80 group-hover:opacity-100 transition-opacity">
-                    {item.description}
-                  </p>
-
-                  <div className="mt-8 pt-6 border-t border-gray-50 flex items-center justify-between">
-                    <span className="text-[9px] font-black text-gray-300 uppercase tracking-widest group-hover:text-[#2E86B8] transition-colors">Milestone {i + 1}</span>
-                    <div className="w-2 h-2 rounded-full bg-gray-200 group-hover:bg-[#F5A02E] transition-colors" />
-                  </div>
-                </div>
-              </motion.div>
+        {/* Stats Strip */}
+        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 container mx-auto px-4 md:px-6">
+          <div className="bg-card shadow-2xl border border-border grid grid-cols-2 md:grid-cols-4">
+            {stats.map((s, i) => (
+              <div key={s.label} className={`p-6 text-center flex flex-col items-center gap-2 ${i < stats.length - 1 ? 'border-r border-border' : ''}`}>
+                <s.icon size={20} className="text-accent" />
+                <div className="text-2xl md:text-3xl font-heading font-bold text-primary">{s.value}</div>
+                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground leading-tight">{s.label}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Core Values / Future Goals */}
-      <section className="py-24 container mx-auto px-4 md:px-6">
-        <div className="bg-[#0B2A3C] rounded-[3rem] p-10 md:p-16 relative overflow-hidden">
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2E86B8]/10 rounded-full translate-x-1/3 translate-y-1/3 blur-[100px]" />
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center relative z-10">
-            <div>
-              <h2 className="text-3xl md:text-5xl font-black text-white font-heading mb-8 uppercase tracking-tighter leading-tight">
-                Committed to a <br />
-                <span className="text-[#F5A02E]">Sustainable Future</span>
-              </h2>
-              <p className="text-gray-400 text-lg mb-10 leading-relaxed max-w-xl">
-                Our 2030 green initiative represents our dedication to environmental stewardship, aiming to make our entire manufacturing process carbon-neutral while delivering the highest efficiency air systems.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-[#F5A02E]">
-                    <Leaf size={24} />
-                  </div>
-                  <div>
-                    <div className="text-white font-bold">Green Tech</div>
-                    <div className="text-xs text-gray-500">Eco-friendly design</div>
-                  </div>
+      {/* ── Company Story ── */}
+      <section className="container mx-auto px-4 md:px-6 pt-32 pb-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Our Story</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6 uppercase">
+              Manufactured in Bhiwadi.<br />
+              <span className="text-secondary">Trusted Across India.</span>
+            </h2>
+            <p className="text-muted-foreground leading-relaxed mb-5 text-base">
+              SUV FANS LLP was founded with one goal: to build world-class industrial ventilation equipment in India, for Indian conditions. Our manufacturing plant in Bhiwadi, Rajasthan — India's fastest-growing industrial hub — gives us direct access to raw materials, skilled engineering talent, and the National Capital Region's vast industrial base.
+            </p>
+            <p className="text-muted-foreground leading-relaxed mb-8 text-base">
+              We don't import and rebadge. Every fan bearing the SUV FANS name is designed, engineered, and tested in-house. Our facility handles everything from sheet-metal fabrication and impeller balancing to motor assembly and acoustic testing — giving us end-to-end quality control that import-dependent competitors cannot match.
+            </p>
+
+            <div className="space-y-3">
+              {[
+                'In-house sheet metal fabrication and impeller balancing',
+                'Acoustic and performance testing before every dispatch',
+                'Custom engineering for non-standard applications',
+                'Direct factory support — no middlemen, no delays',
+              ].map((point) => (
+                <div key={point} className="flex items-start gap-3">
+                  <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground font-medium">{point}</span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-[#2E86B8]">
-                    <Zap size={24} />
-                  </div>
-                  <div>
-                    <div className="text-white font-bold">Efficiency</div>
-                    <div className="text-xs text-gray-500">25% Energy reduction</div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </div>
-            
-            <div className="relative">
-              <div className="aspect-video bg-white/5 rounded-[2rem] border border-white/10 flex items-center justify-center overflow-hidden">
-                <div className="text-center p-8">
-                  <History size={48} className="text-[#F5A02E] mx-auto mb-6 opacity-20" />
-                  <p className="text-white/60 font-body italic text-lg leading-relaxed">
-                    "From a small start in 2021 to a global vision for 2030, our journey is built on the trust of 4,000+ happy customers."
-                  </p>
+          </motion.div>
+
+          {/* Vision & Mission */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-5"
+          >
+            <div className="bg-card border border-border p-8 rounded-sm hover:border-secondary/40 hover:shadow-md transition-all">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-secondary/10 rounded-sm flex items-center justify-center">
+                  <Target size={18} className="text-secondary" />
                 </div>
+                <h3 className="font-heading font-bold text-primary uppercase tracking-tight text-lg">Our Vision</h3>
               </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                To be India's most trusted manufacturer of industrial ventilation equipment — recognised for engineering quality, energy efficiency, and the ability to handle the toughest application environments that others cannot.
+              </p>
+            </div>
+
+            <div className="bg-primary p-8 rounded-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-accent/10 rounded-sm flex items-center justify-center">
+                  <Globe size={18} className="text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-white uppercase tracking-tight text-lg">Our Mission</h3>
+              </div>
+              <p className="text-white/70 text-sm leading-relaxed">
+                To deliver precision-engineered industrial fans and HVAC solutions that improve air quality, worker safety, and energy performance for factories, warehouses, hospitals, and mission-critical facilities across India.
+              </p>
+            </div>
+
+            <div className="bg-card border border-border p-8 rounded-sm">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-accent/10 rounded-sm flex items-center justify-center">
+                  <MapPin size={18} className="text-accent" />
+                </div>
+                <h3 className="font-heading font-bold text-primary uppercase tracking-tight text-lg">Registered Office</h3>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {COMPANY_CONFIG.address}
+              </p>
+              <a
+                href={`tel:${COMPANY_CONFIG.phone}`}
+                className="inline-flex items-center gap-2 text-secondary font-bold text-sm mt-3 hover:text-accent transition-colors"
+              >
+                {COMPANY_CONFIG.phone} <ArrowRight size={14} />
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── What We Manufacture ── */}
+      <section className="bg-muted py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Product Range</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary uppercase mb-4">
+              9 Categories. One Manufacturer.
+            </h2>
+            <div className="w-16 h-1 bg-accent mx-auto mb-4" />
+            <p className="text-muted-foreground max-w-xl mx-auto text-base leading-relaxed">
+              From compact inline fans for false ceilings to massive HVLS fans covering 50,000+ sq ft — we manufacture the full spectrum of industrial ventilation.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {productCategories.map((cat, i) => (
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className="bg-card border border-border p-5 rounded-sm flex items-center gap-4 hover:border-accent/40 hover:shadow-sm transition-all group"
+              >
+                <div className="w-10 h-10 bg-primary/5 rounded-sm flex items-center justify-center group-hover:bg-accent group-hover:text-primary transition-all shrink-0">
+                  <cat.icon size={18} className="text-primary group-hover:text-primary" />
+                </div>
+                <span className="text-sm font-bold text-primary uppercase tracking-tight">{cat.name}</span>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Link
+              href="/products"
+              className="inline-flex items-center gap-2 text-secondary font-bold uppercase tracking-widest text-sm hover:text-accent transition-colors"
+            >
+              Browse All Products <ChevronRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Core Values ── */}
+      <section className="py-20 container mx-auto px-4 md:px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-14"
+        >
+          <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">What Drives Us</span>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary uppercase mb-4">
+            Our Core Values
+          </h2>
+          <div className="w-16 h-1 bg-accent mx-auto" />
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {values.map((v, i) => (
+            <motion.div
+              key={v.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="bg-card border border-border p-7 rounded-sm hover:shadow-md hover:border-secondary/30 transition-all group"
+            >
+              <div className="w-12 h-12 bg-secondary/10 rounded-sm flex items-center justify-center mb-5 group-hover:bg-secondary transition-all">
+                <v.icon size={20} className="text-secondary group-hover:text-white transition-colors" />
+              </div>
+              <h3 className="font-heading font-bold text-primary uppercase tracking-tight mb-3 text-base">{v.title}</h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">{v.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Timeline ── */}
+      <section className="bg-card border-t border-b border-border py-20">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-14"
+          >
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Our Journey</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary uppercase mb-4">
+              Five Years of Growth
+            </h2>
+            <div className="w-16 h-1 bg-accent mx-auto mb-4" />
+            <p className="text-muted-foreground max-w-xl mx-auto text-base">
+              From founding in 2021 to a complete industrial ventilation and air purification manufacturer by 2025.
+            </p>
+          </motion.div>
+
+          <div className="relative">
+            {/* Timeline line */}
+            <div className="hidden lg:block absolute top-14 left-0 right-0 h-px bg-border z-0" />
+
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+              {timeline.map((item, i) => (
+                <motion.div
+                  key={item.year}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="relative z-10 group"
+                >
+                  {/* Year circle */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-12 h-12 bg-primary border-4 border-background rounded-full flex items-center justify-center group-hover:bg-accent transition-all shadow-md">
+                      <item.icon size={18} className="text-white group-hover:text-primary transition-colors" />
+                    </div>
+                  </div>
+
+                  <div className="bg-background border border-border p-6 rounded-sm hover:border-accent/40 hover:shadow-md transition-all text-center">
+                    <div className="text-2xl font-heading font-bold text-accent mb-2">{item.year}</div>
+                    <h3 className="font-bold text-primary uppercase tracking-tight text-sm mb-3">{item.title}</h3>
+                    <p className="text-muted-foreground text-xs leading-relaxed">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── Certifications ── */}
+      <section className="py-20 container mx-auto px-4 md:px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Certificate Image */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-card border border-border p-6 rounded-sm shadow-sm"
+          >
+            <div className="relative aspect-[16/10] w-full rounded-sm overflow-hidden bg-muted">
+              <Image
+                src="/certificated/certificate-1536x954.webp"
+                alt="SUV FANS ISO 9001:2015 Certificate"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-contain p-4"
+              />
+            </div>
+            <div className="flex items-center justify-between mt-5 pt-5 border-t border-border">
+              <div>
+                <div className="font-bold text-primary text-sm uppercase tracking-tight">Quality Management System</div>
+                <div className="text-xs text-muted-foreground mt-1">ISO 9001:2015 Certified</div>
+              </div>
+              <div className="w-10 h-10 bg-accent/10 rounded-sm flex items-center justify-center">
+                <ShieldCheck size={18} className="text-accent" />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Certifications list */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Standards & Compliance</span>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary uppercase mb-4">
+              Built to the Highest Standards
+            </h2>
+            <div className="w-16 h-1 bg-accent mb-8" />
+            <p className="text-muted-foreground leading-relaxed mb-8 text-base">
+              Every SUV FANS product meets rigorous national and international standards. Our quality management system governs every step — from incoming raw material inspection through impeller balancing, performance testing, and final dispatch checks.
+            </p>
+
+            <div className="space-y-4 mb-8">
+              {certifications.map((cert) => (
+                <div key={cert.name} className="flex items-start gap-4 p-4 bg-muted border border-border rounded-sm">
+                  <CheckCircle2 size={18} className="text-accent shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold text-primary text-sm uppercase tracking-tight">{cert.name}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">{cert.description}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <Button asChild className="bg-primary hover:bg-primary/90 text-white font-bold uppercase tracking-widest text-xs px-7 h-11 rounded-sm">
+              <Link href="/contact">
+                Speak to Our Engineers <ArrowRight className="ml-2" size={14} />
+              </Link>
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="bg-primary py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="ctaGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#ctaGrid)" />
+          </svg>
+        </div>
+        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4 uppercase">
+              Ready to Work With Us?
+            </h2>
+            <p className="text-white/70 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+              Tell us your application — our engineers will recommend the right fan, the right spec, and the right price. No obligation.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-bold uppercase tracking-widest text-sm px-8 h-12 rounded-sm shadow-lg">
+                <Link href="/get-quote">Get a Quote <ArrowRight className="ml-2" size={16} /></Link>
+              </Button>
+              <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-widest text-sm px-8 h-12 rounded-sm">
+                <Link href="/products">Browse Products</Link>
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
-};
-
-export default AboutPage;
+}

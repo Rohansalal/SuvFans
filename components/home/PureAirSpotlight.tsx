@@ -80,6 +80,7 @@ const PureAirSpotlight = () => {
                   src="/pureair.webp"
                   alt="PURE AIR Commercial Air Purifier"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
                   className="object-cover transition-transform duration-1000 group-hover:scale-110"
                   priority
                 />

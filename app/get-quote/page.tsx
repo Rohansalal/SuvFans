@@ -45,6 +45,8 @@ const formSchema = z.object({
 
 const GetQuotePage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -69,10 +71,25 @@ const GetQuotePage = () => {
   const filteredProducts = PRODUCTS.filter(p => p.categorySlug === selectedCategory);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    setTimeout(() => {
-      setIsSubmitted(true);
-    }, 1000);
+    setIsLoading(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch('/api/quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setSubmitError(data.error || 'Something went wrong. Please try again.');
+      } else {
+        setIsSubmitted(true);
+      }
+    } catch {
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -374,9 +391,21 @@ const GetQuotePage = () => {
                       </div>
                     </div>
 
-                    <Button type="submit" className="w-full font-heading bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-14 text-lg font-bold uppercase tracking-wide group">
-                       Submit Quote Request
-                       <ArrowRight className="ml-2" />
+                    {submitError && (
+                      <div className="p-4 rounded-sm bg-red-50 border border-red-200 text-red-600 text-sm font-bold uppercase tracking-wide">
+                        {submitError}
+                      </div>
+                    )}
+
+                    <Button type="submit" disabled={isLoading} className="w-full font-heading bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-14 text-lg font-bold uppercase tracking-wide group disabled:opacity-70">
+                      {isLoading ? (
+                        <span className="flex items-center gap-2">
+                          <div className="w-5 h-5 border-2 border-[#0B2A3C]/30 border-t-[#0B2A3C] rounded-full animate-spin" />
+                          Processing...
+                        </span>
+                      ) : (
+                        <>Submit Quote Request <ArrowRight className="ml-2" /></>
+                      )}
                     </Button>
                   </form>
                 </Form>
