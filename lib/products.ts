@@ -196,32 +196,6 @@ export const PRODUCTS: Product[] = [
     ]
   },
   {
-    id: '3',
-    slug: 'commercial-industrial-application',
-    name: 'Commercial & Industrial Ventilation Systems',
-    category: 'Turnkey HVAC Solutions',
-    categorySlug: 'turnkey-solutions',
-    description: 'Custom-engineered ventilation solutions tailored for complex indoor and outdoor commercial and industrial environments.',
-    longDescription: 'We provide comprehensive ventilation systems designed specifically for the unique challenges of commercial and industrial facilities. Whether it is a high-temperature factory floor or a multi-story commercial complex, our systems ensure optimal air exchange, temperature control, and pollutant removal. Our approach includes site assessment, system design using advanced CFD modeling, and the integration of high-efficiency fans and filtration units. We focus on creating sustainable environments that enhance worker productivity and meet all regulatory safety standards.',
-    applications: ['Chemical Plants', 'Data Centers', 'Shopping Malls', 'Food Processing Units', 'Steel Mills'],
-    features: [
-      'Tailored design based on specific facility requirements',
-      'Energy-efficient system integration',
-      'Advanced control systems for automated operation',
-      'Compliance with international ventilation standards',
-      'Full lifecycle support from design to commissioning',
-      'Indoor and outdoor grade components'
-    ],
-    specs: {
-      capacityRange: 'Customizable up to 500,000 CMH',
-      efficiency: 'High IE3/IE4 standard motors',
-      coverage: 'Scalable for any facility size'
-    },
-    pricing: 'Contact for Quote',
-    seoKeywords: ['industrial ventilation system', 'commercial air handling', 'custom HVAC solutions', 'factory air exchange', 'turnkey ventilation India'],
-    image: '/products/commercial-industrial-application/main.webp'
-  },
-  {
     id: '4',
     slug: 'power-roof-ventilators-upblast-fan',
     name: 'Power Roof Ventilators Upblast Fan',

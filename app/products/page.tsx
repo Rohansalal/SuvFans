@@ -275,89 +275,89 @@ const ProductsPage = () => {
       </section>
 
       {/* Main Product Grid - Professional Showcase Layout */}
-      <section className="container mx-auto py-24 px-4 md:px-6">
+      <section className="container mx-auto py-12 px-4 md:px-6">
         {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
             {filteredProducts.map((product) => (
-              <div 
+              <div
                 key={product.id}
-                className="group bg-white rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/80 overflow-hidden flex flex-col hover:shadow-[0_20px_50px_rgba(46,134,184,0.12)] hover:border-[#2E86B8]/30 transition-all duration-700"
+                className="group bg-white rounded-2xl shadow-[0_4px_16px_rgb(0,0,0,0.04)] border border-gray-100/80 overflow-hidden flex flex-col hover:shadow-[0_12px_32px_rgba(46,134,184,0.12)] hover:border-[#2E86B8]/30 transition-all duration-500"
               >
-                {/* Image Area with Professional Overlay */}
-                <div className="relative aspect-[16/11] overflow-hidden bg-gray-50">
+                {/* Image Area */}
+                <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
                   <Image
                     src={product.image || 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=600&fit=crop'}
                     alt={product.name}
                     fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110 brightness-[1.02]"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105 brightness-[1.02]"
                   />
-                  
+
                   {/* Brand Accent Top Right */}
-                  <div className="absolute top-4 right-4 z-10">
-                    <div className="bg-white/90 backdrop-blur-md p-2 rounded-xl shadow-sm border border-white/20">
-                      <ShieldCheck size={18} className="text-green-500" />
+                  <div className="absolute top-3 right-3 z-10">
+                    <div className="bg-white/90 backdrop-blur-md p-1.5 rounded-lg shadow-sm border border-white/20">
+                      <ShieldCheck size={14} className="text-green-500" />
                     </div>
                   </div>
 
-                  {/* Technical Quick Look - Modern Slide Up */}
-                  <div className="absolute inset-0 bg-[#0B2A3C]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-6">
-                     <div className="w-full bg-white/95 backdrop-blur-md p-4 rounded-2xl shadow-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                        <div className="flex justify-between items-center mb-3">
-                          <span className="text-[10px] text-gray-400 font-black uppercase tracking-widest">Performance Profile</span>
+                  {/* Technical Quick Look - Slide Up on Hover */}
+                  <div className="absolute inset-0 bg-[#0B2A3C]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4">
+                     <div className="w-full bg-white/95 backdrop-blur-md p-3 rounded-xl shadow-xl translate-y-3 group-hover:translate-y-0 transition-transform duration-400">
+                        <div className="flex justify-between items-center mb-2">
+                          <span className="text-[9px] text-gray-400 font-black uppercase tracking-widest">Performance</span>
                           <div className="flex gap-1">
                             {[1, 2, 3].map((i) => (
                               <div key={i} className="w-1 h-1 rounded-full bg-[#2E86B8]" />
                             ))}
                           </div>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-2">
                           <div className="flex flex-col">
-                            <span className="text-[9px] text-gray-500 font-bold uppercase">Max Capacity</span>
-                            <span className="text-[#0B2A3C] font-black text-xs truncate">{product.specs.capacityRange}</span>
+                            <span className="text-[8px] text-gray-500 font-bold uppercase">Max Capacity</span>
+                            <span className="text-[#0B2A3C] font-black text-[11px] truncate">{product.specs.capacityRange}</span>
                           </div>
                           <div className="flex flex-col text-right">
-                            <span className="text-[9px] text-gray-500 font-bold uppercase">Compliance</span>
-                            <span className="text-[#2E86B8] font-black text-xs">AMCA FEG</span>
+                            <span className="text-[8px] text-gray-500 font-bold uppercase">Compliance</span>
+                            <span className="text-[#2E86B8] font-black text-[11px]">AMCA FEG</span>
                           </div>
                         </div>
                      </div>
                   </div>
                 </div>
 
-                {/* Content Area - Refined Padding and Typography */}
-                <div className="p-8 lg:p-10 flex-grow flex flex-col bg-gradient-to-b from-white to-gray-50/30">
-                  <div className="mb-6">
-                    <div className="flex items-center gap-2 mb-3">
-                      <span className="h-px w-6 bg-[#2E86B8]/30" />
-                      <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.25em]">
+                {/* Content Area */}
+                <div className="p-5 flex-grow flex flex-col bg-gradient-to-b from-white to-gray-50/30">
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="h-px w-4 bg-[#2E86B8]/30" />
+                      <span className="text-[9px] font-black text-[#2E86B8] uppercase tracking-[0.2em]">
                         {product.category}
                       </span>
                     </div>
-                    
-                    <h3 className="text-2xl font-black font-heading text-[#0B2A3C] mb-4 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
+
+                    <h3 className="text-base font-black font-heading text-[#0B2A3C] mb-2 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
                       {product.name}
                     </h3>
-                    
-                    <p className="text-gray-500 font-body text-sm mb-0 line-clamp-3 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+
+                    <p className="text-gray-500 font-body text-xs mb-0 line-clamp-2 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                       {product.description}
                     </p>
                   </div>
 
                   {/* Footer of Card */}
-                  <div className="mt-auto pt-8 border-t border-gray-100 flex items-center justify-between gap-4">
-                    <Link 
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                    <Link
                       href={`/products/${product.slug}`}
-                      className="flex-grow flex items-center justify-center gap-3 bg-[#0B2A3C] text-white py-3.5 px-6 rounded-xl font-black text-[10px] uppercase tracking-widest hover:bg-[#2E86B8] transition-all duration-300 shadow-lg shadow-[#0B2A3C]/10"
+                      className="flex-grow flex items-center justify-center gap-2 bg-[#0B2A3C] text-white py-2.5 px-4 rounded-lg font-black text-[9px] uppercase tracking-widest hover:bg-[#2E86B8] transition-all duration-300 shadow-sm"
                     >
-                      Explore Technical Specs
-                      <ArrowRight size="14" className="group-hover/btn:translate-x-1 transition-transform" />
+                      View Details
+                      <ArrowRight size="12" className="group-hover/btn:translate-x-1 transition-transform" />
                     </Link>
-                    
-                    <button 
+
+                    <button
                       title="Download Technical Datasheet"
-                      className="shrink-0 w-12 h-12 flex items-center justify-center rounded-xl border-2 border-gray-100 text-gray-400 hover:text-[#0B2A3C] hover:border-[#0B2A3C] hover:bg-white transition-all duration-300"
+                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-gray-100 text-gray-400 hover:text-[#0B2A3C] hover:border-[#0B2A3C] hover:bg-white transition-all duration-300"
                     >
-                      <Download size={18} />
+                      <Download size={14} />
                     </button>
                   </div>
                 </div>
