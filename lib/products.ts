@@ -102,6 +102,7 @@ export const PRODUCTS: Product[] = [
       '/products/centrifugal-inline-cubic-fans/direct-drive-inline.jpg',
       '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg',
       '/products/centrifugal-inline-cubic-fans/circular-inline-fan.jpg',
+      '/products/centrifugal-inline-cubic-fans/mixed-flow-inline.jpg',
       '/products/centrifugal-inline-cubic-fans/centrifugal-fan-3.jpg',
     ],
     details: [
@@ -651,12 +652,18 @@ export const PRODUCTS: Product[] = [
     image: '/products/tube-axial-fans/tube-axial-fan.jpg',
     images: [
       '/products/tube-axial-fans/tube-axial-fan.jpg',
+      '/products/tube-axial-fans/axial-fan-2.jpg',
     ],
     details: [
       {
         title: 'Direct Drive Tube Axial Fan',
         content: 'Indoor and outdoor installation. Easy installation in ducted and non-ducted systems. Size range: 315 mm to 1600 mm diameter. Capacity up to 100,000 CFM. Ideal for tunnel ventilation, industrial exhaust, mine ventilation, and process cooling.',
         image: '/products/tube-axial-fans/tube-axial-fan.jpg'
+      },
+      {
+        title: 'Axial Fan',
+        content: 'Heavy-duty axial fan designed for high-volume air movement in demanding industrial environments. Features aerodynamically optimized blades, overheat-protected motor, and robust casing for continuous operation.',
+        image: '/products/tube-axial-fans/axial-fan-2.jpg'
       }
     ]
   },
@@ -687,12 +694,18 @@ export const PRODUCTS: Product[] = [
     image: '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg',
     images: [
       '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg',
+      '/products/belt-driven-cabinet-fans/belt-driven-cabinet-2.jpg',
     ],
     details: [
       {
         title: 'Belt Driven Cabinet Fan',
         content: 'Application: Supply / Exhaust / Pressurization / Kitchen / Smoke Spill. Indoor & Outdoor installation. Easy installation in ducted and non-ducted systems. Capacity up to 25,000 CMH. Static pressure up to 70 mm H2O. Belt drive allows speed adjustment via pulley ratio.',
         image: '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg'
+      },
+      {
+        title: 'Direct Drive Box Fan',
+        content: 'Compact direct drive design for space-constrained installations. Suitable for supply and exhaust ventilation in commercial and light industrial applications. Easy maintenance with accessible motor and impeller assembly.',
+        image: '/products/belt-driven-cabinet-fans/belt-driven-cabinet-2.jpg'
       }
     ]
   },
