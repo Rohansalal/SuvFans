@@ -103,6 +103,7 @@ export const PRODUCTS: Product[] = [
       '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg',
       '/products/centrifugal-inline-cubic-fans/circular-inline-fan.jpg',
       '/products/centrifugal-inline-cubic-fans/mixed-flow-inline.jpg',
+      '/products/centrifugal-inline-cubic-fans/centrifugal-blower.jpg',
       '/products/centrifugal-inline-cubic-fans/centrifugal-fan-3.jpg',
     ],
     details: [
@@ -222,12 +223,18 @@ export const PRODUCTS: Product[] = [
     image: '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg',
     images: [
       '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg',
+      '/products/power-roof-ventilators-upblast-fan/upblast-fan-2.jpg',
     ],
     details: [
       {
         title: 'Power Roof Ventilator — Upblast Fan',
         content: 'Rhombus hood specially designed to withstand high-speed wind with cooling fins on sides to maximize motor life. Single-piece weather-tight curb cap with punched mounting holes for easy rooftop installation. Galvanized housing construction with backward inclined aluminum impeller. Low power consumption and low sound level. Available in Single & Three Phase.',
         image: '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg'
+      },
+      {
+        title: 'Upblast Fan — Belt Drive Variant',
+        content: 'Belt drive configuration for higher capacity requirements up to 25,000 CMH and 70 mmwg static pressure. EC motor option available for energy savings. Ideal for large commercial kitchens, warehouses, and industrial rooftop exhaust applications.',
+        image: '/products/power-roof-ventilators-upblast-fan/upblast-fan-2.jpg'
       }
     ]
   },
@@ -440,12 +447,18 @@ export const PRODUCTS: Product[] = [
     image: '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg',
     images: [
       '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg',
+      '/products/kitchen-exhaust-fan/kitchen-exhaust-2.jpg',
     ],
     details: [
       {
         title: 'Kitchen & Laundry Fume Exhaust Fan',
         content: 'Designed for ventilation of smoke, grease-laden, humid, and hot air with temperature up to 120°C. Galvanized housing construction with backward inclined, non-overloading, statically and dynamically balanced aviation-grade aluminum impeller for maximum efficiency. Low power consumption and low sound level. Installation flexibility and ease of service. Available in Single & Three Phase.',
         image: '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg'
+      },
+      {
+        title: 'High Temperature Inline Blower',
+        content: 'Compact inline blower configuration for ducted kitchen and laundry exhaust systems. Suitable for grease-laden and humid air at temperatures up to 120°C. Single and three phase options available.',
+        image: '/products/kitchen-exhaust-fan/kitchen-exhaust-2.jpg'
       }
     ]
   },
