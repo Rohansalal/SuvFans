@@ -24,12 +24,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
     >
       <Card className="h-full border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group overflow-hidden">
         <CardContent className="p-0 flex flex-col h-full">
-          <div className="aspect-[4/3] bg-[#F8FAFC] relative overflow-hidden">
+          <div className="aspect-[4/3] bg-white relative overflow-hidden border-b border-gray-100">
             {product.image ? (
-              <img 
-                src={product.image} 
+              <img
+                src={product.image}
                 alt={product.name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-[#0A2E5C]/10">

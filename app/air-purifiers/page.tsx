@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Airplay, CheckCircle2, Download, ShieldCheck, Zap, Wind, Award, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Download, ShieldCheck, Zap, Wind, Award, ArrowRight } from 'lucide-react';
 import CoverageCalculator from '@/components/common/CoverageCalculator';
 import { PRODUCTS } from '@/lib/products';
 import Link from 'next/link';
@@ -74,19 +75,27 @@ const PureAirPage = () => {
               transition={{ duration: 0.8 }}
               className="relative flex justify-center"
             >
-              <div className="w-full max-w-md aspect-square bg-white rounded-[40px] shadow-2xl p-8 flex items-center justify-center relative overflow-hidden group">
-                 <div className="absolute inset-0 bg-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-                 <motion.div
-                    animate={{ y: [0, -15, 0] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative z-10 text-[#0A2E5C]"
-                 >
-                    <Airplay size={240} strokeWidth={1} />
-                 </motion.div>
-                 
-                 {/* Decorative elements */}
-                 <div className="absolute top-12 left-12 w-4 h-4 rounded-full bg-accent/20 animate-ping"></div>
-                 <div className="absolute bottom-12 right-12 w-6 h-6 rounded-full bg-accent/10 animate-pulse"></div>
+              <div className="w-full max-w-md aspect-square bg-white rounded-[40px] shadow-2xl overflow-hidden relative group">
+                <Image
+                  src="/products/air-purifiers/air-purifier-3.jpg"
+                  alt="PURE AIR Commercial Air Purifier"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  priority
+                />
+                <div className="absolute inset-0 bg-[#0A2E5C]/10 group-hover:bg-transparent transition-colors duration-500"></div>
+              </div>
+              {/* Thumbnail strip */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                {[
+                  '/products/air-purifiers/air-purifier-1.jpg',
+                  '/products/air-purifiers/air-purifier-2.jpg',
+                  '/products/air-purifiers/air-purifier-4.jpg',
+                ].map((src, i) => (
+                  <div key={i} className="relative w-14 h-14 rounded-lg border-2 border-white shadow-md overflow-hidden">
+                    <Image src={src} alt={`Air purifier view ${i + 2}`} fill className="object-cover" />
+                  </div>
+                ))}
               </div>
             </motion.div>
           </div>

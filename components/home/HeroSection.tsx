@@ -75,9 +75,9 @@ const HeroSection = () => {
             </motion.div>
 
             {/* H1: Main Value Proposition */}
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6">
-              Manufactured in Bhiwadi. <br />
-              <span className="text-[#F5A02E]">Powering Industries Across India.</span>
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+              Engineered for Powerful Airflow <br />
+              <span className="text-[#F5A02E] text-2xl md:text-3xl lg:text-4xl font-medium">Robust, energy-efficient fans trusted by industries nationwide.</span>
             </h1>
 
             {/* Subtext */}

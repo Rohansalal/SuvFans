@@ -67,7 +67,7 @@ const ProductsPage = () => {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* Hero Section - Industry Professional Look */}
-      <section className="relative bg-[#0B2A3C] text-white pt-[84px] md:pt-[104px] pb-16 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
@@ -201,65 +201,74 @@ const ProductsPage = () => {
         </div>
       </section>
 
-      {/* Redesigned Filter & Search Bar - Fixed scroll gap */}
-      <section className="sticky top-[84px] md:top-[104px] z-30 bg-white/95 backdrop-blur-md border-b shadow-xl py-4 -mt-px">
+      {/* Filter & Search Bar */}
+      <section className="sticky top-[72px] z-40 bg-white border-b border-gray-200 shadow-[0_1px_8px_0_rgba(11,42,60,0.07)] py-3">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-8">
-            
-            {/* Category Dropdown */}
-            <div className="w-full lg:w-auto shrink-0">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="w-full lg:w-72 h-12 border-2 border-gray-100 flex items-center justify-between px-4 bg-white hover:bg-gray-50 transition-all">
-                    <span className="flex items-center gap-2">
-                      <Filter size={16} className="text-[#2E86B8]" />
-                      <span className={selectedCategory ? "text-[#0B2A3C] font-black" : "text-gray-500"}>
-                        {activeCategoryName}
-                      </span>
-                    </span>
-                    <ChevronDown size={16} className="text-gray-400" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-full lg:w-72 p-2 bg-white shadow-2xl border-2 border-gray-100 z-[60] rounded-xl">
-                  <DropdownMenuItem 
-                    onClick={() => setSelectedCategory(null)}
-                    className="p-3 cursor-pointer rounded-lg font-black text-[#0B2A3C] uppercase text-[10px] tracking-widest hover:bg-[#F4F6F8]"
-                  >
-                    All Products
-                  </DropdownMenuItem>
-                  {PRODUCT_CATEGORIES.map((cat) => (
-                    <DropdownMenuItem 
-                      key={cat.slug}
-                      onClick={() => setSelectedCategory(cat.name)}
-                      className={`p-3 cursor-pointer rounded-lg font-bold uppercase text-[10px] tracking-widest hover:bg-[#F4F6F8] hover:text-[#2E86B8] ${selectedCategory === cat.name ? 'text-[#2E86B8] bg-blue-50' : 'text-gray-600'}`}
-                    >
-                      {cat.name}
-                    </DropdownMenuItem>
-                  ))}
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+          <div className="flex items-center gap-3">
 
-            {/* Search Bar */}
-            <div className="relative w-full">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#2E86B8]" size={18} />
-              <Input 
+            {/* Category Dropdown */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  className="shrink-0 h-10 border border-gray-200 flex items-center gap-2 px-4 bg-white hover:bg-gray-50 text-[11px] font-black uppercase tracking-widest text-gray-600 min-w-[180px] justify-between"
+                >
+                  <span className="flex items-center gap-2">
+                    <Filter size={13} className="text-[#2E86B8]" />
+                    <span className={selectedCategory ? 'text-[#0B2A3C]' : 'text-gray-400'}>
+                      {activeCategoryName}
+                    </span>
+                  </span>
+                  <ChevronDown size={13} className="text-gray-400" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64 p-1.5 bg-white shadow-xl border border-gray-100 z-[60] rounded-xl">
+                <DropdownMenuItem
+                  onClick={() => setSelectedCategory(null)}
+                  className="px-3 py-2.5 cursor-pointer rounded-lg font-black text-[#0B2A3C] text-[10px] uppercase tracking-widest hover:bg-[#F4F6F8]"
+                >
+                  All Products
+                </DropdownMenuItem>
+                {PRODUCT_CATEGORIES.map((cat) => (
+                  <DropdownMenuItem
+                    key={cat.slug}
+                    onClick={() => setSelectedCategory(cat.name)}
+                    className={`px-3 py-2.5 cursor-pointer rounded-lg font-bold text-[10px] uppercase tracking-widest hover:bg-[#F4F6F8] hover:text-[#2E86B8] ${selectedCategory === cat.name ? 'text-[#2E86B8] bg-blue-50' : 'text-gray-500'}`}
+                  >
+                    {cat.name}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            {/* Divider */}
+            <div className="h-6 w-px bg-gray-200 shrink-0" />
+
+            {/* Search */}
+            <div className="relative flex-1">
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" size={15} />
+              <Input
                 type="search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by product name, specification, or application..." 
-                className="pl-12 h-12 border-2 border-gray-100 focus:border-[#2E86B8] focus:ring-0 rounded-xl bg-gray-50 text-sm shadow-inner w-full"
+                placeholder="Search by product name, specification, or application..."
+                className="pl-10 h-10 border border-gray-200 focus:border-[#2E86B8] focus:ring-0 rounded-lg bg-[#F8FAFC] text-sm w-full"
                 aria-label="Search products"
               />
               {searchQuery && (
-                <button 
+                <button
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0B2A3C]"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#0B2A3C] transition-colors"
                 >
-                  <X size={16} />
+                  <X size={14} />
                 </button>
               )}
             </div>
+
+            {/* Result count badge */}
+            <span className="shrink-0 hidden sm:flex items-center gap-1.5 text-[10px] font-black text-gray-400 uppercase tracking-widest whitespace-nowrap">
+              <span className="text-[#0B2A3C]">{filteredProducts.length}</span> products
+            </span>
 
           </div>
         </div>

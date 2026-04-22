@@ -14,6 +14,7 @@ export interface ProductSpec {
   efficiency?: string;
   materials?: string[];
   shapes?: string[];
+  dimensions?: string;
 }
 
 export interface SpecTableRow {
@@ -23,6 +24,11 @@ export interface SpecTableRow {
   power: string;
   rpm: string;
   sound: string;
+}
+
+export interface SpecFeatureRow {
+  feature: string;
+  value: string;
 }
 
 export interface ProductDetailSection {
@@ -43,8 +49,11 @@ export interface Product {
   features: string[];
   specs: ProductSpec;
   specTable?: SpecTableRow[];
+  specFeatureTable?: SpecFeatureRow[];
   badge?: string;
   image?: string;
+  images?: string[];
+  pricing?: string;
   seoKeywords?: string[];
   details?: ProductDetailSection[];
   whyChooseContent?: string[];
@@ -69,41 +78,47 @@ export const PRODUCTS: Product[] = [
     name: 'Centrifugal Inline Cubic Fans Direct Drive',
     category: 'Centrifugal Fans',
     categorySlug: 'centrifugal-fans',
-    description: 'High-performance direct drive cubic fans designed for efficient inline duct ventilation in commercial and industrial HVAC systems.',
-    longDescription: 'SUV’s model CUBIC centrifugal inline fans feature a unique combination of installation flexibility, rugged construction, ease of service, high efficiency and low sound levels. These compact inline fans are the ideal selection for indoor clean air applications including intake, exhaust, return or make-up air systems where space is a prime consideration. The need for costly square-to-round transition pieces is eliminated reducing installation costs. The square housing design, compact size and straight-thru airflow also give the system designer the flexibility to mount CUBIC fans in any configuration — horizontal, vertical or at any angle.',
-    applications: ['Commercial Kitchens', 'Office Buildings', 'Industrial Workshops', 'Clean Room Ventilation', 'General HVAC Systems'],
+    description: 'Direct drive duct cabinet inline fans for supply, exhaust, clean air, and general ventilation with compact galvanized housing.',
+    longDescription: 'SUV Direct Drive Duct Cabinet Inline Fans feature aviation-grade aluminum backward inclined impellers for maximum efficiency and low sound levels. The compact cubic housing provides installation flexibility — horizontal, vertical, or at any angle — eliminating the need for costly square-to-round transition pieces. Optional air pre-filter and 25 mm insulated housing make these fans ideal for indoor clean air applications including intake, exhaust, return, or make-up air systems.',
+    applications: ['Supply & Exhaust Ventilation', 'Clean Room Ventilation', 'Office Buildings', 'Commercial Kitchens', 'General HVAC Systems'],
     features: [
-      'Direct drive motor for maintenance-free operation',
+      'Galvanized housing construction',
       'Backward inclined aviation-grade aluminum impeller',
-      'Compact cubic design for easy installation',
-      'Galvanized steel housing with optional powder coating',
-      'Low power consumption with high efficiency',
-      'Statically and dynamically balanced for vibration-free running'
+      'Low power consumption and low sound level',
+      'Compact in size — installation flexibility and ease of service',
+      'Available in single & three phase',
+      'Optional air pre-filter and 25 mm insulated housing'
     ],
     specs: {
-      capacityRange: '850 CMH to 12,000 CMH',
-      staticPressure: 'Up to 45 mmwg',
-      voltage: '220V/415V',
+      capacityRange: '850 CMH to 10,000 CMH',
+      staticPressure: 'Up to 30 mmwg',
+      voltage: '220V / 415V',
       powerRange: '0.18 kW to 3.7 kW'
     },
-    seoKeywords: ['centrifugal inline fan', 'cubic duct fan', 'direct drive ventilation', 'industrial inline blower', 'commercial HVAC fan India', 'AMCA certified fan', 'backward inclined impeller', 'HVAC duct fan datasheet'],
-    image: '/products/centrifugal-inline-cubic-fans/Centrifugal Fans.webp',
+    pricing: 'Contact for Quote',
+    seoKeywords: ['centrifugal inline fan', 'cubic duct fan', 'direct drive ventilation', 'industrial inline blower', 'commercial HVAC fan India', 'backward inclined impeller', 'HVAC duct fan datasheet'],
+    image: '/products/centrifugal-inline-cubic-fans/direct-drive-inline.jpg',
+    images: [
+      '/products/centrifugal-inline-cubic-fans/direct-drive-inline.jpg',
+      '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg',
+      '/products/centrifugal-inline-cubic-fans/circular-inline-fan.jpg',
+      '/products/centrifugal-inline-cubic-fans/centrifugal-fan-3.jpg',
+    ],
     details: [
       {
-        title: 'Housing Construction',
-        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.'
+        title: 'Direct Drive Duct Cabinet Inline Fan',
+        content: 'Application: Supply / Exhaust / Clean Air / General ventilation. Galvanized housing construction with backward inclined aviation-grade aluminum impeller. Low power consumption and low sound level. Compact in size — installation flexibility and ease of service. Available in Single & Three Phase. Optional air pre-filter and 25 mm insulated housing.',
+        image: '/products/centrifugal-inline-cubic-fans/direct-drive-inline.jpg'
       },
       {
-        title: 'Wheel',
-        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.'
+        title: 'Centrifugal Single Width Fan',
+        content: 'Application: Supply / Exhaust, Heating, Filtration, Kitchen, Fume exhaust. High-pressure capacity to handle larger ducted systems or filtration requirements. Heavy duty high GSM galvanized housing construction. Statically and dynamically balanced impeller for maximum efficiency. Low power consumption. Available in Three Phase.',
+        image: '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg'
       },
       {
-        title: 'Duct Collars',
-        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.'
-      },
-      {
-        title: 'Motor',
-        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.'
+        title: 'Circular Inline Fan',
+        content: 'Available up to 1,880 m³/hr (1,100 CFM) for supply / exhaust air applications. Dynamically balanced backward curved fan impeller. Direct drive external rotor motor with ball bearing. Motor equipped with overheat protection with auto restart. Mounting brackets supplied as standard. Optional pre-fitted Hum-Free speed controller.',
+        image: '/products/centrifugal-inline-cubic-fans/circular-inline-fan.jpg'
       }
     ],
     whyChooseContent: [
@@ -122,25 +137,62 @@ export const PRODUCTS: Product[] = [
     name: 'Axial Wall Exhaust and Supply Fans',
     category: 'Axial Flow Fans',
     categorySlug: 'axial-flow-fans',
-    description: 'Heavy-duty wall-mounted axial fans for large-scale air displacement in factories, warehouses, and industrial facilities.',
-    longDescription: 'SUV Fans Axial Wall Exhaust and Supply Fans are engineered to move massive volumes of air at low resistance. These fans are essential for maintaining indoor air quality and thermal comfort in large industrial spaces. Available in both exhaust and supply configurations, they feature aerodynamically designed blades that maximize airflow while minimizing energy consumption. The robust wall-mount design allows for easy installation and maintenance, making them a cost-effective solution for factory ventilation, warehouse cooling, and parking garage exhaust.',
-    applications: ['Manufacturing Plants', 'Warehouses', 'Large Commercial Spaces', 'Parking Garages', 'Agricultural Buildings'],
+    description: 'Direct drive wall-mount axial fans for factories, warehouses, car parks, industrial environments, and data centers with inlet and outlet safety guards.',
+    longDescription: 'SUV Axial Wall Exhaust and Supply Fans are engineered to move massive volumes of air at low resistance. Available in direct drive wall mount, propeller fan, and belt driven wall mount configurations, they feature aerodynamically designed blades for maximum airflow with minimal energy consumption. Inlet and outlet guards ensure 100% safe operation. Suitable for large industrial spaces, manufacturing plants, poultry farms, and agriculture where high-volume ventilation at low static pressure is required.',
+    applications: ['Factories & Warehouses', 'Car Parks', 'Data Centers', 'Poultry Farms & Agriculture', 'Industrial Environments'],
     features: [
-      'High-volume air displacement with low noise',
-      'Corrosion-resistant blades and housing',
-      'Inlet and outlet safety guards included',
+      'Direct drive and belt drive configurations available',
+      'Inlet and outlet guard for 100% safe operation',
+      'Low power consumption',
       'Weather-proof motor options for outdoor exposure',
       'Variable speed drive compatible',
       'Easy wall-frame mounting'
     ],
     specs: {
-      capacityRange: '5,000 CMH to 60,000 CMH',
+      capacityRange: '900 CMH to 55,800 CMH',
       staticPressure: 'Up to 15 mmwg',
-      voltage: '415V 3-Phase / 220V 1-Phase',
-      sizes: ['300mm', '450mm', '600mm', '900mm', '1200mm']
+      voltage: '220V / 415V',
+      sizes: ['200mm', '300mm', '450mm', '500mm', '600mm', '630mm', '800mm', '1000mm', '1220mm', '1380mm', '1530mm']
     },
-    seoKeywords: ['axial wall fan', 'industrial exhaust fan', 'factory ventilation fan', 'warehouse supply fan', 'wall mounted axial blower', 'AMCA axial fan', 'industrial wall ventilator specs'],
-    image: '/products/axial-wall-exhaust-supply-fans/Axial_Wall.webp'
+    specTable: [
+      { size: '1530 mm', airflow: '55,800', voltage: '220/415', power: '1500', rpm: '325', sound: '<65' },
+      { size: '1380 mm', airflow: '44,000', voltage: '220/415', power: '1100', rpm: '440', sound: '<65' },
+      { size: '1220 mm', airflow: '38,000', voltage: '220/415', power: '750',  rpm: '450', sound: '<65' },
+      { size: '1000 mm', airflow: '32,000', voltage: '220/415', power: '550',  rpm: '600', sound: '<65' },
+      { size: '800 mm',  airflow: '20,000', voltage: '220/415', power: '370',  rpm: '600', sound: '<65' },
+      { size: '650 mm',  airflow: '16,000', voltage: '220/415', power: '370',  rpm: '600', sound: '<65' },
+      { size: '630 mm',  airflow: '20,500', voltage: '220/415', power: '1500', rpm: '1450', sound: '<85' },
+      { size: '500 mm',  airflow: '8,500',  voltage: '220/415', power: '750',  rpm: '1450', sound: '<85' },
+      { size: '600 mm',  airflow: '10,500', voltage: '220',     power: '750',  rpm: '1380', sound: '72' },
+      { size: '450 mm',  airflow: '4,800',  voltage: '220',     power: '230',  rpm: '1350', sound: '64' },
+      { size: '300 mm',  airflow: '2,100',  voltage: '220',     power: '125',  rpm: '2400', sound: '58' },
+      { size: '200 mm',  airflow: '900',    voltage: '220',     power: '50',   rpm: '2450', sound: '49' },
+    ],
+    pricing: 'Contact for Quote',
+    seoKeywords: ['axial wall fan', 'industrial exhaust fan', 'factory ventilation fan', 'warehouse supply fan', 'wall mounted axial blower', 'industrial wall ventilator specs'],
+    image: '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg',
+    images: [
+      '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg',
+      '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg',
+      '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount.jpg',
+    ],
+    details: [
+      {
+        title: 'Direct Drive Wall Mount Fans',
+        content: 'Application: Factories, Warehouses, car parks, industrial environments, data centers. Low power consumption. Inlet and outlet guard for 100% safe operation.',
+        image: '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg'
+      },
+      {
+        title: 'Propeller Fan',
+        content: 'Application: Factories, Poultry Farm, Agriculture. High-airflow direct drive design for ventilation of large agricultural and industrial spaces at low static pressure.',
+        image: '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg'
+      },
+      {
+        title: 'Belt Driven Wall Mount Fans',
+        content: 'Application: Supply and Exhaust — high flow with low resistance. Belt drive system allows precise speed adjustment via pulley ratio for large-scale industrial ventilation.',
+        image: '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount.jpg'
+      }
+    ]
   },
   {
     id: '3',
@@ -164,6 +216,7 @@ export const PRODUCTS: Product[] = [
       efficiency: 'High IE3/IE4 standard motors',
       coverage: 'Scalable for any facility size'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['industrial ventilation system', 'commercial air handling', 'custom HVAC solutions', 'factory air exchange', 'turnkey ventilation India'],
     image: '/products/commercial-industrial-application/main.webp'
   },
@@ -173,75 +226,82 @@ export const PRODUCTS: Product[] = [
     name: 'Power Roof Ventilators Upblast Fan',
     category: 'Centrifugal Fans',
     categorySlug: 'centrifugal-inline-cubic-fans',
-    description: 'Weather-tight vertical discharge roof ventilators designed for high-efficiency exhaust in commercial buildings.',
-    longDescription: 'Our Power Roof Ventilators (PRV) with Upblast discharge are the ideal solution for vertical exhaust applications. Designed to throw air high above the roofline, they prevent re-entrainment of odors and pollutants into the building. The aerodynamic Rhombus hood is engineered to withstand high wind speeds while maintaining a weather-tight seal. Built with non-overloading backward inclined aluminum impellers, these fans provide reliable performance even in high-static pressure situations common in ducted roof exhaust systems.',
-    applications: ['Roof-top Exhaust', 'Commercial Kitchen Grease Exhaust', 'Warehouse Ventilation', 'Multi-story Building Exhaust'],
+    description: 'Weather-tight curb cap roof ventilators with rhombus hood — direct drive (850–10,000 CMH) and belt drive (5,000–25,000 CMH) variants for commercial and industrial rooftop exhaust.',
+    longDescription: 'SUV Power Roof Ventilators (PRV) with Upblast discharge throw air high above the roofline, preventing re-entrainment of odors and pollutants. The aerodynamic Rhombus hood is specially designed to withstand high wind speeds while providing efficacious cooling of the motor to maximize motor life. Available in two variants: Direct Drive (850–10,000 CMH, up to 30 mmwg) and Belt Drive (5,000–25,000 CMH, up to 70 mmwg). The single-piece curb cap with punched mounting holes allows easy rooftop installation.',
+    applications: ['Rooftop Exhaust', 'Commercial Kitchen Grease Exhaust', 'Warehouse Ventilation', 'Multi-story Building Exhaust', 'Industrial Fume Exhaust'],
     features: [
-      'Upblast discharge protects roof surface from grease and heat',
-      'One-piece leak-proof curb cap',
-      'Direct drive or belt drive options',
-      'Corrosion-resistant aluminum construction',
-      'Bird screen and backdraft dampers optional',
-      'High-speed wind resistant design'
+      'Direct Drive variant: 850–10,000 CMH, up to 30 mmwg',
+      'Belt Drive variant: 5,000–25,000 CMH, up to 70 mmwg',
+      'Rhombus hood designed to withstand high-speed wind with cooling fins',
+      'Single-piece weather-tight curb cap with punched mounting holes',
+      'Galvanized housing with backward inclined aluminum impeller',
+      'Available in Single & Three Phase'
     ],
     specs: {
-      capacityRange: '1,000 CMH to 25,000 CMH',
-      staticPressure: 'Up to 50 mmwg',
-      voltage: '220V/415V'
+      capacityRange: '850 CMH to 25,000 CMH',
+      staticPressure: 'Up to 70 mmwg (belt drive) / 30 mmwg (direct drive)',
+      voltage: '220V / 415V'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['roof ventilator fan', 'upblast exhaust fan', 'kitchen roof fan', 'commercial roof exhaust', 'industrial rooftop ventilation'],
-    image: '/products/power-roof-ventilators-upblast-fan/main.webp'
+    image: '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg',
+    images: [
+      '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg',
+    ],
+    details: [
+      {
+        title: 'Power Roof Ventilator — Upblast Fan',
+        content: 'Rhombus hood specially designed to withstand high-speed wind with cooling fins on sides to maximize motor life. Single-piece weather-tight curb cap with punched mounting holes for easy rooftop installation. Galvanized housing construction with backward inclined aluminum impeller. Low power consumption and low sound level. Available in Single & Three Phase.',
+        image: '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg'
+      }
+    ]
   },
   {
     id: '5',
     slug: 'ceiling-exhaust-cabinet-fans',
-    name: 'Ceiling Exhaust Cabinet & Circular Inline Fans',
+    name: 'Ceiling Exhaust & Circular Inline Fans',
     category: 'Insulated Box Fans',
     categorySlug: 'insulated-box-fans',
-    description: 'Ultra-quiet and compact ceiling-mounted fans for discreet ventilation in premium commercial spaces.',
-    longDescription: 'SUV’s model CEILING centrifugal inline cabinet fans feature a unique combination of installation flexibility, rugged construction, ease of service, high efficiency and low sound levels. These compact inline fans are the ideal selection for indoor clean air applications including intake, exhaust, return or make-up air systems where space is a prime consideration. The need for costly square-to-round transition pieces is eliminated reducing installation costs. The square housing design, compact size and straight-thru airflow also give the system designer the flexibility to mount CEILING fans in any configuration — horizontal, vertical or at any angle.',
-    applications: ['Hotel Rooms', 'Hospital Wards', 'Conference Rooms', 'Laboratories', 'Premium Residences'],
+    description: 'Ultra-quiet ceiling-mounted exhaust and circular inline fans for laboratories, bathrooms, hotels, cafeterias, and smoke rooms.',
+    longDescription: 'SUV Silent Ceiling Exhaust Fans mount under false ceilings with grilled inlet and ducted exhaust for discreet ventilation. The dynamically balanced backward curved fan impeller and direct drive external rotor motor with ball bearing deliver very low sound and low power consumption. Circular Inline Fans are available up to 1880 m³/hr (1100 CFM) and can be supplied with a pre-fitted Hum-Free speed controller. Motor is equipped with overheat protection with auto restart. Standard mounting brackets included.',
+    applications: ['Laboratories', 'Bathrooms & Toilets', 'Hotels & Cafeterias', 'Smoke Rooms', 'Hospital Wards'],
     features: [
-      'Ultra-low noise operation (as low as 35 dBA)',
-      'Compact design fits in tight ceiling spaces',
-      'Built-in backdraft damper',
-      'Easy access for maintenance through ceiling panels',
-      'Energy-efficient motors with thermal protection',
-      'Aesthetic inlet grilles available'
+      'Mount under false ceiling with grilled inlet / ducted exhaust',
+      'Very low sound and low power consumption',
+      'Dynamically balanced backward curved fan impeller',
+      'Direct drive external rotor motor with ball bearing',
+      'Motor equipped with overheat protection with auto restart',
+      'Optional pre-fitted Hum-Free speed controller'
     ],
     specs: {
-      capacityRange: '150 CMH to 2,500 CMH',
+      capacityRange: '200 CFM to 1,500 CFM (up to 1,880 m³/hr)',
       voltage: '220V Single Phase',
-      soundLevel: '35 dBA to 55 dBA'
+      soundLevel: '<45 dBA'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['ceiling exhaust fan', 'silent cabinet fan', 'circular inline fan', 'commercial bathroom exhaust', 'quiet office ventilation'],
-    image: '/products/ceiling-exhaust-cabinet-fans/main.webp',
+    image: '/products/ceiling-exhaust-cabinet-fans/silent-ceiling-exhaust.jpg',
+    images: [
+      '/products/ceiling-exhaust-cabinet-fans/silent-ceiling-exhaust.jpg',
+    ],
     details: [
       {
-        title: 'Housing Construction',
-        content: 'The fan housing is constructed of rigid structural members and formed galvanized steel panels. (Aluminum construction is optional) Constructed from heavy-gauge steel for maximum durability and corrosion resistance.'
+        title: 'Silent Ceiling Exhaust Fan',
+        content: 'Application: Laboratory, Bathroom, Hotel, Cafeteria, Smoke room. Mounts under false ceiling with grilled inlet and ducted exhaust. Very low sound and low power consumption. Capacity: 200 CFM to 1,500 CFM.',
+        image: '/products/ceiling-exhaust-cabinet-fans/silent-ceiling-exhaust.jpg'
       },
       {
-        title: 'Wheel',
-        content: 'Backward inclined, non-overloading centrifugal wheel is utilized to deliver maximum efficiency. Each wheel is statically and dynamically balanced to ensure smooth, vibration-free operation.'
-      },
-      {
-        title: 'Duct Collars',
-        content: 'Inlet and discharge duct collars are provided for easy duct connection. The square design provides a larger discharge area than tubular centrifugal and vane axial fans; outlet velocities are reduced for quieter operation.'
-      },
-      {
-        title: 'Motor',
-        content: 'Permanently lubricated, sealed ball bearing motors are selected to provide years of trouble-free operation with minimal maintenance. Motors are sized for continuous duty and are available in single or three-phase options.'
+        title: 'Motor & Drive',
+        content: 'Direct drive external rotor motor with ball bearing. Dynamically balanced backward curved fan impeller. Motor equipped with overheat protection with auto restart. Optional pre-fitted Hum-Free speed controller.'
       }
     ],
     whyChooseContent: [
-      'Compact in Size',
-      'High Efficiency',
-      'Installation Flexibility',
-      'Ease of Service',
-      'Cost Effective',
+      'Very Low Sound Levels',
       'Low Power Consumption',
-      'Low Sound Levels'
+      'Overheat Protection',
+      'Easy Ceiling Installation',
+      'Optional Speed Control',
+      'Compact Design'
     ]
   },
   {
@@ -250,107 +310,176 @@ export const PRODUCTS: Product[] = [
     name: 'HVLS Fans (High Volume Low Speed)',
     category: 'Large Diameter HVLS Fans',
     categorySlug: 'hvls-fans',
-    description: 'Large-diameter industrial ceiling fans that move massive amounts of air to provide natural cooling in large facilities.',
-    longDescription: 'High Volume Low Speed (HVLS) fans are a game-changer for large-scale facility cooling. With diameters ranging from 8 to 24 feet, a single SUV HVLS fan can replace dozens of small high-speed fans, significantly reducing energy costs. By creating a gentle, constant breeze, these fans enhance the natural evaporative cooling of the human body, making the perceived temperature feel up to 8°C cooler. Beyond cooling, they help in destratification during winter, pushing warm air down from the ceiling to the floor, ensuring year-round energy savings.',
-    applications: ['Large Warehouses', 'Distribution Centers', 'Manufacturing Plants', 'Gymnasiums', 'Airport Hangers'],
+    description: 'Large-diameter industrial HVLS fans up to 24 feet delivering up to 200,000 CFM for factories, warehouses, and commercial buildings with speed control.',
+    longDescription: 'SUV High Volume Low Speed (HVLS) fans move massive volumes of air with slow, gentle rotation. Available in sizes from 16 to 24 feet, a single HVLS fan can replace dozens of small high-speed fans, dramatically reducing energy costs. PVC coated fabric blades (fire retardant, Class B fire rating, suitable up to 85°C) or Silicone coated fabric (tested suitable up to 270°C for 1 hour) options provide high anti-tear and tensile strength for longer life. Built-in speed control for variable airflow. Ideal for large industrial and commercial buildings requiring year-round comfort and destratification.',
+    applications: ['Large Warehouses', 'Distribution Centers', 'Manufacturing Plants', 'Gymnasiums', 'Airport Hangars'],
     features: [
-      'Aerospace-grade aluminum blades with winglets',
-      'High-torque, low-RPM permanent magnet motors',
-      'Variable frequency drive (VFD) for precise speed control',
-      'Safety cables and blade retainers for maximum security',
-      'Minimal maintenance required',
-      'Extremely energy efficient'
+      'Available up to 200,000 CFM capacity',
+      'Size range: 16 feet to 24 feet diameter',
+      'Built-in speed control',
+      'Fire retardant PVC coated fabric — Class B fire rating, up to 85°C',
+      'Silicone coated fabric option — tested to 270°C for 1 hour',
+      'High anti-tear and tensile strength for longer blade life'
     ],
     specs: {
-      capacityRange: 'Up to 350,000 CFM',
-      sizes: ['8ft', '12ft', '16ft', '20ft', '24ft'],
+      capacityRange: 'Up to 200,000 CFM',
+      sizes: ['16 ft', '18 ft', '20 ft', '22 ft', '24 ft'],
       coverage: 'Up to 20,000 sq. ft per fan'
     },
-    seoKeywords: ['HVLS fan India', 'industrial ceiling fan', 'large warehouse fan', 'energy efficient cooling', 'big diameter fan manufacturer', 'HVLS fan specifications', 'industrial cooling destratification'],
-    image: '/products/hvls-fans/main.webp'
+    pricing: 'Contact for Quote',
+    seoKeywords: ['HVLS fan India', 'industrial ceiling fan', 'large warehouse fan', 'energy efficient cooling', 'big diameter fan manufacturer', 'HVLS fan specifications'],
+    image: '/products/hvls-fans/hvls-fan-1.jpg',
+    images: [
+      '/products/hvls-fans/hvls-fan-1.jpg',
+      '/products/hvls-fans/hvls-fan-2.jpg',
+    ],
+    details: [
+      {
+        title: 'HVLS Fan — Large Diameter',
+        content: 'Application: Industrial and commercial buildings. Available up to 200,000 CFM. Size range: 16 feet to 24 feet. Speed control standard. PVC coated fabric (fire retardant, Class B fire rating, up to 85°C) or silicone coated fabric (tested to 270°C for 1 hour). High anti-tear and tensile strength for longer life.',
+        image: '/products/hvls-fans/hvls-fan-1.jpg'
+      },
+      {
+        title: 'Installed View',
+        content: 'A single HVLS fan replaces dozens of small high-speed fans, providing gentle, consistent air movement across the entire floor area. Ideal for destratification in winter and cooling in summer.',
+        image: '/products/hvls-fans/hvls-fan-2.jpg'
+      }
+    ]
   },
   {
     id: '7',
     slug: 'flexible-ducts',
-    name: 'Non-Insulated, Insulated and Aluminum Flexible Ducts',
+    name: 'Flexible Ducts and Duct Connectors',
     category: 'HVAC Air Ducts & Hoods',
     categorySlug: 'hvac-ducts',
-    description: 'High-quality flexible ducting solutions for versatile HVAC connections and air distribution.',
-    longDescription: 'Our flexible ducting range provides the ultimate versatility for HVAC system installers. Available in non-insulated, thermally insulated, and semi-rigid aluminum versions, these ducts are designed to handle various air pressures and temperatures. The insulated versions feature high-density fiberglass wool to prevent condensation and minimize heat loss. The robust construction includes a high-tensile spring steel wire helix, ensuring the duct maintains its shape even under high suction or pressure. These ducts are essential for connecting diffusers, grilles, and other terminal units to main duct runs.',
+    description: 'Non-insulated, insulated, semi-rigid, and fire-rated flexible ducts in round, rectangle, and oval types for all HVAC applications.',
+    longDescription: 'SUV flexible ducting covers every HVAC connection need. Non-Insulated (100–500 mm / 25 ft), Insulated (100–450 mm / 25 ft), Semi Rigid (75–500 mm / 10 ft), and Fire Rated (100–450 mm / 10 ft) options are available. Material options include MS, GI, AL, and SS in round, rectangular, and oval duct shapes. Duct connectors provide vibration isolation between fan outlets and duct systems. The robust spring steel wire helix construction maintains shape under both suction and pressure conditions.',
     applications: ['HVAC Secondary Ducting', 'VAV Box Connections', 'Kitchen Hood Exhaust', 'Bathroom Ventilation', 'Industrial Fume Extraction'],
     features: [
-      'Available in sizes from 100mm to 600mm',
-      'Fire-retardant materials (UL listed options)',
-      'Excellent flexibility for easy routing around obstacles',
-      'High tear and puncture resistance',
-      'Low friction loss for efficient airflow',
-      'Standard 10-meter or 25-feet lengths'
+      'Non-Insulated: 100–500 mm diameter, 25 ft length',
+      'Insulated: 100–450 mm diameter, 25 ft length',
+      'Semi Rigid: 75–500 mm diameter, 10 ft length',
+      'Fire Rated: 100–450 mm diameter, 10 ft length',
+      'Types: Round, Rectangle, and Oval',
+      'Materials: MS, GI, AL, SS'
     ],
     specs: {
       capacityRange: 'Custom sizes',
       temperatureRating: '-30°C to +150°C',
       staticPressure: 'Up to 2,500 Pa',
-      sizes: ['100mm', '150mm', '200mm', '250mm', '300mm', '450mm']
+      sizes: ['75mm', '100mm', '150mm', '200mm', '250mm', '300mm', '450mm', '500mm'],
+      materials: ['MS (Mild Steel)', 'GI (Galvanized Iron)', 'AL (Aluminum)', 'SS (Stainless Steel)'],
+      shapes: ['Round', 'Rectangle', 'Oval']
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['flexible ducting', 'insulated HVAC duct', 'aluminum flex duct', 'ventilation connector', 'flexible air pipe India'],
-    image: '/products/flexible-ducts/main.webp'
+    image: '/products/flexible-ducts/flexible-duct-main.jpg',
+    images: [
+      '/products/flexible-ducts/flexible-duct-main.jpg',
+      '/products/flexible-ducts/duct-connector.jpg',
+    ],
+    details: [
+      {
+        title: 'Flexible Duct Types',
+        content: 'Non-Insulated (100–500 mm / 25 ft), Insulated (100–450 mm / 25 ft), Semi Rigid (75–500 mm / 10 ft), Fire Rated (100–450 mm / 10 ft). Available in Round, Rectangle, and Oval shapes in MS, GI, AL, and SS materials.',
+        image: '/products/flexible-ducts/flexible-duct-main.jpg'
+      },
+      {
+        title: 'Duct Connectors',
+        content: 'Flexible duct connectors provide vibration isolation between fan outlets and duct systems, preventing the transmission of fan noise and vibration into the building structure.',
+        image: '/products/flexible-ducts/duct-connector.jpg'
+      }
+    ]
   },
   {
     id: '8',
     slug: 'insulated-housing-cabinet-fan',
-    name: 'Insulated Housing Cabinet Fan',
+    name: 'Insulated Housing Cabinet Fan / Industrial Cooler',
     category: 'Insulated Box Fans',
     categorySlug: 'insulated-box-fans',
-    description: 'Double-skin insulated cabinet fans designed for quiet operation and thermal protection in sensitive HVAC applications.',
-    longDescription: 'The SUV Insulated Housing Cabinet Fan is the professional choice for indoor air handling where noise and thermal leakage must be minimized. Featuring a double-skin construction with high-density acoustic insulation, these fans are exceptionally quiet. The rigid aluminum pentapost frame ensures structural integrity, while the removable panels allow for easy access to the motor and impeller. These fans are often used as supply or exhaust units in hospitals, offices, and hotels where a ducted cabinet solution is required.',
-    applications: ['Hospital HVAC', 'Office Exhaust Systems', 'Hotel Fresh Air Supply', 'Clean Room Pre-filtration', 'Data Center Cooling'],
+    description: 'Heavy-duty insulated industrial coolers and cabinet fans for ducted exhaust in industrial and commercial environments.',
+    longDescription: 'SUV Insulated Housing Cabinet Fans and Industrial Coolers provide high-volume ventilation with reduced thermal and acoustic losses. The auto-clean drain valve and ducted exhaust design make them ideal for industrial and commercial cooling. Available in M-180 (18,000 CMH) and M-300 (30,000 CMH) configurations. Double-skin insulated construction minimizes heat transfer and reduces operational sound levels significantly. These units are the preferred choice for large commercial spaces and demanding industrial environments.',
+    applications: ['Industrial Cooling', 'Commercial Spaces', 'Ducted Exhaust Systems', 'Hospital HVAC', 'Data Center Cooling'],
     features: [
-      'Double-skin panels with 25mm/50mm insulation',
-      'Acoustically lined for ultra-quiet performance',
-      'High-efficiency backward curved centrifugal impeller',
-      'Rigid aluminum frame with nylon corners',
-      'Easy-to-clean smooth internal surfaces',
-      'Weather-proof versions available for outdoor use'
+      'Ducted exhaust design',
+      'Auto-clean drain valve',
+      'Double-skin insulated housing for thermal and acoustic performance',
+      'High-efficiency centrifugal impeller',
+      'Available in single and three phase',
+      'Robust galvanized steel cabinet construction'
     ],
     specs: {
-      capacityRange: '1,000 CMH to 30,000 CMH',
+      capacityRange: '18,000 CMH to 30,000 CMH',
       staticPressure: 'Up to 60 mmwg',
-      voltage: '220V/415V'
+      voltage: '220V / 415V'
     },
-    seoKeywords: ['insulated cabinet fan', 'double skin box fan', 'quiet air handler', 'acoustic_fan_housing', 'industrial cabinet blower'],
-    image: '/products/insulated-housing-cabinet-fan/main.webp'
+    specTable: [
+      { size: 'M-300', airflow: '30,000', voltage: '415',     power: '3000', rpm: '—', sound: '<80' },
+      { size: 'M-180', airflow: '18,000', voltage: '220/415', power: '1100', rpm: '—', sound: '<70' },
+    ],
+    pricing: 'Contact for Quote',
+    seoKeywords: ['insulated cabinet fan', 'industrial cooler', 'double skin box fan', 'quiet air handler', 'industrial cabinet blower'],
+    image: '/products/insulated-housing-cabinet-fan/sound-insulated-box-fan.jpg',
+    images: [
+      '/products/insulated-housing-cabinet-fan/sound-insulated-box-fan.jpg',
+      '/products/insulated-housing-cabinet-fan/industrial-cooler.jpg',
+    ],
+    details: [
+      {
+        title: 'Sound Insulated Box Fan',
+        content: 'Double-skin insulated housing construction with forward curved impeller. Ultra-quiet operation for noise-sensitive environments. Ideal for laboratories, hotels, hospitals, and commercial buildings requiring discreet ventilation.',
+        image: '/products/insulated-housing-cabinet-fan/sound-insulated-box-fan.jpg'
+      },
+      {
+        title: 'Industrial Cooler',
+        content: 'Application: Industrial / Commercial. Ducted exhaust system with auto clean drain valve. M-300 model: 30,000 CMH, 415V, 3,000W, 100 kg weight, < 80 dBA. M-180 model: 18,000 CMH, 220/415V, 1,100W, 55 kg weight, < 70 dBA.',
+        image: '/products/insulated-housing-cabinet-fan/industrial-cooler.jpg'
+      }
+    ]
   },
   {
     id: '9',
     slug: 'kitchen-exhaust-fan',
-    name: 'Kitchen Exhaust Fan',
-    category: 'Fume Exhaust Fans',
-    categorySlug: 'fume-exhaust-fans',
-    description: 'Specialized high-temperature fans designed to handle grease-laden air and steam in commercial kitchens.',
-    longDescription: 'Commercial kitchen ventilation requires fans that can withstand high temperatures and heavy grease accumulation. Our Kitchen Exhaust Fans are specifically engineered for this demanding environment. Featuring motors located outside the airstream (in belt-drive models) or high-temperature rated direct drive motors, they ensure long-term reliability. The impellers are designed to be easily cleaned of grease buildup, maintaining optimal airflow. These fans are essential for complying with fire safety regulations and ensuring a comfortable working environment for kitchen staff.',
-    applications: ['Restaurant Kitchens', 'Hotel Main Kitchens', 'Canteen Ventilation', 'Food Processing Facilities', 'Fast Food Outlets'],
+    name: 'Kitchen & Laundry Exhaust Fans',
+    category: 'Centrifugal Fume Exhaust Fans',
+    categorySlug: 'centrifugal-fans',
+    description: 'Specialized fume exhaust fans designed for smoke, grease-laden, humid and hot air in commercial kitchens and laundries up to 120°C.',
+    longDescription: 'SUV Kitchen and Laundry Exhaust Fans use galvanized housing construction with backward inclined, non-overloading, statically and dynamically balanced aviation-grade aluminum impellers for maximum efficiency. Designed to handle ventilation of smoke, grease-laden, humid and hot air at temperatures up to 120°C. Low power consumption and low sound levels are maintained even in demanding conditions. Available in single and three phase. Capacity range covers both light-duty laundry fans and heavy commercial kitchen exhaust systems.',
+    applications: ['Restaurant Kitchens', 'Hotel Main Kitchens', 'Commercial Laundries', 'Food Processing Facilities', 'Fast Food Outlets'],
     features: [
-      'High temperature rating (up to 120°C continuous)',
-      'Grease-resistant impeller design',
-      'Easy-access cleanout doors',
-      'Drain plugs for grease management',
-      'Weather-proof housing for rooftop installation',
-      'Compliant with NFPA 96 standards'
+      'Galvanized housing construction',
+      'Backward inclined non-overloading aviation-grade aluminum impeller',
+      'Statically and dynamically balanced for maximum efficiency',
+      'Handles smoke, grease-laden, humid and hot air up to 120°C',
+      'Low power consumption and low sound level',
+      'Available in single & three phase'
     ],
     specs: {
-      capacityRange: '2,000 CMH to 25,000 CMH',
-      staticPressure: 'Up to 75 mmwg',
-      temperatureRating: 'Up to 120°C'
+      capacityRange: '850 CMH to 25,000 CMH',
+      staticPressure: 'Up to 70 mmwg',
+      temperatureRating: 'Up to 120°C',
+      voltage: '220V / 415V'
     },
-    seoKeywords: ['kitchen exhaust fan', 'commercial kitchen blower', 'grease exhaust fan', 'restaurant ventilation', 'high temperature fan India'],
-    image: '/products/kitchen-exhaust-fan/main.webp' 
+    pricing: 'Contact for Quote',
+    seoKeywords: ['kitchen exhaust fan', 'commercial kitchen blower', 'grease exhaust fan', 'restaurant ventilation', 'high temperature fan India', 'laundry exhaust fan'],
+    image: '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg',
+    images: [
+      '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg',
+    ],
+    details: [
+      {
+        title: 'Kitchen & Laundry Fume Exhaust Fan',
+        content: 'Designed for ventilation of smoke, grease-laden, humid, and hot air with temperature up to 120°C. Galvanized housing construction with backward inclined, non-overloading, statically and dynamically balanced aviation-grade aluminum impeller for maximum efficiency. Low power consumption and low sound level. Installation flexibility and ease of service. Available in Single & Three Phase.',
+        image: '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg'
+      }
+    ]
   },
   {
     id: '10',
     slug: 'laundry-fan',
     name: 'Laundry Fan',
-    category: 'Fume Exhaust Fans',
-    categorySlug: 'fume-exhaust-fans',
+    category: 'Centrifugal Fume Exhaust Fans',
+    categorySlug: 'centrifugal-fans',
     description: 'Robust exhaust fans designed to handle high humidity and lint-laden air in commercial laundry facilities.',
     longDescription: 'Laundry facilities present a unique challenge for ventilation: high humidity combined with airborne lint. Our Laundry Fans are built to handle these conditions without clogging or corroding. The impellers are designed with a self-cleaning profile to minimize lint accumulation, while the housing is treated with moisture-resistant coatings. These fans ensure quick moisture removal, preventing mold growth and ensuring the efficiency of commercial dryers.',
     applications: ['Commercial Laundries', 'Hotel Laundry Rooms', 'Hospital Linen Services', 'Garment Factories', 'Dry Cleaning Plants'],
@@ -365,10 +494,11 @@ export const PRODUCTS: Product[] = [
     specs: {
       capacityRange: '1,500 CMH to 15,000 CMH',
       staticPressure: 'Up to 50 mmwg',
-      voltage: '220V/415V'
+      voltage: '220V / 415V'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['laundry exhaust fan', 'commercial laundry blower', 'humid air exhaust', 'lint resistant fan', 'industrial dryer exhaust'],
-    image: '/products/laundry-fan/main.webp'
+    image: '/products/kitchen-exhaust-fan/kitchen-laundry-fan.jpg'
   },
   {
     id: '11',
@@ -392,58 +522,106 @@ export const PRODUCTS: Product[] = [
       soundLevel: 'Below 45 dBA',
       voltage: '220V Single Phase'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['toilet exhaust fan', 'bathroom ventilation system', 'commercial restroom fan', 'centralized toilet exhaust', 'quiet washroom fan'],
     image: '/ProductImage.webp'
   },
   {
     id: '12',
     slug: 'turnkey-hvac-products',
-    name: 'Turnkey HVAC Air Handling Products',
+    name: 'Turnkey HVAC — End-to-End Solutions',
     category: 'Turnkey HVAC Solutions',
     categorySlug: 'turnkey-solutions',
-    description: 'Comprehensive air handling solutions including supply, installation, and commissioning for complex industrial projects.',
-    longDescription: 'Our Turnkey HVAC Air Handling service offers a complete end-to-end solution for your facility. We don\'t just supply products; we provide a fully engineered system. This includes high-capacity Air Handling Units (AHUs), advanced filtration systems, integrated cooling/heating coils, and sophisticated control panels. Our team of experienced engineers handles everything from initial load calculations and ducting design to professional installation and final commissioning. We ensure your entire HVAC system operates at peak efficiency from day one.',
+    description: 'Complete supply, installation, commissioning, and handover of air handling equipment including AHUs, air washers, FCUs, FFUs, air curtains, and integrated clean room solutions.',
+    longDescription: 'SUV offers end-to-end HVAC service covering supply, professional installation, precision commissioning, and final handover of essential air handling equipment. Our Turnkey HVAC product list includes Air Handling Units (AHU), Air Washer Systems, Fan Coil Units (FCU), Fan Filter Units (FFU), Air Curtains, Air Distribution Terminals (Grilles, Diffusers), and Complete Clean Room solutions with insulated panels, HVAC integration, specialized ducting, and electrical systems.',
     applications: ['Pharmaceutical Labs', 'Precision Manufacturing', 'Hospitals', 'Data Centers', 'Large Commercial Complexes'],
     features: [
-      'Full system engineering and design',
-      'Supply of AHUs, chillers, and ducting',
-      'Professional on-site installation by expert teams',
-      'Precision commissioning and balancing',
-      'Comprehensive documentation and training',
-      'Annual Maintenance Contracts (AMC) available'
+      'Air Handling Units (AHU)',
+      'Air Washer Systems',
+      'Fan Coil Units (FCU) & Fan Filter Units (FFU)',
+      'Air Curtains & Distribution Terminals (Grilles, Diffusers)',
+      'Complete Clean Rooms — panels, HVAC, ducting, electrical',
+      'Full professional installation, commissioning, and handover'
     ],
     specs: {
       capacityRange: 'Customizable up to 1,000,000 CMH',
       efficiency: 'System-wide energy optimization',
       coverage: 'Complete facility HVAC'
     },
-    seoKeywords: ['turnkey HVAC India', 'air handling unit service', 'industrial HVAC installation', 'complete ventilation solution', 'AHU commissioning'],
-    image: '/products/turnkey-hvac-products/main.webp'
+    pricing: 'Contact for Quote',
+    seoKeywords: ['turnkey HVAC India', 'air handling unit service', 'industrial HVAC installation', 'complete ventilation solution', 'AHU commissioning', 'clean room solution'],
+    image: '/products/turnkey-hvac-products/turnkey-hvac-4.jpg',
+    images: [
+      '/products/turnkey-hvac-products/turnkey-hvac-4.jpg',
+      '/products/turnkey-hvac-products/turnkey-hvac-1.jpg',
+      '/products/turnkey-hvac-products/turnkey-hvac-2.jpg',
+      '/products/turnkey-hvac-products/turnkey-hvac-3.jpg',
+      '/products/turnkey-hvac-products/clean-room.jpg',
+    ],
+    details: [
+      {
+        title: 'Air Handling Units (AHU) & Fan Coil Units',
+        content: 'Supply, installation, commissioning, and handover of Air Handling Units (AHU), Fan Coil Units (FCU), Fan Filter Units (FFU), and Air Washer Systems for complete commercial and industrial HVAC solutions.',
+        image: '/products/turnkey-hvac-products/turnkey-hvac-1.jpg'
+      },
+      {
+        title: 'Air Curtains & Distribution Terminals',
+        content: 'Supply and installation of air curtains, grilles, diffusers, and complete air distribution terminals for balanced airflow throughout the facility.',
+        image: '/products/turnkey-hvac-products/turnkey-hvac-2.jpg'
+      },
+      {
+        title: 'Integrated Clean Room Solutions',
+        content: 'Complete clean room delivery including insulated panels, HVAC integration, specialized ducting, and electrical systems. Suitable for pharmaceutical, medical device, and precision manufacturing facilities.',
+        image: '/products/turnkey-hvac-products/clean-room.jpg'
+      },
+      {
+        title: 'End-to-End Project Execution',
+        content: 'From initial load calculations and system design to professional on-site installation and final commissioning. Full documentation, training, and Annual Maintenance Contracts (AMC) available.',
+        image: '/products/turnkey-hvac-products/turnkey-hvac-4.jpg'
+      }
+    ]
   },
   {
     id: '13',
     slug: 'hvac-air-duct-kitchen-hoods',
-    name: 'HVAC AIR DUCT / Commercial Kitchen Hoods',
+    name: 'HVAC Air Ducts / Commercial Kitchen Hoods',
     category: 'HVAC Air Ducts & Hoods',
     categorySlug: 'hvac-ducts',
-    description: 'Precision-manufactured air ducts and specialized kitchen hoods for efficient air distribution and grease extraction.',
-    longDescription: 'High-quality ducting is the backbone of any efficient HVAC system. We manufacture a wide range of air ducts in various shapes (round, rectangular, oval) and materials (Galvanized Steel, Stainless Steel, Aluminum). Our ducts are fabricated using CNC machines for perfect fit and minimal leakage. In addition to general HVAC ducting, we specialize in Commercial Kitchen Hoods. Our hoods are designed with optimal capture velocities to ensure all smoke and grease are efficiently removed from the cooking area, available in both GI and premium SS finishes.',
+    description: 'GI, SS, AL, and MS air ducts in round, rectangle, and oval shapes plus commercial kitchen hoods in GI and SS for complete air distribution.',
+    longDescription: 'High-quality ducting is the backbone of any efficient HVAC system. We manufacture a wide range of air ducts in round, rectangular, and oval shapes in Galvanized Steel (GI), Stainless Steel (SS), Aluminum (AL), and Mild Steel (MS). Our ducts are fabricated using CNC machines for perfect fit and minimal leakage. Commercial Kitchen Hoods are available in GI and premium SS finishes, designed with optimal capture velocities to ensure all smoke and grease are efficiently removed from the cooking area.',
     applications: ['Kitchen Exhaust', 'Centralized Air Conditioning', 'Fume Extraction', 'Fresh Air Supply', 'Industrial Ventilation'],
     features: [
+      'Available in GI, SS, AL, and MS materials',
+      'Duct types: Round, Rectangle, and Oval',
+      'Commercial Kitchen Hoods in GI and SS',
       'CNC fabricated for high precision and low leakage',
-      'Available in GI, SS, and Aluminum',
-      'Kitchen hoods with integrated grease filters',
       'Compliance with SMACNA and local standards',
-      'Custom sizes and configurations',
-      'Insulated and non-insulated options'
+      'Custom sizes and configurations available'
     ],
     specs: {
       capacityRange: 'Custom sizes',
       materials: ['GI (Galvanized)', 'SS (Stainless Steel)', 'AL (Aluminum)', 'MS (Mild Steel)'],
-      shapes: ['Rectangular', 'Round', 'Spiral', 'Flat Oval']
+      shapes: ['Rectangular', 'Round', 'Oval']
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['HVAC ducting manufacturer', 'commercial kitchen hood', 'GI ducting India', 'SS kitchen exhaust', 'industrial air ducts'],
-    image: '/products/hvac-air-duct-kitchen-hoods/main.webp'
+    image: '/products/hvac-air-duct-kitchen-hoods/hvac-air-duct.jpg',
+    images: [
+      '/products/hvac-air-duct-kitchen-hoods/hvac-air-duct.jpg',
+      '/products/hvac-air-duct-kitchen-hoods/kitchen-hood.jpg',
+    ],
+    details: [
+      {
+        title: 'HVAC Air Ducts',
+        content: 'Type: Round, Rectangle, and Oval. Material: MS, GI, AL, SS. CNC fabricated for high precision and minimal leakage. Compliance with SMACNA and local standards. Custom sizes and configurations available on order.',
+        image: '/products/hvac-air-duct-kitchen-hoods/hvac-air-duct.jpg'
+      },
+      {
+        title: 'Commercial Kitchen Hoods',
+        content: 'Available in GI and SS finishes. Designed with optimal capture velocities to efficiently remove smoke and grease from the cooking area. Compliant with fire safety and ventilation standards.',
+        image: '/products/hvac-air-duct-kitchen-hoods/kitchen-hood.jpg'
+      }
+    ]
   },
   {
     id: '14',
@@ -451,24 +629,36 @@ export const PRODUCTS: Product[] = [
     name: 'Tube Axial Fans',
     category: 'Axial Flow Fans',
     categorySlug: 'axial-flow-fans',
-    description: 'High-performance ducted axial fans for industrial exhaust and ventilation in demanding environments.',
-    longDescription: 'SUV Tube Axial Fans are designed for high-volume air movement in ducted systems. Unlike standard axial fans, the tube axial design allows for higher static pressure, making them suitable for long duct runs. The motor is typically mounted within the air stream for direct drive models or outside for belt-drive versions handling hot or contaminated air. These fans are built with heavy-gauge steel housings and aerodynamically optimized impellers, ensuring longevity and performance in industrial exhaust, tunnel ventilation, and process cooling applications.',
+    description: 'Direct drive tube axial fans for ducted and non-ducted indoor and outdoor systems, 315 mm to 1600 mm diameter, up to 100,000 CFM.',
+    longDescription: 'SUV Tube Axial Fans are designed for high-volume air movement in both ducted and non-ducted systems. Direct drive construction ensures maintenance-free operation indoors and outdoors. Available in sizes from 315 mm to 1600 mm diameter, these fans can handle up to 100,000 CFM capacity. The heavy-gauge steel housing and aerodynamically optimized impellers ensure longevity and performance in industrial exhaust, tunnel ventilation, and process cooling applications.',
     applications: ['Tunnel Ventilation', 'Industrial Exhaust', 'Mine Ventilation', 'Paint Booth Exhaust', 'Process Cooling'],
     features: [
-      'Heavy-duty welded steel housing',
-      'Adjustable pitch blades for performance tuning',
-      'Direct drive or belt drive configurations',
-      'Indoor and outdoor grade motors',
-      'Explosion-proof motor options available',
-      'Wide range of sizes from 315mm to 1600mm'
+      'Direct drive tube axial design',
+      'Indoor and outdoor installation',
+      'Easy installation in ducted and non-ducted systems',
+      'Size range: 315 mm to 1600 mm diameter',
+      'Capacity up to 100,000 CFM',
+      'Explosion-proof motor options available'
     ],
     specs: {
-      capacityRange: '2,000 CMH to 150,000 CMH',
+      capacityRange: 'Up to 100,000 CFM',
       staticPressure: 'Up to 100 mmwg',
-      voltage: '415V 3-Phase'
+      voltage: '415V 3-Phase',
+      sizes: ['315mm', '400mm', '500mm', '630mm', '800mm', '1000mm', '1250mm', '1600mm']
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['tube axial fan', 'ducted axial blower', 'industrial exhaust blower', 'tunnel fan manufacturer', 'heavy duty axial fan'],
-    image: '/products/tube-axial-fans/main.webp'
+    image: '/products/tube-axial-fans/tube-axial-fan.jpg',
+    images: [
+      '/products/tube-axial-fans/tube-axial-fan.jpg',
+    ],
+    details: [
+      {
+        title: 'Direct Drive Tube Axial Fan',
+        content: 'Indoor and outdoor installation. Easy installation in ducted and non-ducted systems. Size range: 315 mm to 1600 mm diameter. Capacity up to 100,000 CFM. Ideal for tunnel ventilation, industrial exhaust, mine ventilation, and process cooling.',
+        image: '/products/tube-axial-fans/tube-axial-fan.jpg'
+      }
+    ]
   },
   {
     id: '15',
@@ -476,23 +666,120 @@ export const PRODUCTS: Product[] = [
     name: 'Belt Driven Cabinet Fans',
     category: 'Centrifugal Fans',
     categorySlug: 'centrifugal-fans',
-    description: 'High-capacity, adjustable-speed cabinet fans for large-scale commercial and industrial HVAC systems.',
-    longDescription: 'Our Belt Driven Cabinet Fans offer the ultimate in performance flexibility. By using a belt-drive system, the fan speed can be precisely tuned to meet the specific requirements of your system by simply changing the pulley ratios. These fans are housed in a robust, often insulated cabinet that protects the motor and drive components while significantly reducing noise. They are the preferred choice for large air handling requirements where high static pressure and variable performance are needed, such as in large office complexes, hospitals, and industrial plants.',
-    applications: ['Main AHU Supply', 'Large Scale Exhaust', 'Building Pressurization', 'Industrial Process Air', 'High-Static HVAC Systems'],
+    description: 'High-capacity belt driven cabinet fans for supply, exhaust, pressurization, kitchen, and smoke spill applications up to 25,000 CMH.',
+    longDescription: 'SUV Belt Driven Cabinet Fans are the preferred choice for large air handling requirements. The belt-drive system allows precise fan speed tuning by changing pulley ratios. Available for indoor and outdoor installation with easy duct connection in ducted and non-ducted systems. These fans handle supply, exhaust, pressurization, kitchen ventilation, and smoke spill applications. The robust galvanized housing protects motor and drive components while delivering up to 70 mmwg static pressure.',
+    applications: ['Supply & Exhaust Systems', 'Building Pressurization', 'Kitchen Ventilation', 'Smoke Spill Systems', 'High-Static HVAC Systems'],
     features: [
-      'Adjustable speed via pulley/belt system',
-      'Motor isolated from airstream for longevity',
-      'Robust galvanized steel cabinet construction',
-      'High-capacity forward or backward curved impellers',
-      'Easy access for maintenance and belt tensioning',
-      'Quiet operation due to enclosed design'
+      'Suitable for supply, exhaust, pressurization, kitchen, and smoke spill',
+      'Indoor and outdoor installation',
+      'Easy installation in ducted and non-ducted systems',
+      'Capacity up to 25,000 CMH',
+      'High static pressure up to 70 mmwg',
+      'Motor isolated from airstream for longevity'
     ],
     specs: {
-      capacityRange: '5,000 CMH to 60,000 CMH',
-      staticPressure: 'Up to 120 mmwg',
-      voltage: '415V 3-Phase'
+      capacityRange: '5,000 CMH to 25,000 CMH',
+      staticPressure: 'Up to 70 mmwg',
+      voltage: '220V / 415V'
     },
+    pricing: 'Contact for Quote',
     seoKeywords: ['belt driven fan', 'adjustable speed blower', 'cabinet exhaust fan', 'industrial HVAC supply', 'belt drive centrifugal fan'],
-    image: '/products/belt-driven-cabinet-fans/main.webp'
+    image: '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg',
+    images: [
+      '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg',
+    ],
+    details: [
+      {
+        title: 'Belt Driven Cabinet Fan',
+        content: 'Application: Supply / Exhaust / Pressurization / Kitchen / Smoke Spill. Indoor & Outdoor installation. Easy installation in ducted and non-ducted systems. Capacity up to 25,000 CMH. Static pressure up to 70 mm H2O. Belt drive allows speed adjustment via pulley ratio.',
+        image: '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg'
+      }
+    ]
+  },
+  {
+    id: '16',
+    slug: 'air-purifiers',
+    name: 'PURE AIR Commercial & Industrial Air Purifiers',
+    category: 'PURE AIR Purifiers',
+    categorySlug: 'air-purifiers',
+    badge: 'German Engineering',
+    description: 'German Mann+Hummel nano-fiber filtration technology purifying 2,000 sqft in 10 minutes. ISO 16890 certified. Made in India.',
+    longDescription: 'PURE AIR by SUV FANS brings German filtration excellence to commercial and industrial India. Nano fiber-enhanced filters designed by MANN+HUMMEL provide superior dust capture and best-in-class flow resistance. Two-stage filtration removes harmful particles including PM0.1, PM1.0, PM2.5, and PM10. The wall-mount design saves space while delivering 2,000 m³/h airflow that purifies a 1,000 sqft area in just 4 minutes. Filter life up to 6 months with professional disposal service. Customized units available for bulk orders.',
+    applications: ['Offices', 'Hospitals', 'Hotels', 'Cafeterias', 'Factories & Laboratories'],
+    features: [
+      'Premium Filters by Mann+Hummel (Germany) — nano fiber-enhanced',
+      'Two-stage filtration for exceptional particle removal',
+      'Removes PM0.1, PM1.0, PM2.5, and PM10',
+      'Filter efficiency: >95% for PM10, 80% for PM2.5 (ISO 16890)',
+      'Filter life up to 6 months — reduces maintenance costs',
+      'Live report sharing for real-time air quality monitoring'
+    ],
+    specs: {
+      capacityRange: '2,000 m³/h',
+      soundLevel: '<55 dB',
+      powerRange: '80W',
+      coverage: 'Purifies 1,000 sqft in 4 min / 2,000 sqft in 10 min',
+      dimensions: '950 mm (L) × 750 mm (W) × 250 mm (H)',
+      efficiency: '>95% PM10, 80% PM2.5 — ISO 16890 Certified'
+    },
+    pricing: 'Contact for Bulk Pricing',
+    specFeatureTable: [
+      { feature: 'Filter',                          value: 'Premium Filters by Mann+Hummel (Germany)' },
+      { feature: 'Manufacturing',                   value: 'Mass Production-Ready, Proudly Made in India' },
+      { feature: 'Air Purifier Technology',         value: 'Removes Harmful Particles: PM0.1, PM1.0, PM2.5 & PM10' },
+      { feature: 'Filter Design',                   value: 'Nano Fiber-Enhanced Filters for Superior Dust Capture and Airflow' },
+      { feature: 'Filtration Performance',          value: 'Two-Stage Filtration for Exceptional Particle Removal' },
+      { feature: 'Filter Life',                     value: 'Lasts Up to 6 Months, Reducing Maintenance Costs' },
+      { feature: 'Filter Efficiency',               value: 'Over 95% for PM10 and 80% for PM2.5 (ISO 16890 Certified)' },
+      { feature: 'Wall Mount',                      value: 'Convenient Wall Mount for Space-Saving Installation' },
+      { feature: 'Noise Levels & Energy Efficiency', value: 'Low Noise Levels (<55 dB) for a Distraction-Free Environment' },
+      { feature: 'Product Dimensions',              value: 'Compact Design: 950 mm (L) × 750 mm (W) × 250 mm (H)' },
+      { feature: 'Airflow Capacity',                value: 'High-Capacity 2,000 m³/h for Rapid Air Circulation' },
+      { feature: 'Power Consumption',               value: 'Efficient 80W Power Usage for Lower Operating Costs' },
+      { feature: 'Time to Recirculate Air',         value: 'Quickly Refreshes a 1,000 Sqft Area in Just 4 Minutes' },
+      { feature: 'Warranty',                        value: '3 Years (Excluding Electronics); Filters Replaced as Required' },
+      { feature: 'Filter Disposal',                 value: 'Professional, Responsible Filter Disposal Service' },
+      { feature: 'Service Interval',                value: 'Requires Service Only Once Every 6 Months' },
+    ],
+    seoKeywords: ['air purifier India', 'PURE AIR purifier', 'industrial air purifier', 'Mann Hummel filter', 'commercial air purifier', 'PM2.5 filter India', 'ISO 16890 air purifier'],
+    image: '/products/air-purifiers/air-purifier-3.jpg',
+    images: [
+      '/products/air-purifiers/air-purifier-3.jpg',
+      '/products/air-purifiers/air-purifier-4.jpg',
+      '/products/air-purifiers/air-purifier-5.jpg',
+      '/products/air-purifiers/air-purifier-1.jpg',
+      '/products/air-purifiers/air-purifier-2.jpg',
+    ],
+    details: [
+      {
+        title: 'Filter Technology — Mann+Hummel Germany',
+        content: 'Premium nano fiber-enhanced filters by MANN+HUMMEL (Germany). Provides superior dust capture with best-in-class flow resistance. Two-stage filtration removes PM0.1, PM1.0, PM2.5, and PM10.',
+        image: '/products/air-purifiers/air-purifier-logo.jpg'
+      },
+      {
+        title: 'Filtration Performance',
+        content: 'Filter efficiency: >95% for PM10 (dust & pollen), 85% for PM2.5 (smoke & fog), 80% for PM0.1–1.0 (bacteria & viruses). ISO 16890 certified. Filter life up to 6 months.',
+        image: '/products/air-purifiers/air-purifier-3.jpg'
+      },
+      {
+        title: 'Wall Mount Installation',
+        content: 'Convenient wall mount for space-saving installation. Compact design: 950 mm (L) × 750 mm (W) × 250 mm (H). Purifies 1,000 sqft in 4 minutes and 2,000 sqft in 10 minutes at 2,000 m³/h.',
+        image: '/products/air-purifiers/air-purifier-4.jpg'
+      },
+      {
+        title: 'Service & Warranty',
+        content: '3-year warranty (excluding electronics). Service interval: once every 6 months. Professional, responsible filter disposal service. Live report sharing for real-time air quality monitoring. Customised for bulk orders.',
+        image: '/products/air-purifiers/air-purifier-5.jpg'
+      }
+    ],
+    whyChooseContent: [
+      'ISO 16890 Certified Filters',
+      'German Mann+Hummel Technology',
+      'Made in India',
+      '3-Year Warranty',
+      'Service Only Every 6 Months',
+      'Live Air Quality Report Sharing',
+      'Customised for Bulk Orders'
+    ]
   }
 ];

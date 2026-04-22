@@ -90,7 +90,15 @@ const Navbar = () => {
                     All Products
                   </Link>
                 </DropdownMenuItem>
-                {PRODUCT_CATEGORIES.slice(0, 6).map((cat) => (
+                <DropdownMenuItem asChild>
+                  <Link
+                    href="/catalog"
+                    className="font-bold cursor-pointer hover:bg-[#F4F6F8] py-3 px-4 text-[#2E86B8] border-b border-[#E5E7EB] text-xs uppercase tracking-widest"
+                  >
+                    📄 Full Catalogue
+                  </Link>
+                </DropdownMenuItem>
+                {PRODUCT_CATEGORIES.map((cat) => (
                   <DropdownMenuItem key={cat.slug} asChild>
                     <Link
                       href={`/products/${cat.slug}`}
@@ -216,7 +224,10 @@ const Navbar = () => {
                     <Link href="/products" className="py-2 text-sm font-bold text-[#2E86B8]" onClick={() => setIsOpen(false)}>
                       All Products
                     </Link>
-                    {PRODUCT_CATEGORIES.slice(0, 6).map((cat) => (
+                    <Link href="/catalog" className="py-2 text-sm font-bold text-[#F5A02E]" onClick={() => setIsOpen(false)}>
+                      📄 Full Catalogue
+                    </Link>
+                    {PRODUCT_CATEGORIES.map((cat) => (
                       <Link
                         key={cat.slug}
                         href={`/products/${cat.slug}`}

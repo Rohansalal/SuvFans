@@ -2,19 +2,19 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Mail, 
-  Phone, 
-  MapPin, 
-  Clock, 
-  Send, 
-  CheckCircle2, 
-  MessageSquare, 
-  ShieldCheck, 
-  Globe, 
-  Zap, 
+import {
+  Mail,
+  Phone,
+  MapPin,
+  Clock,
+  Send,
+  CheckCircle2,
+  MessageSquare,
+  ShieldCheck,
+  Globe,
   ArrowRight,
-  HeadphonesIcon
+  HeadphonesIcon,
+  Building2,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -52,67 +52,37 @@ interface FormErrors {
 const ContactPage = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState<FormData>({
-    name: '',
-    company: '',
-    email: '',
-    phone: '',
-    city: '',
-    category: '',
-    message: '',
+    name: '', company: '', email: '', phone: '', city: '', category: '', message: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
-
-    if (!formData.name || formData.name.length < 2) {
-      newErrors.name = 'Full name is required';
-    }
-    if (!formData.company || formData.company.length < 2) {
-      newErrors.company = 'Company name is required';
-    }
-    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid business email';
-    }
-    if (!formData.phone || formData.phone.length < 10) {
-      newErrors.phone = 'Valid phone number is required';
-    }
-    if (!formData.city || formData.city.length < 2) {
-      newErrors.city = 'City name is required';
-    }
-    if (!formData.category) {
-      newErrors.category = 'Please select an inquiry category';
-    }
-    if (!formData.message || formData.message.length < 10) {
-      newErrors.message = 'Please provide more details (min 10 chars)';
-    }
-
+    if (!formData.name || formData.name.length < 2) newErrors.name = 'Full name is required';
+    if (!formData.company || formData.company.length < 2) newErrors.company = 'Company name is required';
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = 'Valid business email required';
+    if (!formData.phone || formData.phone.length < 10) newErrors.phone = 'Valid phone number required';
+    if (!formData.city || formData.city.length < 2) newErrors.city = 'City is required';
+    if (!formData.category) newErrors.category = 'Please select a category';
+    if (!formData.message || formData.message.length < 10) newErrors.message = 'Please add more details (min 10 chars)';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!validateForm()) {
-      return;
-    }
-
+    if (!validateForm()) return;
     setIsLoading(true);
     setSubmitError(null);
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
       const data = await res.json();
-
       if (!res.ok) {
         setSubmitError(data.error || 'Something went wrong. Please try again.');
       } else {
@@ -128,311 +98,312 @@ const ContactPage = () => {
 
   const handleChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-    if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: undefined }));
-    }
+    if (errors[field]) setErrors(prev => ({ ...prev, [field]: undefined }));
   };
+
+  const inputClass = (field: keyof FormErrors) =>
+    `h-11 border rounded-lg px-4 text-sm font-medium text-[#0B2A3C] bg-[#F8FAFC] focus:ring-0 transition-colors ${
+      errors[field] ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-[#2E86B8]'
+    }`;
 
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
-      {/* Hero Section - Premium Industrial Branding */}
-      <section className="relative bg-[#0B2A3C] text-white pt-[84px] md:pt-[104px] pb-24 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
+
+      {/* ── Hero ── */}
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
-        
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
-          <div className="max-w-4xl">
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6"
-            >
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
               Connect with SUV FANS
-            </motion.span> 
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-white text-4xl md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase tracking-tighter"
-            >
-              Engineering Support & <br className="hidden md:block" /> 
+            </span>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading text-white mb-6 leading-[1.05] uppercase tracking-tight">
+              Engineering Support &amp;<br />
               <span className="text-[#2E86B8]">Technical Inquiries</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-lg md:text-xl font-body text-gray-300 mb-0 leading-relaxed max-w-2xl"
-            >
-              Have a complex ventilation requirement or need a customized solution? Our expert engineering team is ready to assist you from concept to commissioning.
-            </motion.p>
-          </div>
+            </h1>
+            <p className="text-gray-300 text-lg leading-relaxed max-w-2xl">
+              Have a complex ventilation requirement or need a customised solution? Our expert engineering team is ready to assist you from concept to commissioning.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      <div className="container mx-auto px-4 md:px-6 -mt-16 relative z-30 pb-24">
+      {/* ── Main grid ── */}
+      <section className="container mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* Left Column: Contact Cards & Info */}
-          <div className="lg:col-span-4 space-y-6 order-2 lg:order-1">
-            
-            {/* Direct Contact Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+
+          {/* Left: contact info */}
+          <div className="lg:col-span-4 space-y-5 order-2 lg:order-1">
+
+            {/* Direct channels */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/80"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7"
             >
-              <h3 className="text-xl font-black font-heading text-[#0B2A3C] mb-8 uppercase tracking-tight flex items-center gap-3">
-                <HeadphonesIcon size={20} className="text-[#F5A02E]" />
-                Direct Channels
+              <h3 className="text-sm font-black text-[#0B2A3C] uppercase tracking-widest mb-6 flex items-center gap-2">
+                <HeadphonesIcon size={16} className="text-[#F5A02E]" /> Direct Channels
               </h3>
-
-              <div className="space-y-8">
-                {/* Phone */}
-                <div className="group cursor-pointer">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-300">
-                      <Phone size={22} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Call Support</p>
-                      <a href={`tel:${COMPANY_CONFIG.phone}`} className="text-lg font-black text-[#0B2A3C] hover:text-[#2E86B8] transition-colors">
-                        {COMPANY_CONFIG.phone}
-                      </a>
-                    </div>
+              <div className="space-y-6">
+                <a href={`tel:${COMPANY_CONFIG.phone}`} className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] group-hover:bg-[#2E86B8] group-hover:text-white transition-all shrink-0">
+                    <Phone size={18} />
                   </div>
-                </div>
-
-                {/* Email */}
-                <div className="group cursor-pointer">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] group-hover:bg-[#2E86B8] group-hover:text-white transition-all duration-300">
-                      <Mail size={22} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Email Desk</p>
-                      <a href={`mailto:${COMPANY_CONFIG.email}`} className="text-lg font-black text-[#0B2A3C] hover:text-[#2E86B8] transition-colors break-all">
-                        {COMPANY_CONFIG.email}
-                      </a>
-                    </div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Call Support</p>
+                    <p className="text-sm font-black text-[#0B2A3C] group-hover:text-[#2E86B8] transition-colors">{COMPANY_CONFIG.phone}</p>
                   </div>
-                </div>
+                </a>
 
-                {/* Hours */}
-                <div className="group">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-2xl bg-gray-50 flex items-center justify-center text-gray-400">
-                      <Clock size={22} />
-                    </div>
-                    <div>
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">Working Hours</p>
-                      <p className="text-[#0B2A3C] font-bold text-sm">
-                        Mon – Sat: 09:00 - 18:00 IST
-                      </p>
-                    </div>
+                <a href={`mailto:${COMPANY_CONFIG.email}`} className="flex items-center gap-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] group-hover:bg-[#2E86B8] group-hover:text-white transition-all shrink-0">
+                    <Mail size={18} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Email Desk</p>
+                    <p className="text-sm font-black text-[#0B2A3C] group-hover:text-[#2E86B8] transition-colors truncate">{COMPANY_CONFIG.email}</p>
+                  </div>
+                </a>
+
+                <a
+                  href={`https://wa.me/${COMPANY_CONFIG.whatsapp}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-green-50 flex items-center justify-center text-green-500 group-hover:bg-green-500 group-hover:text-white transition-all shrink-0">
+                    <MessageSquare size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0.5">WhatsApp</p>
+                    <p className="text-sm font-black text-[#0B2A3C] group-hover:text-green-600 transition-colors">Chat Now</p>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 shrink-0">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Working Hours</p>
+                    <p className="text-sm font-bold text-[#0B2A3C]">Mon – Sat · 09:00 – 18:00 IST</p>
                   </div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Address Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+            {/* Address — dark card */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-[#0B2A3C] p-8 rounded-[2rem] shadow-2xl border border-white/5 relative overflow-hidden group"
+              className="bg-[#0B2A3C] rounded-2xl border border-white/5 shadow-lg p-7 relative overflow-hidden"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#2E86B8]/10 rounded-full translate-x-1/2 -translate-y-1/2 blur-3xl" />
-              
-              <h3 className="text-xl font-black font-heading text-white mb-6 uppercase tracking-tight flex items-center gap-3 relative z-10">
-                 <MapPin size={20} className="text-[#F5A02E]" />
-                 Headquarters
-               </h3>
-              
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#2E86B8]/10 rounded-full translate-x-1/2 -translate-y-1/2 blur-2xl pointer-events-none" />
+              <h3 className="text-sm font-black text-white uppercase tracking-widest mb-5 flex items-center gap-2 relative z-10">
+                <MapPin size={16} className="text-[#F5A02E]" /> Works
+              </h3>
               <div className="relative z-10">
-                <p className="text-gray-400 font-body text-sm leading-relaxed mb-6">
-                  {COMPANY_CONFIG.address}
-                </p>
-                <div className="flex items-center gap-2 text-[#F5A02E] font-black text-[10px] uppercase tracking-widest group-hover:gap-4 transition-all duration-300">
-                  <span>View on Google Maps</span>
-                  <ArrowRight size={14} />
+                <div className="flex items-start gap-3 mb-4">
+                  <Building2 size={15} className="text-gray-500 mt-0.5 shrink-0" />
+                  <p className="text-gray-400 text-sm leading-relaxed">{COMPANY_CONFIG.address}</p>
                 </div>
+                <a
+                  href="https://maps.app.goo.gl/uX6Y3W5K7X5X5X5X5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-[#F5A02E] font-black text-[10px] uppercase tracking-widest hover:gap-3 transition-all"
+                >
+                  Get Directions <ArrowRight size={12} />
+                </a>
               </div>
             </motion.div>
 
-            {/* Quick Support Links Card */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
+            {/* Trust badges */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100/80"
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-7"
             >
-              <h3 className="text-sm font-black text-[#0B2A3C] uppercase tracking-widest mb-6">Technical Resources</h3>
+              <h3 className="text-sm font-black text-[#0B2A3C] uppercase tracking-widest mb-5">Why Choose Us</h3>
               <div className="space-y-4">
                 {[
-                  { label: 'Download Catalog', icon: Zap, href: '/catalog.pdf', download: true },
-                  { label: 'Engineering Guide', icon: ShieldCheck, href: '/engineering-guide.pdf', download: true },
-                  { label: 'Project Portfolio', icon: Globe, href: '/contact', download: false }
+                  { icon: ShieldCheck, label: 'ISO 9001:2015 Certified', sub: 'Quality management assured' },
+                  { icon: Globe, label: 'AMCA Standards', sub: 'Globally compliant products' },
+                  { icon: CheckCircle2, label: '24hr Response SLA', sub: 'Technical reply guaranteed' },
                 ].map((item, i) => (
-                  <a
-                    key={i}
-                    href={item.href}
-                    download={item.download ? item.label : undefined}
-                    target={!item.download ? '_self' : undefined}
-                    className="w-full flex items-center justify-between p-4 rounded-xl border border-gray-100 hover:border-[#2E86B8]/30 hover:bg-blue-50/30 transition-all text-left group"
-                  >
-                    <div className="flex items-center gap-3">
-                      <item.icon size={16} className="text-[#2E86B8]" />
-                      <span className="text-xs font-bold text-[#0B2A3C]">{item.label}</span>
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#0B2A3C]/5 flex items-center justify-center shrink-0">
+                      <item.icon size={15} className="text-[#2E86B8]" />
                     </div>
-                    <ArrowRight size={14} className="text-gray-300 group-hover:text-[#2E86B8] transition-colors" />
-                  </a>
+                    <div>
+                      <p className="text-[11px] font-black text-[#0B2A3C] uppercase tracking-wide">{item.label}</p>
+                      <p className="text-[10px] text-gray-400 font-medium">{item.sub}</p>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>
-
           </div>
 
-          {/* Right Column: Form Section */}
+          {/* Right: form */}
           <div className="lg:col-span-8 order-1 lg:order-2">
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="bg-white p-8 md:p-12 lg:p-16 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 h-full relative overflow-hidden"
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="bg-white rounded-2xl border border-gray-100 shadow-sm p-8 md:p-10"
             >
               {isSubmitted ? (
-                <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                   <div className="w-24 h-24 rounded-full bg-green-50 text-green-500 flex items-center justify-center mb-8 shadow-inner">
-                      <CheckCircle2 size={56} />
-                   </div>
-                   <h2 className="text-3xl md:text-4xl font-black font-heading text-[#0B2A3C] mb-4 uppercase tracking-tighter">Inquiry Submitted!</h2>
-                   <p className="text-gray-500 max-w-sm mb-10 text-lg">
-                     Thank you for reaching out. An engineering expert will contact you within 24 business hours.
-                   </p>
-                   <Button 
-                    onClick={() => setIsSubmitted(false)} 
-                    className="bg-[#0B2A3C] hover:bg-[#2E86B8] text-white px-10 h-14 rounded-xl font-black uppercase text-xs tracking-widest transition-all"
-                   >
-                     Send Another Request
-                   </Button>
+                <div className="flex flex-col items-center justify-center py-20 text-center">
+                  <div className="w-16 h-16 rounded-full bg-green-50 flex items-center justify-center mb-5">
+                    <CheckCircle2 size={32} className="text-green-500" />
+                  </div>
+                  <h2 className="text-2xl font-black font-heading text-[#0B2A3C] mb-3 uppercase tracking-tight">Inquiry Submitted!</h2>
+                  <p className="text-gray-500 max-w-sm mb-8 text-sm leading-relaxed">
+                    Thank you for reaching out. An engineering expert will contact you within 24 business hours.
+                  </p>
+                  <Button
+                    onClick={() => setIsSubmitted(false)}
+                    className="bg-[#0B2A3C] hover:bg-[#2E86B8] text-white h-11 px-8 rounded-lg font-black uppercase text-[10px] tracking-widest transition-colors"
+                  >
+                    Send Another Request
+                  </Button>
                 </div>
               ) : (
                 <>
-                  <div className="flex items-center gap-3 mb-10">
-                    <div className="w-1.5 h-8 bg-[#F5A02E] rounded-full" />
-                    <h3 className="text-2xl md:text-3xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter">Send an Engineering Request</h3>
+                  {/* Form header */}
+                  <div className="flex items-center gap-3 mb-8 pb-6 border-b border-gray-100">
+                    <div className="w-1 h-7 bg-[#F5A02E] rounded-full" />
+                    <div>
+                      <h3 className="text-xl font-black font-heading text-[#0B2A3C] uppercase tracking-tight">Send an Engineering Request</h3>
+                      <p className="text-gray-400 text-xs mt-0.5">All fields marked * are required</p>
+                    </div>
                   </div>
 
-                  <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Full Name *</label>
-                        <Input 
-                          placeholder="e.g. John Anderson" 
-                          className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.name ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {/* Row 1 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Full Name *</label>
+                        <Input
+                          placeholder="e.g. Rajesh Kumar"
+                          className={inputClass('name')}
                           value={formData.name}
                           onChange={(e) => handleChange('name', e.target.value)}
                         />
-                        {errors.name && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.name}</p>}
+                        {errors.name && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.name}</p>}
                       </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Company Name *</label>
-                        <Input 
-                          placeholder="e.g. Global Industrial Corp" 
-                          className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.company ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Company Name *</label>
+                        <Input
+                          placeholder="e.g. Industrial Corp Ltd."
+                          className={inputClass('company')}
                           value={formData.company}
                           onChange={(e) => handleChange('company', e.target.value)}
                         />
-                        {errors.company && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.company}</p>}
+                        {errors.company && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.company}</p>}
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Business Email *</label>
-                        <Input 
-                          placeholder="john@company.com" 
-                          className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.email ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                    {/* Row 2 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Business Email *</label>
+                        <Input
                           type="email"
+                          placeholder="email@company.com"
+                          className={inputClass('email')}
                           value={formData.email}
                           onChange={(e) => handleChange('email', e.target.value)}
                         />
-                        {errors.email && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.email}</p>}
+                        {errors.email && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.email}</p>}
                       </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Phone Number *</label>
-                        <Input 
-                          placeholder="+91-XXXXX-XXXXX" 
-                          className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.phone ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Phone Number *</label>
+                        <Input
+                          placeholder="+91 98765 43210"
+                          className={inputClass('phone')}
                           value={formData.phone}
                           onChange={(e) => handleChange('phone', e.target.value)}
                         />
-                        {errors.phone && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.phone}</p>}
+                        {errors.phone && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.phone}</p>}
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Location / City *</label>
-                        <Input 
-                          placeholder="e.g. New Delhi" 
-                          className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.city ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                    {/* Row 3 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Location / City *</label>
+                        <Input
+                          placeholder="e.g. New Delhi"
+                          className={inputClass('city')}
                           value={formData.city}
                           onChange={(e) => handleChange('city', e.target.value)}
                         />
-                        {errors.city && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.city}</p>}
+                        {errors.city && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.city}</p>}
                       </div>
-                      <div className="space-y-3">
-                        <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Solution Category *</label>
-                        <Select value={formData.category} onValueChange={(value) => handleChange('category', value || '')}>
-                          <SelectTrigger className={`h-14 bg-gray-50/50 border-2 rounded-2xl focus:ring-0 px-6 font-bold text-[#0B2A3C] transition-all ${errors.category ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}>
-                            <SelectValue placeholder="Select interest" />
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Solution Category *</label>
+                        <Select value={formData.category} onValueChange={(v) => handleChange('category', v ?? '')}>
+                          <SelectTrigger className={`h-11 border rounded-lg px-4 text-sm font-medium bg-[#F8FAFC] focus:ring-0 transition-colors ${errors.category ? 'border-red-300' : 'border-gray-200 focus:border-[#2E86B8]'}`}>
+                            <SelectValue placeholder="Select category" />
                           </SelectTrigger>
-                          <SelectContent className="rounded-xl border-2 border-gray-100 shadow-2xl p-2 bg-white">
+                          <SelectContent className="rounded-xl border border-gray-100 shadow-xl p-1.5 bg-white z-50">
                             {PRODUCT_CATEGORIES.map((cat) => (
-                              <SelectItem key={cat.slug} value={cat.slug} className="rounded-lg font-bold text-[#0B2A3C] uppercase text-[10px] tracking-widest p-3">{cat.name}</SelectItem>
+                              <SelectItem key={cat.slug} value={cat.slug} className="rounded-lg text-[11px] font-bold text-[#0B2A3C] uppercase tracking-widest py-2.5 px-3">
+                                {cat.name}
+                              </SelectItem>
                             ))}
-                            <SelectItem value="custom" className="rounded-lg font-bold text-[#2E86B8] uppercase text-[10px] tracking-widest p-3">Custom Requirement</SelectItem>
+                            <SelectItem value="custom" className="rounded-lg text-[11px] font-bold text-[#2E86B8] uppercase tracking-widest py-2.5 px-3">
+                              Custom Requirement
+                            </SelectItem>
                           </SelectContent>
                         </Select>
-                        {errors.category && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.category}</p>}
+                        {errors.category && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.category}</p>}
                       </div>
                     </div>
 
-                    <div className="space-y-3">
-                      <label className="text-[10px] font-black text-[#0B2A3C] uppercase tracking-[0.15em] ml-1">Technical Requirement Details *</label>
-                      <Textarea 
-                        placeholder="Please provide capacity, pressure, or application details..." 
-                        className={`min-h-[160px] bg-gray-50/50 border-2 rounded-3xl focus:ring-0 p-6 font-bold text-[#0B2A3C] transition-all resize-none ${errors.message ? 'border-red-100 focus:border-red-300' : 'border-gray-100 focus:border-[#2E86B8]'}`}
+                    {/* Message */}
+                    <div className="space-y-1.5">
+                      <label className="text-[10px] font-black text-gray-500 uppercase tracking-widest">Technical Requirements *</label>
+                      <Textarea
+                        placeholder="Describe your application — capacity needed, static pressure, installation type, environment conditions..."
+                        className={`min-h-[140px] border rounded-lg p-4 text-sm font-medium text-[#0B2A3C] bg-[#F8FAFC] focus:ring-0 resize-none transition-colors ${errors.message ? 'border-red-300 focus:border-red-400' : 'border-gray-200 focus:border-[#2E86B8]'}`}
                         value={formData.message}
                         onChange={(e) => handleChange('message', e.target.value)}
                       />
-                      {errors.message && <p className="text-[10px] font-bold text-red-500 ml-1 uppercase">{errors.message}</p>}
+                      {errors.message && <p className="text-[10px] font-bold text-red-500 uppercase tracking-wide">{errors.message}</p>}
                     </div>
 
                     {submitError && (
-                      <div className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">
+                      <div className="p-3.5 rounded-lg bg-red-50 border border-red-100 text-red-600 text-xs font-bold uppercase tracking-wide">
                         {submitError}
                       </div>
                     )}
 
                     <Button
                       type="submit"
-                      className="w-full bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] h-16 text-xs font-black uppercase tracking-[0.2em] rounded-2xl shadow-xl shadow-[#F5A02E]/20 transition-all active:scale-[0.98] disabled:opacity-70"
                       disabled={isLoading}
+                      className="w-full bg-[#0B2A3C] hover:bg-[#F5A02E] hover:text-[#0B2A3C] text-white h-12 font-black text-[11px] uppercase tracking-widest rounded-lg transition-colors"
                     >
                       {isLoading ? (
                         <span className="flex items-center gap-2">
-                          <div className="w-4 h-4 border-2 border-[#0B2A3C]/30 border-t-[#0B2A3C] rounded-full animate-spin" />
-                          Processing Request...
+                          <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                          Sending…
                         </span>
                       ) : (
                         <span className="flex items-center gap-2">
-                          <Send size={16} />
-                          Dispatch Request
+                          <Send size={15} /> Submit Engineering Request
                         </span>
                       )}
                     </Button>
@@ -442,62 +413,43 @@ const ContactPage = () => {
             </motion.div>
           </div>
         </div>
+      </section>
 
-        {/* Professional Map Section */}
-        <motion.section 
-          initial={{ opacity: 0, y: 30 }}
+      {/* ── Map ── */}
+      <section className="container mx-auto px-4 md:px-6 pb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-24"
+          className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden"
         >
-          <div className="bg-white p-4 rounded-[3rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
-             <div className="relative w-full h-[500px] rounded-[2.5rem] overflow-hidden">
-               <iframe 
-                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.868352222728!2d76.84074817551044!3d28.2417400758784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d39e99a84b39b%3A0x673193e50c41031c!2sSUV%20FANS%20LLP!5e0!3m2!1sen!2sin!4v1711651234567!5m2!1sen!2sin"
-                 width="100%"
-                 height="100%"
-                 style={{ border: 0 }}
-                 allowFullScreen
-                 loading="lazy"
-                 referrerPolicy="no-referrer-when-downgrade"
-                 className="absolute inset-0 grayscale contrast-125 brightness-100"
-                 title="SUV FANS Location"
-               ></iframe>
-               
-               {/* Overlay Map Badge */}
-               <div className="absolute top-8 left-8 bg-[#0B2A3C] text-white p-6 rounded-3xl shadow-2xl border border-white/10 hidden md:block max-w-xs">
-                 <h4 className="text-lg font-black font-heading uppercase tracking-tight mb-2">Visit Our Works</h4>
-                 <p className="text-gray-400 text-xs leading-relaxed mb-4">
-                   Experience our state-of-the-art manufacturing facility in Bhiwadi.
-                 </p>
-                 <Button asChild variant="outline" size="sm" className="w-full border-white/20 text-white hover:bg-white/10 font-bold text-[10px] uppercase">
-                   <a href="https://maps.app.goo.gl/uX6Y3W5K7X5X5X5X5" target="_blank" rel="noopener noreferrer">
-                     Get Directions
-                   </a>
-                 </Button>
-               </div>
-             </div>
-          </div>
-        </motion.section>
-
-        {/* Global Reach / Trust Section */}
-        <div className="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { title: 'Global Standards', desc: 'Compliance with AMCA, ISO, and international safety protocols.', icon: Globe },
-            { title: 'Response SLA', desc: 'Guaranteed technical response within 24 business hours.', icon: MessageSquare },
-            { title: 'After-Sales', desc: 'Comprehensive pan-India service and technical maintenance support.', icon: ShieldCheck }
-          ].map((item, i) => (
-            <div key={i} className="text-center p-8 bg-white/50 rounded-[2rem] border border-gray-100">
-              <div className="w-14 h-14 rounded-2xl bg-[#2E86B8]/10 flex items-center justify-center text-[#2E86B8] mx-auto mb-6">
-                <item.icon size={24} />
-              </div>
-              <h4 className="text-[#0B2A3C] font-black uppercase text-sm mb-2 tracking-tight">{item.title}</h4>
-              <p className="text-gray-500 text-xs leading-relaxed font-body">{item.desc}</p>
+          <div className="relative w-full h-[440px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3514.868352222728!2d76.84074817551044!3d28.2417400758784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d39e99a84b39b%3A0x673193e50c41031c!2sSUV%20FANS%20LLP!5e0!3m2!1sen!2sin!4v1711651234567!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0 grayscale"
+              title="SUV FANS Location"
+            />
+            <div className="absolute top-6 left-6 bg-[#0B2A3C] text-white p-5 rounded-2xl shadow-xl border border-white/10 hidden md:block max-w-[260px]">
+              <h4 className="text-sm font-black uppercase tracking-tight mb-1.5">Visit Our Works</h4>
+              <p className="text-gray-400 text-xs leading-relaxed mb-4">{COMPANY_CONFIG.address}</p>
+              <a
+                href="https://maps.app.goo.gl/uX6Y3W5K7X5X5X5X5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-[#F5A02E] font-black text-[10px] uppercase tracking-widest hover:gap-3 transition-all"
+              >
+                Get Directions <ArrowRight size={11} />
+              </a>
             </div>
-          ))}
-        </div>
-
-      </div>
+          </div>
+        </motion.div>
+      </section>
     </div>
   );
 };

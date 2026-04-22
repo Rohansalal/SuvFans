@@ -9,7 +9,7 @@ import {
   ShieldCheck,
   Zap,
   Wind,
-  Users,
+
   Target,
   ArrowRight,
   CheckCircle2,
@@ -30,12 +30,6 @@ import {
 import { Button } from '@/components/ui/button';
 import { COMPANY_CONFIG } from '@/lib/config';
 
-const stats = [
-  { value: `${COMPANY_CONFIG.yearsOfExperience}+`, label: 'Years of Manufacturing', icon: Factory },
-  { value: '9', label: 'Fan Categories', icon: Wind },
-  { value: '500+', label: 'Clients Served', icon: Users },
-  { value: 'ISO 9001', label: 'Quality Certified', icon: ShieldCheck },
-];
 
 const productCategories = [
   { name: 'Centrifugal Inline Cubic Fans', icon: Wind },
@@ -51,24 +45,24 @@ const productCategories = [
 
 const values = [
   {
-    icon: ShieldCheck,
-    title: 'Quality First',
-    description: 'Every fan is manufactured to ISO 9001:2015 standards with rigorous in-house testing before dispatch.',
+    icon: CheckCircle2,
+    title: 'Ease of Doing Business',
+    description: 'Simple processes, clear communication, and dependable execution — from inquiry to delivery.',
+  },
+  {
+    icon: BarChart3,
+    title: 'Application-Driven Engineering Expertise',
+    description: 'Solutions designed to meet exact project and performance requirements. We engineer for your application, not a catalogue.',
   },
   {
     icon: Zap,
-    title: 'Energy Efficiency',
-    description: 'We engineer fans with IE3-rated motors and aerodynamic impellers that reduce running costs by up to 40%.',
-  },
-  {
-    icon: Wrench,
-    title: 'Custom Engineering',
-    description: 'Our in-house design team engineers bespoke solutions for non-standard temperature, pressure, and corrosion requirements.',
+    title: 'Best-in-Class Responsiveness',
+    description: 'Quick turnaround, proactive support, and timely product & project delivery. We move as fast as your project demands.',
   },
   {
     icon: Globe,
     title: 'Pan-India Reach',
-    description: 'From Bhiwadi we serve factories, hospitals, malls, tunnels, and infrastructure projects across every Indian state.',
+    description: 'From Bhiwadi, Rajasthan we serve factories, hospitals, malls, tunnels, and infrastructure projects across every Indian state.',
   },
 ];
 
@@ -122,123 +116,102 @@ export default function AboutPage() {
     <div className="bg-background min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="bg-primary relative overflow-hidden pt-20 pb-32">
-        {/* Grid */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="aboutGrid" width="50" height="50" patternUnits="userSpaceOnUse">
-                <path d="M 50 0 L 0 0 0 50" fill="none" stroke="white" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#aboutGrid)" />
-          </svg>
-        </div>
+      <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+        {/* Full-bleed background image */}
+        <Image
+          src="/Aboutus.webp"
+          alt="SUV FANS manufacturing facility"
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+        {/* Layered gradient overlay — dark at bottom, slightly transparent at top */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0B1A26] via-[#0B2A3C]/70 to-[#0B2A3C]/30" />
+        {/* Subtle diagonal accent strip */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0B2A3C]/60 via-transparent to-transparent" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            {/* Left */}
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="h-px w-16 bg-accent" />
-                <span className="text-accent font-bold uppercase tracking-widest text-sm">Who We Are</span>
-                <div className="h-px w-16 bg-accent" />
-              </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-white mb-6 leading-tight uppercase">
-                Industrial Ventilation <br />
-                <span className="text-accent">Built in India.</span>
-              </h1>
-              <p className="text-white/70 text-lg leading-relaxed mb-8 max-w-xl">
-                SUV FANS LLP is a Bhiwadi-based manufacturer of heavy-duty industrial fans and HVAC equipment. We design, engineer, and manufacture 9 categories of ventilation products — from centrifugal blowers to 24-ft HVLS giants — serving factories, warehouses, hospitals, malls, and infrastructure projects across India.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-bold uppercase tracking-wide text-sm px-7 h-11 rounded-sm">
-                  <Link href="/products">View Our Products <ArrowRight className="ml-2" size={16} /></Link>
-                </Button>
-                <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-wide text-sm px-7 h-11 rounded-sm">
-                  <Link href="/contact">Contact Us</Link>
-                </Button>
-              </div>
-            </motion.div>
+        {/* Content */}
+        <div className="relative z-10 container mx-auto px-4 md:px-6 pb-20 pt-40">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl"
+          >
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-[2px] bg-[#F5A02E]" />
+              <span className="text-[#F5A02E] font-black text-xs uppercase tracking-[0.25em]">YOUR PARTNER IN AIR MOVEMENT</span>
+            </div>
 
-            {/* Right – Image */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="relative rounded-sm overflow-hidden border border-white/10 shadow-2xl aspect-[4/3]">
-                <Image
-                  src="/Aboutus.webp"
-                  alt="SUV FANS manufacturing facility"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                  priority
-                />
-                <div className="absolute inset-0 bg-primary/20" />
-              </div>
+            {/* Headline */}
+            <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 uppercase tracking-tight">
+              Industrial Fan<br />
+              <span className="text-[#2E86B8]">&amp; HVAC</span><br />
+              <span className="text-white">Manufacturer</span><br />
+              <span className="text-[#F5A02E] text-4xl md:text-5xl">— Built in India.</span>
+            </h1>
 
-              {/* Floating badge */}
-              <div className="absolute -bottom-5 -left-5 bg-card border border-border shadow-xl p-4 rounded-sm flex items-center gap-3">
-                <div className="w-10 h-10 bg-accent/10 rounded-sm flex items-center justify-center">
-                  <ShieldCheck size={20} className="text-accent" />
+            {/* Sub-copy */}
+            <p className="text-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">
+              Founded by a mechanical engineer with 19+ years of HVAC and air ventilation manufacturing expertise — across Indian, Indo-European JV, and US-based organisations. B.Tech Mechanical Engineering · PGDBA Operations &amp; Research.
+            </p>
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 mb-16">
+              <Button asChild className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black uppercase tracking-wider text-sm px-8 h-12 rounded-none">
+                <Link href="/products">Our Products <ArrowRight className="ml-2" size={16} /></Link>
+              </Button>
+              <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-wider text-sm px-8 h-12 rounded-none">
+                <Link href="/contact">Contact Us</Link>
+              </Button>
+            </div>
+
+            {/* Bottom stats strip */}
+            <div className="flex flex-wrap gap-0 border-t border-white/10 pt-8">
+              {[
+                { value: '19+', label: 'Years of Engineering Expertise' },
+                { value: '9', label: 'Fan & HVAC Product Categories' },
+                { value: 'ISO 9001', label: 'Quality Certified Manufacturing' },
+                { value: 'Pan-India', label: 'Installation & Support Network' },
+              ].map((stat, i) => (
+                <div key={i} className={`flex flex-col pr-8 mr-8 ${i < 3 ? 'border-r border-white/10' : ''} mb-4`}>
+                  <span className="text-2xl font-black text-[#F5A02E] font-heading leading-none">{stat.value}</span>
+                  <span className="text-[10px] text-white/50 uppercase tracking-widest mt-1 font-bold">{stat.label}</span>
                 </div>
-                <div>
-                  <div className="text-xs font-bold text-muted-foreground uppercase tracking-widest">Certified</div>
-                  <div className="font-bold text-primary text-sm">ISO 9001:2015</div>
-                </div>
-              </div>
-
-              <div className="absolute -top-5 -right-5 bg-accent p-4 rounded-sm shadow-xl">
-                <MapPin size={20} className="text-primary" />
-                <div className="text-xs font-bold text-primary uppercase tracking-tight mt-1">Bhiwadi<br />Rajasthan</div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Stats Strip */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 container mx-auto px-4 md:px-6">
-          <div className="bg-card shadow-2xl border border-border grid grid-cols-2 md:grid-cols-4">
-            {stats.map((s, i) => (
-              <div key={s.label} className={`p-6 text-center flex flex-col items-center gap-2 ${i < stats.length - 1 ? 'border-r border-border' : ''}`}>
-                <s.icon size={20} className="text-accent" />
-                <div className="text-2xl md:text-3xl font-heading font-bold text-primary">{s.value}</div>
-                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground leading-tight">{s.label}</div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* ── Company Story ── */}
-      <section className="container mx-auto px-4 md:px-6 pt-32 pb-20">
+      <section className="container mx-auto px-4 md:px-6 pt-16 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">Our Story</span>
+            <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">About Us</span>
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-6 uppercase">
               Manufactured in Bhiwadi.<br />
               <span className="text-secondary">Trusted Across India.</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed mb-5 text-base">
-              SUV FANS LLP was founded with one goal: to build world-class industrial ventilation equipment in India, for Indian conditions. Our manufacturing plant in Bhiwadi, Rajasthan — India's fastest-growing industrial hub — gives us direct access to raw materials, skilled engineering talent, and the National Capital Region's vast industrial base.
+              Founded by a mechanical engineer with 19+ years of experience in HVAC and air ventilation manufacturing, our company is driven by strong technical expertise and global industry exposure. The promoter holds a B.Tech in Mechanical Engineering and a PGDBA in Operations &amp; Research, with extensive hands-on experience in air handling and ventilation systems across Indian, Indo-European joint venture, and US-based organizations.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8 text-base">
-              We don't import and rebadge. Every fan bearing the SUV FANS name is designed, engineered, and tested in-house. Our facility handles everything from sheet-metal fabrication and impeller balancing to motor assembly and acoustic testing — giving us end-to-end quality control that import-dependent competitors cannot match.
+              Built on this foundation, we specialize in manufacturing and turnkey HVAC solutions that deliver reliable performance, energy efficiency, and application-focused design for commercial and industrial environments.
             </p>
 
             <div className="space-y-3">
               {[
-                'In-house sheet metal fabrication and impeller balancing',
-                'Acoustic and performance testing before every dispatch',
-                'Custom engineering for non-standard applications',
-                'Direct factory support — no middlemen, no delays',
+                'B.Tech Mechanical Engineering + PGDBA Operations & Research',
+                'Experience across Indian, Indo-European JV, and US-based organizations',
+                'In-house manufacturing — sheet metal, impeller balancing, acoustic testing',
+                'Direct factory support — no middlemen, fast turnaround',
               ].map((point) => (
                 <div key={point} className="flex items-start gap-3">
                   <CheckCircle2 size={16} className="text-accent shrink-0 mt-0.5" />
@@ -358,7 +331,7 @@ export default function AboutPage() {
         >
           <span className="text-secondary font-bold uppercase tracking-widest text-sm mb-3 block">What Drives Us</span>
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary uppercase mb-4">
-            Our Core Values
+            Our Value Proposition
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto" />
         </motion.div>
