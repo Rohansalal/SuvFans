@@ -322,43 +322,101 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Detailed Description Section */}
       <section id="product-overview" className="py-16 bg-gray-50 scroll-mt-[128px]">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-8 border-l-4 border-[#F5A02E] pl-6">
-               Product Overview
-             </h2>
+              Product Overview
+            </h2>
             <div className="prose prose-lg max-w-none text-gray-600 font-body leading-relaxed mb-12">
               <p className="mb-6 whitespace-pre-line">
                 {product.longDescription || product.description}
               </p>
             </div>
 
-            {/* Additional Details Grid */}
-            {product.details && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {product.details.map((detail, idx) => (
-                  <div key={idx} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col">
-                    {detail.image && (
-                      <div className="relative aspect-video w-full bg-white border-b border-gray-100">
-                        <Image
-                          src={detail.image}
-                          alt={detail.title}
-                          fill
-                          className="object-contain p-4"
-                        />
+            {product.details && product.details.length > 0 && (() => {
+              const techSections = product.details.filter(d => !d.image);
+              const variantSections = product.details.filter(d => d.image);
+              return (
+                <div className="space-y-10">
+                  {/* Technical construction cards — numbered grid */}
+                  {techSections.length > 0 && (
+                    <div>
+                      <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest mb-5">Construction &amp; Design</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        {techSections.map((detail, idx) => (
+                          <div key={idx} className="relative bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+                            <div className="absolute top-3 right-4 text-7xl font-black text-gray-50 leading-none select-none pointer-events-none">
+                              {String(idx + 1).padStart(2, '0')}
+                            </div>
+                            <div className="p-6">
+                              <div className="w-9 h-9 rounded-lg bg-[#0B2A3C]/5 flex items-center justify-center mb-4">
+                                <Settings size={16} className="text-[#2E86B8]" />
+                              </div>
+                              <h3 className="text-base font-bold font-heading text-[#0B2A3C] mb-2">{detail.title}</h3>
+                              <p className="text-gray-500 text-sm leading-relaxed">{detail.content}</p>
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    )}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold font-heading text-[#0B2A3C] mb-3">
-                         {detail.title}
-                       </h3>
-                      <p className="text-gray-600 font-body leading-relaxed text-sm">
-                        {detail.content}
-                      </p>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
+                  )}
+
+                  {/* Product variant sections — image left, content right */}
+                  {variantSections.length > 0 && (
+                    <div>
+                      <h3 className="text-sm font-black text-gray-400 uppercase tracking-widest mb-5">Product Range</h3>
+                      <div className="rounded-2xl overflow-hidden border border-gray-100 shadow-sm bg-white divide-y divide-gray-100">
+                        {variantSections.map((detail, idx) => (
+                          <div key={idx} className="flex flex-col md:flex-row">
+                            {/* Image — fixed square, contain so product is fully visible */}
+                            <div className="md:w-[220px] shrink-0 border-b md:border-b-0 md:border-r border-gray-100">
+                              <div className="relative w-full aspect-square bg-gray-50">
+                                <Image
+                                  src={detail.image!}
+                                  alt={detail.title}
+                                  fill
+                                  className="object-contain p-5"
+                                />
+                              </div>
+                            </div>
+
+                            {/* Content */}
+                            <div className="flex-1 p-6 flex flex-col justify-center">
+                              <h3 className="text-lg font-bold font-heading text-[#0B2A3C] mb-3">{detail.title}</h3>
+                              <div className="space-y-1.5">
+                                {detail.content.split('\n').map((line, lineIdx) => {
+                                  if (!line.trim()) return <div key={lineIdx} className="h-2" />;
+                                  if (line.trim().startsWith('•')) {
+                                    return (
+                                      <div key={lineIdx} className="flex items-start gap-2">
+                                        <span className="text-[#F5A02E] font-black mt-0.5 shrink-0 leading-none">›</span>
+                                        <span className="text-gray-800 text-sm font-medium leading-relaxed">{line.trim().slice(1).trim()}</span>
+                                      </div>
+                                    );
+                                  }
+                                  const isSpec = line.includes(':') && !line.startsWith(' ') && line.split(':')[0].length < 30;
+                                  if (isSpec) {
+                                    const [label, ...rest] = line.split(':');
+                                    return (
+                                      <div key={lineIdx} className="flex items-baseline gap-1.5 pt-1">
+                                        <span className="text-[#0B2A3C] font-bold text-sm shrink-0">{label}:</span>
+                                        <span className="text-gray-700 text-sm font-semibold">{rest.join(':').trim()}</span>
+                                      </div>
+                                    );
+                                  }
+                                  return (
+                                    <p key={lineIdx} className="text-gray-700 text-sm font-medium">{line}</p>
+                                  );
+                                })}
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
           </div>
         </div>
       </section>
