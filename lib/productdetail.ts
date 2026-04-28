@@ -157,7 +157,7 @@ export const CATALOGUE: CatalogueCategory[] = [
         images: [
            '/products/belt-driven-cabinet-fans/belt-driven-cabinet.jpg',
           '/products/belt-driven-cabinet-fans/belt-driven-cabinet-2.jpg',
-          '/products/belt-driven-cabinet-fans/main.webp',
+           
         ],
       },
       {
@@ -381,10 +381,10 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'Three options: VFD on the motor (best part-load efficiency), inlet vane dampers (good for occasional turn-down), or outlet damper (cheapest, lowest efficiency).',
           },
         ],
-        image: '/products/centrifugal-inline-cubic-fans/sisw-industrial-1.webp',
+        image: '/products/centrifugal-inline-cubic-fans/centrifugal-single-width-fan.png',
         images: [
           '/products/centrifugal-inline-cubic-fans/centrifugal-single-width-fan.png',
-          '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg',
+          // '/products/centrifugal-inline-cubic-fans/centrifugal-single-width.jpg',
         ],
       },
       {
@@ -612,9 +612,9 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'The 500 and 630 are rated under 85 dBA at 1 m. Add a discharge guard / mesh cone if you need to bring it down further.',
           },
         ],
-        image: '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg',
+        image: '/products/axial-wall-exhaust-supply-fans/Axial_Wall.webp',
         images: [
-          '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg',
+          // '/products/axial-wall-exhaust-supply-fans/direct-drive-wall-mount.jpg',
           '/products/axial-wall-exhaust-supply-fans/Axial_Wall.webp',
         ],
       },
@@ -684,9 +684,9 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'A 1530 direct-drive would need a slow-speed multi-pole motor that is significantly heavier and more expensive than a small motor + belt drive. Belt drive is the economical and serviceable choice at this diameter.',
           },
         ],
-        image: '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount.jpg',
+        image: '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount-fans.png',
         images: [
-          '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount.jpg',
+          // '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount.jpg',
           '/products/axial-wall-exhaust-supply-fans/belt-driven-wall-mount-fans.png',
         ],
       },
@@ -1094,7 +1094,6 @@ export const CATALOGUE: CatalogueCategory[] = [
         image: '/products/insulated-housing-cabinet-fan/industrial-cooler.jpg',
         images: [
           '/products/insulated-housing-cabinet-fan/industrial-cooler.jpg',
-          '/products/insulated-housing-cabinet-fan/main.webp',
         ],
       },
     ],
