@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { PRODUCT_CATEGORIES } from '@/lib/products';
+import { CATALOGUE } from '@/lib/productdetail';
 import { APPLICATIONS } from '@/lib/applications';
 import { COMPANY_CONFIG } from '@/lib/config';
 import {
@@ -98,10 +98,10 @@ const Navbar = () => {
                     📄 Full Catalogue
                   </Link>
                 </DropdownMenuItem>
-                {PRODUCT_CATEGORIES.map((cat) => (
+                {CATALOGUE.map((cat) => (
                   <DropdownMenuItem key={cat.slug} asChild>
                     <Link
-                      href={`/products/${cat.slug}`}
+                      href={cat.slug === 'pure-air-purifiers' ? '/air-purifiers' : `/products#cat-${cat.slug}`}
                       className="cursor-pointer hover:bg-[#F4F6F8] py-2.5 px-4 text-sm text-[#0B2A3C] font-medium"
                     >
                       {cat.name}
@@ -227,10 +227,10 @@ const Navbar = () => {
                     <Link href="/catalog" className="py-2 text-sm font-bold text-[#F5A02E]" onClick={() => setIsOpen(false)}>
                       📄 Full Catalogue
                     </Link>
-                    {PRODUCT_CATEGORIES.map((cat) => (
+                    {CATALOGUE.map((cat) => (
                       <Link
                         key={cat.slug}
-                        href={`/products/${cat.slug}`}
+                        href={cat.slug === 'pure-air-purifiers' ? '/air-purifiers' : `/products#cat-${cat.slug}`}
                         className="py-2 text-sm text-[#0B2A3C]/80 hover:text-[#F5A02E] transition-colors flex items-center gap-2"
                         onClick={() => setIsOpen(false)}
                       >

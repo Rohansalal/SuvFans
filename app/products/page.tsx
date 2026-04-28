@@ -262,7 +262,7 @@ export default function ProductsPage() {
         ) : (
           <div className="space-y-16">
             {groupedProducts.map(({ category, products }) => (
-              <section key={category.id}>
+              <section key={category.id} id={`cat-${category.slug}`} className="scroll-mt-32">
                 <header className="mb-6">
                   <div className="flex items-end justify-between flex-wrap gap-3 mb-3">
                     <div>
