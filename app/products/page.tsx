@@ -70,11 +70,11 @@ export default function ProductsPage() {
     });
   }, [searchQuery, selectedCategory]);
 
-  const groupedProducts = useMemo(() => {
-    return CATALOGUE.map((cat) => ({
-      category: cat,
-      products: filteredProducts.filter((p) => p.categorySlug === cat.slug),
-    })).filter((g) => g.products.length > 0);
+  const orderedProducts = useMemo(() => {
+    const orderMap = new Map(CATALOGUE.map((c, i) => [c.slug, i]));
+    return [...filteredProducts].sort((a, b) => {
+      return (orderMap.get(a.categorySlug) ?? 0) - (orderMap.get(b.categorySlug) ?? 0);
+    });
   }, [filteredProducts]);
 
   const activeCategoryName = useMemo(() => {
@@ -244,9 +244,9 @@ export default function ProductsPage() {
         </div>
       </section>
 
-      {/* CATALOGUE — grouped by section */}
+      {/* CATALOGUE — flat product grid, ordered by section */}
       <section className="container mx-auto py-12 px-4 md:px-6">
-        {groupedProducts.length === 0 ? (
+        {orderedProducts.length === 0 ? (
           <div className="text-center py-32 bg-gray-50 rounded-[3rem] border-2 border-dashed border-gray-200">
             <div className="w-20 h-20 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-6">
               <Search size={32} className="text-gray-400" />
@@ -260,100 +260,74 @@ export default function ProductsPage() {
             </Button>
           </div>
         ) : (
-          <div className="space-y-16">
-            {groupedProducts.map(({ category, products }) => (
-              <section key={category.id} id={`cat-${category.slug}`} className="scroll-mt-32">
-                <header className="mb-6">
-                  <div className="flex items-end justify-between flex-wrap gap-3 mb-3">
-                    <div>
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="h-px w-6 bg-[#2E86B8]" />
-                        <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.2em]">
-                          Section {category.order}
-                        </span>
-                      </div>
-                      <h2 className="text-2xl md:text-3xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter">
-                        {category.name}
-                      </h2>
-                      <p className="text-sm text-gray-500 mt-1 max-w-2xl">{category.tagline}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+            {orderedProducts.map((product, index) => {
+              const isFirstInCategory =
+                index === 0 || orderedProducts[index - 1].categorySlug !== product.categorySlug;
+              return (
+              <article
+                key={product.id}
+                id={isFirstInCategory ? `cat-${product.categorySlug}` : undefined}
+                className={`group bg-white rounded-2xl shadow-[0_4px_16px_rgb(0,0,0,0.04)] border border-gray-100/80 overflow-hidden flex flex-col hover:shadow-[0_16px_40px_rgba(46,134,184,0.14)] hover:border-[#2E86B8]/40 hover:-translate-y-1 transition-all duration-500${isFirstInCategory ? ' scroll-mt-32' : ''}`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-[#F4F6F8]">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    fill
+                    sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
+                    className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute top-3 right-3 z-10">
+                    <div className="bg-white/90 backdrop-blur-md p-1.5 rounded-lg shadow-sm border border-white/20">
+                      <ShieldCheck size={14} className="text-green-500" />
                     </div>
-                    <span className="text-[10px] font-black uppercase tracking-widest text-gray-400">
-                      {products.length} product{products.length === 1 ? '' : 's'}
-                    </span>
                   </div>
-                  {category.description && (
-                    <p className="text-[13px] text-gray-600 leading-relaxed max-w-4xl bg-white/60 border-l-2 border-[#2E86B8]/30 pl-4 py-1">
-                      {category.description}
-                    </p>
+                  {product.capacity && (
+                    <div className="absolute bottom-3 left-3 z-10">
+                      <div className="bg-[#0B2A3C]/85 backdrop-blur-md text-white px-2.5 py-1 rounded text-[9px] font-black uppercase tracking-widest">
+                        {product.capacity}
+                      </div>
+                    </div>
                   )}
-                </header>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
-                  {products.map((product) => (
-                    <article
-                      key={product.id}
-                      className="group bg-white rounded-2xl shadow-[0_4px_16px_rgb(0,0,0,0.04)] border border-gray-100/80 overflow-hidden flex flex-col hover:shadow-[0_12px_32px_rgba(46,134,184,0.12)] hover:border-[#2E86B8]/30 transition-all duration-500"
-                    >
-                      <div className="relative aspect-[4/3] overflow-hidden bg-[#F4F6F8]">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          sizes="(min-width: 1280px) 25vw, (min-width: 768px) 50vw, 100vw"
-                          className="object-contain p-4 transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute top-3 right-3 z-10">
-                          <div className="bg-white/90 backdrop-blur-md p-1.5 rounded-lg shadow-sm border border-white/20">
-                            <ShieldCheck size={14} className="text-green-500" />
-                          </div>
-                        </div>
-                        {product.capacity && (
-                          <div className="absolute bottom-3 left-3 z-10">
-                            <div className="bg-[#0B2A3C]/85 backdrop-blur-md text-white px-2.5 py-1 rounded text-[9px] font-black uppercase tracking-widest">
-                              {product.capacity}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-
-                      <div className="p-5 flex-grow flex flex-col bg-gradient-to-b from-white to-gray-50/30">
-                        <div className="mb-4">
-                          <div className="flex items-center gap-2 mb-2">
-                            <span className="h-px w-4 bg-[#2E86B8]/30" />
-                            <span className="text-[9px] font-black text-[#2E86B8] uppercase tracking-[0.2em]">
-                              {product.categoryName}
-                            </span>
-                          </div>
-                          <h3 className="text-base font-black font-heading text-[#0B2A3C] mb-2 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
-                            {product.name}
-                          </h3>
-                          <p className="text-gray-500 font-body text-xs mb-0 line-clamp-3 leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-                            {product.shortDescription}
-                          </p>
-                        </div>
-
-                        <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
-                          <Link
-                            href={`/products/${product.slug}`}
-                            className="flex-grow flex items-center justify-center gap-2 bg-[#0B2A3C] text-white py-2.5 px-4 rounded-lg font-black text-[9px] uppercase tracking-widest hover:bg-[#2E86B8] transition-all duration-300 shadow-sm"
-                          >
-                            View Details
-                            <ArrowRight size={12} />
-                          </Link>
-                          <button
-                            type="button"
-                            title="Download Technical Datasheet"
-                            className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-gray-100 text-gray-400 hover:text-[#0B2A3C] hover:border-[#0B2A3C] hover:bg-white transition-all duration-300"
-                          >
-                            <Download size={14} />
-                          </button>
-                        </div>
-                      </div>
-                    </article>
-                  ))}
                 </div>
-              </section>
-            ))}
+
+                <div className="p-5 flex-grow flex flex-col bg-white">
+                  <div className="mb-4">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="h-px w-4 bg-[#2E86B8]/30" />
+                      <span className="text-[9px] font-black text-[#2E86B8] uppercase tracking-[0.2em]">
+                        {product.categoryName}
+                      </span>
+                    </div>
+                    <h3 className="text-base font-black font-heading text-[#0B2A3C] mb-2 group-hover:text-[#2E86B8] transition-colors line-clamp-2 uppercase leading-tight tracking-tighter">
+                      {product.name}
+                    </h3>
+                    <p className="text-gray-500 font-body text-xs line-clamp-3 leading-relaxed">
+                      {product.shortDescription}
+                    </p>
+                  </div>
+
+                  <div className="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between gap-3">
+                    <Link
+                      href={`/products/${product.slug}`}
+                      className="flex-grow flex items-center justify-center gap-2 bg-[#0B2A3C] text-white py-2.5 px-4 rounded-lg font-black text-[9px] uppercase tracking-widest hover:bg-[#2E86B8] transition-all duration-300 shadow-sm"
+                    >
+                      View Details
+                      <ArrowRight size={12} />
+                    </Link>
+                    <button
+                      type="button"
+                      title="Download Technical Datasheet"
+                      className="shrink-0 w-9 h-9 flex items-center justify-center rounded-lg border border-gray-100 text-gray-400 hover:text-[#0B2A3C] hover:border-[#0B2A3C] hover:bg-white transition-all duration-300"
+                    >
+                      <Download size={14} />
+                    </button>
+                  </div>
+                </div>
+              </article>
+              );
+            })}
           </div>
         )}
       </section>
