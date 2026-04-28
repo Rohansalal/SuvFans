@@ -48,7 +48,7 @@ const ProductCategoriesGrid = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {CATALOGUE.map((cat, index) => {
+          {CATALOGUE.slice(0, 6).map((cat, index) => {
             const Icon = categoryIcons[cat.slug] || Fan;
             const categoryImage = cat.products[0]?.image;
             const productCount = cat.products.length;
@@ -118,6 +118,30 @@ const ProductCategoriesGrid = () => {
             );
           })}
         </div>
+
+        {CATALOGUE.length > 6 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="flex flex-col items-center mt-14"
+          >
+            <p className="text-sm text-[#6B7280] mb-5">
+              {CATALOGUE.length - 6} more sections — including HVAC ducts, turnkey HVAC and PURE AIR purifiers
+            </p>
+            <Button
+              asChild
+              size="lg"
+              className="bg-[#0B2A3C] hover:bg-[#2E86B8] text-white font-heading font-black uppercase tracking-[0.2em] px-10 h-14 rounded-xl shadow-lg shadow-[#0B2A3C]/20 transition-all"
+            >
+              <Link href="/products" className="flex items-center gap-3">
+                View All Products
+                <ArrowRight size={18} />
+              </Link>
+            </Button>
+          </motion.div>
+        )}
       </div>
     </section>
   );
