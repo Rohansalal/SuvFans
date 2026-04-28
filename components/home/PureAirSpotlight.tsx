@@ -74,14 +74,13 @@ const PureAirSpotlight = () => {
             </div>
 
             <div className="relative flex justify-center lg:justify-end">
-              <div className="w-full max-w-[500px] aspect-square bg-white rounded-3xl shadow-2xl relative overflow-hidden group border-4 border-gray-50">
-                {/* Product Visualization with the new Image */}
+              <div className="w-full max-w-[500px] aspect-square bg-[#EEF3F8] rounded-3xl shadow-2xl relative overflow-hidden group border-4 border-gray-50">
                 <Image
-                  src="/pureair.webp"
+                  src="/products/air-purifiers/air-purifier-1.jpg"
                   alt="PURE AIR Commercial Air Purifier"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                  className="object-contain p-6 transition-transform duration-1000 group-hover:scale-105"
                   priority
                 />
                 

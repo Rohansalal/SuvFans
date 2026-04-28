@@ -16,7 +16,7 @@ const categoryIcons: { [key: string]: any } = {
   'tube-axial-fans': Fan,
   'belt-driven-cabinet-fans': Fan,
   'hvls-fans': Maximize,
-  'hvac-air-duct-kitchen-hoods': Scissors,
+  'hvlsfans': Scissors,
   'turnkey-hvac-products': Shield,
   'air-purifiers': Airplay,
 };

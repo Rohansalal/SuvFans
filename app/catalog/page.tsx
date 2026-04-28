@@ -44,7 +44,7 @@ const catalogSections = [
   {
     section: 'HVAC AIR DUCTS & KITCHEN HOODS',
     description: 'Flexible ducts (non-insulated, insulated, semi-rigid, fire-rated), duct connectors, and commercial kitchen hoods in GI and SS.',
-    slugs: ['flexible-ducts', 'hvac-air-duct-kitchen-hoods'],
+    slugs: ['flexible-ducts', 'hvlsfans'],
     pageRef: 'Page 6',
     color: '#0B2A3C',
   },

@@ -75,12 +75,12 @@ const PureAirPage = () => {
               transition={{ duration: 0.8 }}
               className="relative flex justify-center"
             >
-              <div className="w-full max-w-md aspect-square bg-white rounded-[40px] shadow-2xl overflow-hidden relative group">
+              <div className="w-full max-w-md aspect-square bg-[#EEF3F8] rounded-[40px] shadow-2xl overflow-hidden relative group">
                 <Image
-                  src="/products/air-purifiers/air-purifier-3.jpg"
+                  src="/products/air-purifiers/air-purifier-1.jpg"
                   alt="PURE AIR Commercial Air Purifier"
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="object-contain p-6 group-hover:scale-105 transition-transform duration-700"
                   priority
                 />
                 <div className="absolute inset-0 bg-[#0A2E5C]/10 group-hover:bg-transparent transition-colors duration-500"></div>
