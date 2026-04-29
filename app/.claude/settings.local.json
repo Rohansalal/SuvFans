@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Users/rohan/Desktop/Protech Planner Project/suv/SuvFans/**)",
+      "Bash(npm run *)"
+    ]
+  }
+}
