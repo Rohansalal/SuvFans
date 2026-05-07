@@ -746,8 +746,9 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'No more than 1–2 m of straight duct, and even then expect 30–40% airflow loss. For ducted work, choose a tube-axial or circular inline.',
           },
         ],
-        image: '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg',
+        image: '/products/popular fan/Propeller-Fan.jpg',
         images: [
+          '/products/popular fan/Propeller-Fan.jpg',
           '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg',
           // '/products/axial-wall-exhaust-supply-fans/propeller-fan-2.jpg',
         ],

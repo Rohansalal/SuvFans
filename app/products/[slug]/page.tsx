@@ -608,15 +608,14 @@ export default async function ProductDetailPage({
             <Button
               asChild
               size="lg"
-              className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black h-14 px-8 uppercase tracking-wide"
+              className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black h-14 px-8 uppercase tracking-wide rounded-xl"
             >
               <Link href="/get-quote">Request a Quote</Link>
             </Button>
             <Button
               asChild
               size="lg"
-              variant="outline"
-              className="border-2 border-white/20 text-white hover:bg-white/10 font-black h-14 px-8 uppercase tracking-wide"
+              className="bg-transparent border-2 border-white/30 text-white hover:bg-white/10 hover:text-white font-black h-14 px-8 uppercase tracking-wide rounded-xl"
             >
               <Link href="/products">Browse Catalogue</Link>
             </Button>
