@@ -41,7 +41,7 @@ export default function RootLayout({
           rel="stylesheet" 
         />
       </head>
-      <body className={`${robotoCondensed.variable} font-body bg-[#F4F6F8] text-[#0B2A3C] dark:bg-[#0B1A26] dark:text-white`}>
+      <body className={`${robotoCondensed.variable} font-body bg-[#F4F6F8] text-[#0B2A3C] dark:bg-[#0B1A26] dark:text-white`} suppressHydrationWarning>
         <Providers>
           <Navbar />
           <main className="min-h-screen pt-[72px]">

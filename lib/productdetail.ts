@@ -224,7 +224,7 @@ export const CATALOGUE: CatalogueCategory[] = [
         image: '/products/centrifugal-inline-cubic-fans/direct-drive-cubic.png',
         images: [
            '/products/centrifugal-inline-cubic-fans/direct-drive-cubic.png',
-          '/products/centrifugal-inline-cubic-fans/centrifugal-blower.jpg',
+          // '/products/centrifugal-inline-cubic-fans/centrifugal-blower.jpg',
         ],
       },
       {
@@ -294,7 +294,7 @@ export const CATALOGUE: CatalogueCategory[] = [
         images: [
           '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator-upblast.png',
           '/products/power-roof-ventilators-upblast-fan/power-roof-ventilator.jpg',
-          '/products/power-roof-ventilators-upblast-fan/upblast-fan-2.jpg',
+          // '/products/power-roof-ventilators-upblast-fan/upblast-fan-2.jpg',
         ],
       },
       {
@@ -747,6 +747,10 @@ export const CATALOGUE: CatalogueCategory[] = [
           },
         ],
         image: '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg',
+        images: [
+          '/products/axial-wall-exhaust-supply-fans/propeller-fan.jpg',
+          // '/products/axial-wall-exhaust-supply-fans/propeller-fan-2.jpg',
+        ],
       },
     ],
   },
@@ -841,6 +845,7 @@ export const CATALOGUE: CatalogueCategory[] = [
     description:
       'An insulated box fan wraps a centrifugal blower and motor in an acoustically and thermally lined cabinet — typically a double-skin sheet-metal shell with PUF or mineral-wool core. The lining cuts breakout noise so the fan can sit directly above or next to occupied space (offices, hospitals, hotels, metros) without the rumble that uninsulated cabinet fans transmit. Two formats: small in-ceiling silent exhaust units up to 1,500 CFM, and large free-standing housings up to 150,000 CMH for ducted commercial-building service.',
     products: [
+      /* HIDDEN: Insulated Housing Cabinet Fan
       {
         id: 'p-5-1',
         slug: 'insulated-housing-cabinet-fan',
@@ -948,10 +953,11 @@ export const CATALOGUE: CatalogueCategory[] = [
           '/products/insulated-housing-cabinet-fan/insulated-housing-cabinet-fan-3.webp',
         ],
       },
+      */
       {
         id: 'p-5-2',
-        slug: 'silent-ceiling-exhaust-fan',
-        name: 'Silent Ceiling Exhaust Fan',
+        slug: 'sound-insulated-box-fan-vsif',
+        name: 'Sound Insulated Box Fan (VSIF)',
         shortDescription:
           'Under-ceiling silent exhaust fan with grilled inlet and ducted exhaust — 200–1,500 CFM.',
         overview:
@@ -1007,8 +1013,9 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'Yes — most hotel and hospital projects swap noisy direct-mount bath fans for a single ceiling-mounted unit serving multiple rooms via a small manifold duct.',
           },
         ],
-        image: '/products/ceiling-exhaust-cabinet-fans/silent-ceiling-exhaust.jpg',
+        image: '/products/ceiling-exhaust-cabinet-fans/sound-insulated-box-fan-vsif.jpg',
         images: [
+          '/products/ceiling-exhaust-cabinet-fans/sound-insulated-box-fan-vsif.jpg',
           '/products/ceiling-exhaust-cabinet-fans/silent-ceiling-exhaust.jpg',
           '/products/ceiling-exhaust-cabinet-fans/main.webp',
         ],
@@ -1104,15 +1111,15 @@ export const CATALOGUE: CatalogueCategory[] = [
     id: 'cat-hvac-ducts',
     slug: 'hvac-air-ducts',
     name: 'HVAC Air Ducts',
-    tagline: 'Flexible ducts, rigid ducts and commercial kitchen hoods.',
+    tagline: 'Flexible ducts, air distribution products and commercial kitchen hoods.',
     order: 7,
     description:
-      'The duct work is the rest of the air system: rigid ducts for primary distribution, flexible ducts for the last few metres into a diffuser, and dedicated grease hoods over kitchen lines. Picking the right product for each segment matters — under-spec rigid duct rumbles, under-spec flex collapses under suction, and the wrong hood material is a fire hazard.',
+      'Everything between the AHU and the room: flexible ducts for the last few metres into a diffuser, the full range of air distribution products (diffusers, grilles, registers, louvers) at the room itself, and dedicated grease hoods over commercial kitchen lines. Picking the right product for each segment matters — under-spec flex collapses under suction, the wrong diffuser sets the noise level for the whole space, and the wrong hood material is a fire hazard.',
     products: [
       {
         id: 'p-7-1',
         slug: 'flexible-ducts-and-duct-connectors',
-        name: 'Flexible Ducts and Duct Connectors',
+        name: 'RIGID and Flexible Duct',
         shortDescription:
           'PVC and silicone-coated flexible ducts and connectors — non-insulated, insulated, semi-rigid and fire-rated variants.',
         overview:
@@ -1183,62 +1190,90 @@ export const CATALOGUE: CatalogueCategory[] = [
       },
       {
         id: 'p-7-2',
-        slug: 'hvac-air-duct-rigid',
-        name: 'HVAC Air Ducts (Rigid)',
+        slug: 'hvac-air-distribution-products',
+        name: 'HVAC Air Distribution Products (ADPs)',
         shortDescription:
-          'Round, rectangular and oval rigid air ducts — manufactured in MS, GI, aluminium and stainless steel.',
+          'Diffusers, grilles, registers and louvers — the terminal devices that deliver and return air in every HVAC system.',
         overview:
-          'Rigid duct is the spine of any HVAC system — it carries air from the AHU to the diffusers with low pressure loss and no airflow noise. We manufacture rigid duct to project drawings in MS (mild steel for industrial process), GI (galvanised iron — the standard for HVAC), aluminium (for marine and corrosive environments) and SS (stainless steel for hospitals, pharma and kitchen exhaust). Round, rectangular and oval profiles cover every layout.',
+          'Air Distribution Products (ADPs) are the visible, room-side end of an HVAC system — the diffusers and grilles that supply conditioned air evenly across a space and the return grilles and louvers that bring it back. The duct does the conveying, but ADP selection is what determines how the air actually feels: throw, spread, induction and noise level all come down to the right diffuser specified for the room. We manufacture the full ADP range in extruded aluminium (the default), GI and stainless steel — built to project airflow schedules and finished to architectural specification.',
         features: [
-          'Types: Round, Rectangular, Oval',
-          'Materials: MS, GI, Aluminium, SS',
+          'Square ceiling diffusers (4-way, 3-way, 2-way and 1-way blow patterns)',
+          'Round / circular multi-cone ceiling diffusers',
+          'Linear slot diffusers (1, 2, 3 and 4-slot — architectural)',
+          'Eggcrate return-air grilles',
+          'Linear bar grilles (fixed and adjustable deflection)',
+          'Supply / return registers with opposed-blade damper (OBD)',
+          'Weather louvers for fresh-air intake and exhaust',
+          'Plenum boxes, neck adapters and accessory dampers',
         ],
         whyChooseThis: [
-          'Built to project drawings — sizes, gauges, joints and accessories per spec',
-          'Four materials cover everything from general HVAC to corrosive process exhaust',
-          'Round duct profile gives the lowest pressure loss for a given cross-section',
-          'Oval profile fits into shallow ceiling cavities where round will not',
+          'Single source for the entire ADP package — sized to the project airflow schedule',
+          'Performance selected on throw, spread and NC noise — not just face dimension',
+          'Custom sizes and any RAL powder-coat colour at no minimum',
+          'Architectural mitre-welded frames on premium grilles for clean ceiling reveals',
+          'Made-in-India lead times — typically 2–3 weeks for project quantities',
         ],
         constructionDetails: [
-          'GI: 0.6–1.2 mm sheet, zinc-coated to IS 277',
-          'SS: 304 grade standard; 316 / 316L for chloride / corrosive duty',
-          'Aluminium: 1.2 mm marine-grade alloy',
-          'Joints: TDF / TDC flange, S&D slip, or welded per spec',
-          'Internal acoustic / thermal lining available on request',
+          'Extruded 6063-T5 aluminium frames and blades, mitre-cut corners',
+          'Standard finish: powder-coat RAL 9010 (off-white); custom RAL on request',
+          'Anodised, natural and stainless-steel finishes for premium and humid duty',
+          'Removable cores on diffusers and grilles for filter / damper access',
+          'Integral or accessory opposed-blade dampers (OBD) for room-by-room balancing',
+          'Insect-screen and bird-screen options on weather louvers',
         ],
         selectionGuide: [
-          'GI is the default for commercial HVAC — best cost / corrosion balance',
-          'SS304 for hospital / pharma / kitchen exhaust — easy to clean, code-required',
-          'Aluminium for marine, chemical or coastal corrosive environments',
-          'MS for hot-air, industrial process and dust-collection lines',
+          'Square 4-way ceiling diffusers — rectangular rooms with even occupancy; pick neck size for ≤ 4 m/s face velocity',
+          'Round multi-cone diffusers — high-induction, ideal for tall spaces, mixed loads and high-cooling rooms',
+          'Linear slot diffusers — architectural offices, hotels, conference and perimeter zones; lowest visual impact',
+          'Eggcrate return grilles — lowest cost, highest free area; the default for ceiling-plenum returns',
+          'Linear bar grilles — sidewall supply with directional deflection, lobby and lift-lobby returns',
+          'Weather louvers — sized for ≤ 2.5 m/s face velocity to avoid rain carry-over',
         ],
         installationNotes: [
-          'Support rectangular duct every 2.4 m, round duct every 3.6 m',
-          'Seal all transverse joints with mastic + reinforcement tape (SMACNA seal class A)',
-          'Provide volume control dampers at every branch take-off',
-          'Allow access doors before fire dampers, coils and airflow measurement stations',
+          'T-bar grid ceilings: snap-in or screw-fix via the matching accessory frame',
+          'Plaster / drywall: recessed with margin frame, or surface-mount where access permits',
+          'Match the diffuser neck to the duct take-off — transition where required, never reduce abruptly',
+          'Set OBD blades before commissioning the air balance — leave the system at design positions afterwards',
+          'Provide flexible duct connectors no longer than 1.5 m to terminal boxes / VAVs',
         ],
         maintenanceNotes: [
-          'Inspect for leaks at joints annually',
-          'Schedule cleaning per ACR / NADCA recommended frequency for the building type',
+          'Vacuum or dry-wipe diffuser and grille faces quarterly',
+          'Deep-clean and inspect cores annually — replace gasketing if compressed',
+          'Re-balance OBD positions if seasonal airflow drifts beyond ± 10% of design',
         ],
-        industries: ['Commercial HVAC', 'Hospitals', 'Pharma', 'Industrial process', 'Power plants', 'Cleanrooms'],
+        industries: ['Commercial offices', 'Hotels', 'Hospitals', 'Malls and retail', 'Airports', 'Cleanrooms', 'Education', 'Industrial offices'],
         standards: [
-          'Manufactured in line with SMACNA HVAC Duct Construction Standards',
-          'GI material to IS 277 zinc coating',
-          'SS material to IS 6911 / ASTM A240',
+          'Diffuser performance tested to ASHRAE Standard 70',
+          'Louver performance tested to AMCA 500-L',
+          'Aluminium extrusion to IS 733 / EN 755',
+          'Stainless steel grades to IS 6911 / ASTM A240',
         ],
         faqs: [
           {
-            q: 'Round, rectangular or oval — which is best?',
-            a: 'Round has the lowest pressure loss and least leakage. Rectangular is easier to fit in tight ceiling space but loses more pressure. Oval is a compromise — used where ceiling depth is limited and round will not fit.',
+            q: 'When do I use a round vs. square ceiling diffuser?',
+            a: 'Square 4-way diffusers throw evenly into rectangular rooms with even occupancy — the default for offices and meeting rooms. Round multi-cone (circular) diffusers induce more room air per unit of supply, which makes them the right choice for tall spaces, atria and rooms with high or uneven cooling load.',
           },
           {
-            q: 'What gauge of GI should I specify?',
-            a: 'Per SMACNA: low-pressure (≤ 250 Pa) class typically uses 0.6 mm; medium-pressure (250–750 Pa) 0.8 mm; high-pressure 1.0–1.2 mm. Always check static pressure class against the table in the project specification.',
+            q: 'Do I need an OBD on every diffuser?',
+            a: 'Only where the branch take-off does not already have a volume-control damper. On a properly balanced system with a VCD at every branch, the OBD is redundant — and OBDs add noise. Provide them on terminal-only systems or where final tweaks are expected.',
+          },
+          {
+            q: 'Can the ADPs be powder-coated to match the interior?',
+            a: 'Yes — any RAL colour on aluminium, no minimum order quantity. RAL 9010 (off-white) is the off-the-shelf default; specify the RAL number with your order for custom finishes.',
+          },
+          {
+            q: 'What is the lead time for a project quantity?',
+            a: 'Standard sizes in stock finishes ship in 7–10 days. Custom sizes, custom colours or stainless-steel sets typically need 2–3 weeks from order confirmation.',
           },
         ],
-        image: '/products/hvac-air-duct-kitchen-hoods/hvac-air-duct.jpg',
+        image: '/products/hvac-air-duct-kitchen-hoods/HAVC.png',
+        images: [
+          '/products/hvac-air-duct-kitchen-hoods/HAVC.png',
+          '/products/hvac-air-duct-kitchen-hoods/HAVC1.png',
+          '/products/hvac-air-duct-kitchen-hoods/HAVC2.png',
+          '/products/hvac-air-duct-kitchen-hoods/HAVC3.png',
+          '/products/hvac-air-duct-kitchen-hoods/HAVC4.png',
+        ],
       },
       {
         id: 'p-7-3',
@@ -1294,7 +1329,7 @@ export const CATALOGUE: CatalogueCategory[] = [
             a: 'SS304 is the standard for any grease hood — required by most municipal kitchen codes. GI is acceptable for Type-II non-grease duty only.',
           },
         ],
-        image: '/products/hvac-air-duct-kitchen-hoods/kitchen-hood.jpg',
+        image: '/products/hvac-air-duct-kitchen-hoods/commercial-kitchen-hood.png',
       },
     ],
   },
@@ -1545,7 +1580,7 @@ export const CATALOGUE: CatalogueCategory[] = [
       {
         id: 'p-10-1',
         slug: 'pure-air-commercial-purifier',
-        name: 'PURE AIR Commercial & Industrial Purifier',
+        name: 'Commercial & Industrial Purifier',
         shortDescription:
           'Wall-mount commercial purifier with Mann+Hummel nano-fibre two-stage filtration. Purifies 2,000 sqft in 10 minutes.',
         overview:
