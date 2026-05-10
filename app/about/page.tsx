@@ -132,7 +132,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B2A3C]/60 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20 pt-12">
+        <div className="relative z-10 w-full pl-4 sm:pl-8 lg:pl-12 pr-4 sm:pr-6 lg:pr-10 pb-20 pt-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

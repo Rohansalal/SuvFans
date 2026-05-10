@@ -18,27 +18,12 @@ const applicationIcons: Record<string, React.ElementType> = {
 };
 
 const ApplicationPage = () => {
-  const totalStats = [
-    { value: '7', label: 'Application Sectors' },
-    { value: '25+', label: 'Fan Series Available' },
-    { value: '400°C', label: 'Max Temp Rated' },
-    { value: 'ISO 9001', label: 'Quality Certified' },
-  ];
-
   return (
     <div className="bg-background pb-24">
       {/* Hero Header */}
-      <section className="bg-primary pt-12 md:pt-16 pb-32 relative overflow-hidden">
-        {/* Grid pattern */}
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="gridApp" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#gridApp)" />
-          </svg>
+          <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
 
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center">
@@ -63,24 +48,10 @@ const ApplicationPage = () => {
           </motion.div>
         </div>
 
-        {/* Stats Strip */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
-          <div className="bg-card shadow-2xl border border-border grid grid-cols-2 md:grid-cols-4 rounded-sm">
-            {totalStats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`p-6 text-center ${i < totalStats.length - 1 ? 'border-r border-border' : ''}`}
-              >
-                <div className="text-2xl md:text-3xl font-heading font-bold text-accent">{stat.value}</div>
-                <div className="text-xs font-bold uppercase tracking-widest text-muted-foreground mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* Application Cards Grid */}
-      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 mt-28">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {APPLICATIONS.map((app, idx) => {
             const Icon = applicationIcons[app.slug] || Wind;

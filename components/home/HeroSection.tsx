@@ -159,40 +159,52 @@ const HeroSection = () => {
       onMouseLeave={() => setPaused(false)}
       onMouseMove={handleMouseMove}
     >
-      {/* Background Carousel — Next.js Image for LCP + lazy non-current slides, with Ken Burns + parallax */}
+      {/* Background Carousel — eager-loaded slides with smooth cross-fade + Ken Burns + parallax */}
       <motion.div
         className="absolute inset-0 will-change-transform"
         style={{ x: bgTx, y: bgTy }}
       >
-        {SLIDES.map((s, i) => {
-          const isActive = i === current;
-          return (
-            <motion.div
-              key={s.image}
-              className="absolute inset-0 will-change-[opacity,transform]"
-              initial={false}
-              animate={{
-                opacity: isActive ? 1 : 0,
-                scale: isActive ? 1 : 1.04,
-              }}
-              transition={{
-                opacity: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
-                scale: { duration: SLIDE_DURATION / 1000 + 0.5, ease: 'linear' },
-              }}
-            >
+        <AnimatePresence mode="sync" initial={false}>
+          <motion.div
+            key={slide.image}
+            className="absolute inset-0 will-change-[opacity,transform]"
+            initial={{ opacity: 0, scale: 1.06 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 1.02 }}
+            transition={{
+              opacity: { duration: 0.9, ease: [0.4, 0, 0.2, 1] },
+              scale: { duration: SLIDE_DURATION / 1000 + 0.9, ease: 'linear' },
+            }}
+          >
+            <Image
+              src={slide.image}
+              alt=""
+              fill
+              priority
+              quality={80}
+              sizes="100vw"
+              className="object-cover object-center"
+            />
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Preload remaining slides so cross-fades are instant when they fire */}
+        <div className="hidden" aria-hidden="true">
+          {SLIDES.map((s, i) =>
+            i === current ? null : (
               <Image
+                key={s.image}
                 src={s.image}
                 alt=""
-                fill
-                priority={i === 0}
-                loading={i === 0 ? 'eager' : 'lazy'}
+                width={1}
+                height={1}
+                priority
                 quality={80}
-                sizes="100vw"
-                className="object-cover object-center"
               />
-            </motion.div>
-          );
-        })}
+            )
+          )}
+        </div>
+
         {/* Light readability scrim — keeps text legible without hiding the image */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />

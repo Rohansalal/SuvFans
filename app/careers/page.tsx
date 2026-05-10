@@ -9,10 +9,8 @@ import {
   MapPin, 
   Clock, 
   ArrowRight, 
-  CheckCircle2, 
-  Users, 
-  Globe,
-  Zap, 
+  CheckCircle2,
+  Zap,
   Heart,
   Send,
   Target,
@@ -93,27 +91,6 @@ const CareersPage = () => {
                   </Button>
                 </div>
 
-                {/* Quick Stats Overlay */}
-                <div className="mt-12 grid grid-cols-2 gap-8 max-w-md mx-auto lg:mx-0 border-t border-white/10 pt-8">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#2E86B8]/20 flex items-center justify-center text-[#2E86B8]">
-                      <Users size={24} />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-black text-white">200+</div>
-                      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider leading-tight">Team Members</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-xl bg-[#2E86B8]/20 flex items-center justify-center text-[#2E86B8]">
-                      <Globe size={24} />
-                    </div>
-                    <div>
-                      <div className="text-3xl font-black text-white">5+</div>
-                      <div className="text-[10px] font-bold text-gray-400 uppercase tracking-wider leading-tight">Global Locations</div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
