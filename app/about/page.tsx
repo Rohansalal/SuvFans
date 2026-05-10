@@ -139,12 +139,6 @@ export default function AboutPage() {
             transition={{ duration: 0.8 }}
             className="max-w-4xl"
           >
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-[2px] bg-[#F5A02E]" />
-              <span className="text-[#F5A02E] font-black text-xs uppercase tracking-[0.25em]">YOUR PARTNER IN AIR MOVEMENT</span>
-            </div>
-
             {/* Headline */}
             <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 uppercase tracking-tight">
               Heating, Ventilation,<br />
@@ -163,7 +157,7 @@ export default function AboutPage() {
               <Button asChild className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black uppercase tracking-wider text-sm px-8 h-12 rounded-none">
                 <Link href="/products">Our Products <ArrowRight className="ml-2" size={16} /></Link>
               </Button>
-              <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-wider text-sm px-8 h-12 rounded-none">
+              <Button asChild className="bg-white hover:bg-gray-100 text-[#0B2A3C] font-black uppercase tracking-wider text-sm px-8 h-12 rounded-none border border-white">
                 <Link href="/contact">Contact Us</Link>
               </Button>
             </div>
