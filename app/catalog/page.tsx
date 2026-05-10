@@ -8,8 +8,23 @@ import { Metadata } from 'next';
 import { COMPANY_CONFIG } from '@/lib/config';
 
 export const metadata: Metadata = {
-  title: `Product Catalog | ${COMPANY_CONFIG.name}`,
-  description: 'Complete product catalog for SUV FANS LLP — centrifugal fans, axial fans, HVLS fans, insulated box fans, tube axial fans, flexible ducts, HVAC air ducts, kitchen hoods, turnkey HVAC solutions, and PURE AIR purifiers.',
+  title: 'Product Catalogue — Industrial Fans, HVAC Ducts, HVLS & Purifiers',
+  description: `Download the full SUV FANS LLP product catalogue — centrifugal fans, axial fans, HVLS fans, insulated box fans, tube axial fans, flexible ducts, HVAC air ducts, kitchen hoods, turnkey HVAC solutions, and PURE AIR commercial air purifiers. Manufactured in Bhiwadi, India.`,
+  keywords: [
+    'industrial fan catalogue India',
+    'HVAC product catalog PDF',
+    'SUV FANS catalogue',
+    'centrifugal fan brochure',
+    'HVLS fan datasheet',
+  ],
+  alternates: { canonical: '/catalog' },
+  openGraph: {
+    title: `Product Catalogue | ${COMPANY_CONFIG.name}`,
+    description:
+      'Full PDF catalogue: centrifugal, axial, HVLS, tube axial fans, HVAC ducts, turnkey solutions and PURE AIR purifiers.',
+    url: '/catalog',
+    type: 'website',
+  },
 };
 
 const catalogSections = [

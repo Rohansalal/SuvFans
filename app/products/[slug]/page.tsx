@@ -31,6 +31,12 @@ import {
 import { COMPANY_CONFIG } from '@/lib/config';
 import { Button } from '@/components/ui/button';
 import ProductGallery from '@/components/products/ProductGallery';
+import JsonLd from '@/components/seo/JsonLd';
+import {
+  productSchema,
+  breadcrumbSchema,
+  faqSchema,
+} from '@/lib/schema';
 
 export function generateStaticParams() {
   return CATALOGUE.flatMap((cat) =>
@@ -46,12 +52,53 @@ export async function generateMetadata({
   const { slug } = await params;
   const found = getProductBySlug(slug);
   if (!found) {
-    return { title: `Product Not Found | ${COMPANY_CONFIG.name}` };
+    return {
+      title: 'Product Not Found',
+      description: 'The requested product was not found in the SUV FANS catalogue.',
+      robots: { index: false, follow: false },
+    };
   }
   const { product, category } = found;
+
+  const title = `${product.name} Manufacturer in India — ${category.name}`;
+  const description = `${product.shortDescription} Manufactured by ${COMPANY_CONFIG.shortName}, ISO 9001:2015 certified industrial fan manufacturer in Bhiwadi, Rajasthan. ${product.capacity ? `Capacity: ${product.capacity}.` : ''} Request a quote.`.trim();
+  const canonical = `/products/${product.slug}`;
+  const ogImage = product.image?.startsWith('http')
+    ? product.image
+    : product.image || '/home.webp';
+
+  const keywords = [
+    product.name,
+    `${product.name} manufacturer`,
+    `${product.name} India`,
+    `${product.name} price`,
+    `${product.name} supplier`,
+    category.name,
+    `${category.name} manufacturer India`,
+    ...(product.applications || []),
+    ...(product.industries || []),
+    'industrial fan manufacturer Bhiwadi',
+    'SUV FANS',
+  ];
+
   return {
-    title: `${product.name} — ${category.name}`,
-    description: product.shortDescription,
+    title,
+    description,
+    keywords,
+    alternates: { canonical },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      type: 'website',
+      images: [{ url: ogImage, width: 1200, height: 630, alt: product.name }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -69,8 +116,22 @@ export default async function ProductDetailPage({
   const galleryImages =
     product.images && product.images.length > 0 ? product.images : [product.image];
 
+  const schemas: object[] = [
+    productSchema(product, category),
+    breadcrumbSchema([
+      { name: 'Home', url: '/' },
+      { name: 'Products', url: '/products' },
+      { name: category.name, url: `/products#cat-${category.slug}` },
+      { name: product.name, url: `/products/${product.slug}` },
+    ]),
+  ];
+  if (product.faqs && product.faqs.length > 0) {
+    schemas.push(faqSchema(product.faqs));
+  }
+
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
+      <JsonLd data={schemas} />
       {/* BREADCRUMB */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-3">
