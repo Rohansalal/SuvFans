@@ -1,20 +1,43 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Wind, ArrowRight, Phone, Mail, Factory, Zap, Shield, Check, ChevronRight } from 'lucide-react';
 import { COMPANY_CONFIG } from '@/lib/config';
 
+const HERO_IMAGES = [
+  '/home.webp',
+  '/home1.webp',
+  '/home2.webp',
+  '/home3.webp',
+];
+
 const HeroSection = () => {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % HERO_IMAGES.length);
+    }, 5500);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section className="relative min-h-[90vh] flex items-start overflow-hidden bg-[#0B2A3C] pt-[64px] md:pt-[80px]">
-      {/* Background Industrial Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: 'url(/home.webp)' }}
-      >
+    <section className="relative min-h-[90vh] flex items-start overflow-hidden bg-[#0B2A3C] -mt-[88px] pt-[152px] md:pt-[168px]">
+      {/* Background Carousel */}
+      <div className="absolute inset-0">
+        {HERO_IMAGES.map((src, i) => (
+          <motion.div
+            key={src}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{ backgroundImage: `url(${src})` }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: i === currentImage ? 1 : 0 }}
+            transition={{ duration: 0.5, ease: 'easeInOut' }}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-r from-[#0B2A3C]/95 via-[#0B2A3C]/80 to-[#0B2A3C]/60" />
       </div>
 
@@ -68,7 +91,7 @@ const HeroSection = () => {
               className="flex items-center gap-2 mb-0"
             >
               <div className="h-px w-20 bg-[#F5A02E]" />
-              <span className="font-heading text-[#F5A02E] font-bold uppercase tracking-[0.3em] text-base bg-[#0B2A3C]/50 px-4 py-2 rounded border border-[#F5A02E]/30">
+              <span className="font-heading text-[#F5A02E] font-bold uppercase tracking-[0.3em] text-base">
                 {COMPANY_CONFIG.iso}
               </span>
               <div className="h-px w-20 bg-[#F5A02E]" />

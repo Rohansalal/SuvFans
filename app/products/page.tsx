@@ -85,7 +85,7 @@ export default function ProductsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* HERO */}
-      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
@@ -94,12 +94,9 @@ export default function ProductsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-0 pb-8 lg:pb-12">
             <div className="lg:col-span-7 text-center lg:text-left">
               <div className="max-w-4xl mx-auto lg:mx-0">
-                <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
-                  Industrial Ventilation Solutions
-                </span>
                 <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
-                  Air Validation <br className="hidden md:block" />
-                  <span className="text-[#2E86B8]">System</span>
+                  Air Ventilation <br className="hidden md:block" />
+                  <span className="text-[#2E86B8]">Systems</span>
                 </h1>
                 <p className="text-lg md:text-xl font-body text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   Explore the complete SUV FANS LLP product range &mdash; centrifugal fans, axial fans, HVLS, HVAC ducts, turnkey solutions and PURE AIR purifiers.

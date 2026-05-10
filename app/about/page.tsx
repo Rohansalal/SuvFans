@@ -116,7 +116,7 @@ export default function AboutPage() {
     <div className="bg-background min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
+      <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden -mt-[88px]">
         {/* Full-bleed background image */}
         <Image
           src="/Aboutus.webp"
@@ -132,7 +132,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B2A3C]/60 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 md:px-6 pb-20 pt-40">
+        <div className="relative z-10 container mx-auto px-4 md:px-6 pb-20 pt-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -140,11 +140,11 @@ export default function AboutPage() {
             className="max-w-4xl"
           >
             {/* Headline */}
-            <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 uppercase tracking-tight">
+            <h1 className="font-heading font-black text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 uppercase tracking-tight">
               Heating, Ventilation,<br />
               <span className="text-[#2E86B8]">and Air Conditioning</span><br />
               <span className="text-white">Manufacturer</span><br />
-              <span className="text-[#F5A02E] text-4xl md:text-5xl">— Built in India.</span>
+              <span className="text-[#F5A02E] text-2xl sm:text-3xl md:text-5xl">— Built in India.</span>
             </h1>
 
             {/* Sub-copy */}
@@ -163,14 +163,13 @@ export default function AboutPage() {
             </div>
 
             {/* Bottom stats strip */}
-            <div className="flex flex-wrap gap-0 border-t border-white/10 pt-8">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 border-t border-white/10 pt-8">
               {[
                 { value: '19+', label: 'Years of Engineering Expertise' },
-                { value: '9', label: 'Fan & HVAC Product Categories' },
                 { value: 'ISO 9001', label: 'Quality Certified Manufacturing' },
                 { value: 'Pan-India', label: 'Installation & Support Network' },
-              ].map((stat, i) => (
-                <div key={i} className={`flex flex-col pr-8 mr-8 ${i < 3 ? 'border-r border-white/10' : ''} mb-4`}>
+              ].map((stat, i, arr) => (
+                <div key={i} className={`flex flex-col ${i < arr.length - 1 ? 'sm:border-r sm:border-white/10 sm:pr-8' : ''}`}>
                   <span className="text-2xl font-black text-[#F5A02E] font-heading leading-none">{stat.value}</span>
                   <span className="text-[10px] text-white/50 uppercase tracking-widest mt-1 font-bold">{stat.label}</span>
                 </div>
@@ -496,7 +495,7 @@ export default function AboutPage() {
               <Button asChild className="bg-accent hover:bg-accent/90 text-primary font-bold uppercase tracking-widest text-sm px-8 h-12 rounded-sm shadow-lg">
                 <Link href="/get-quote">Get a Quote <ArrowRight className="ml-2" size={16} /></Link>
               </Button>
-              <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 font-bold uppercase tracking-widest text-sm px-8 h-12 rounded-sm">
+              <Button asChild className="bg-transparent border-2 border-white/40 text-white hover:bg-white/10 hover:text-white font-bold uppercase tracking-widest text-sm px-8 h-12 rounded-sm">
                 <Link href="/products">Browse Products</Link>
               </Button>
             </div>

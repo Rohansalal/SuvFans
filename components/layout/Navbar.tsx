@@ -18,10 +18,13 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
+const DARK_HERO_PATHS = ['/', '/about', '/products'];
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [applicationsOpen, setApplicationsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -30,20 +33,38 @@ const Navbar = () => {
     setApplicationsOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const isActive = (href: string) => pathname === href;
   const isProductsActive = pathname.startsWith('/products');
   const isApplicationsActive = pathname.startsWith('/application');
   const phoneIsPlaceholder = COMPANY_CONFIG.phone.includes('XXX');
+  const hasDarkHero = DARK_HERO_PATHS.includes(pathname) || pathname.startsWith('/products/');
+  const transparent = !isScrolled && hasDarkHero;
 
   const linkClass = (active: boolean) =>
     cn(
-      'text-[15px] font-bold uppercase tracking-wider transition-colors duration-200',
-      active ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+      'text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap',
+      active
+        ? 'text-[#F5A02E]'
+        : transparent
+        ? 'text-white hover:text-[#F5A02E]'
+        : 'text-[#0B2A3C] hover:text-[#F5A02E]'
     );
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-100 shadow-sm">
-      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+    <nav className={cn(
+      'fixed top-0 w-full z-50 transition-all duration-300',
+      transparent
+        ? 'bg-transparent'
+        : 'bg-white border-b border-gray-100 shadow-sm'
+    )}>
+      <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-[88px]">
 
           {/* Logo */}
@@ -59,7 +80,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-10">
+          <div className="hidden lg:flex items-center gap-7 xl:gap-9">
 
             <Link href="/" className={linkClass(isActive('/'))}>
               Home
@@ -73,8 +94,12 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
-                  'flex items-center gap-1 text-[15px] font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
-                  isProductsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+                  'flex items-center gap-1 text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 outline-none whitespace-nowrap',
+                  isProductsActive
+                    ? 'text-[#F5A02E]'
+                    : transparent
+                    ? 'text-white hover:text-[#F5A02E]'
+                    : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
                 Products <ChevronDown size={13} className="mt-px" />
@@ -116,8 +141,12 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
-                  'flex items-center gap-1 text-[15px] font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
-                  isApplicationsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+                  'flex items-center gap-1 text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 outline-none whitespace-nowrap',
+                  isApplicationsActive
+                    ? 'text-[#F5A02E]'
+                    : transparent
+                    ? 'text-white hover:text-[#F5A02E]'
+                    : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
                 Applications <ChevronDown size={13} className="mt-px" />
@@ -158,11 +187,17 @@ const Navbar = () => {
           </div>
 
           {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-5 pl-8 border-l border-gray-200">
+          <div className={cn(
+            'hidden lg:flex items-center gap-4 xl:gap-5 pl-6 xl:pl-8 border-l',
+            transparent ? 'border-white/30' : 'border-gray-200'
+          )}>
             {!phoneIsPlaceholder && (
               <a
                 href={`tel:${COMPANY_CONFIG.phone}`}
-                className="hidden xl:flex items-center gap-2 text-[15px] font-bold text-[#0B2A3C] hover:text-[#F5A02E] transition-colors"
+                className={cn(
+                  'hidden xl:flex items-center gap-2 text-[15px] font-extrabold transition-colors whitespace-nowrap',
+                  transparent ? 'text-white hover:text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+                )}
               >
                 <Phone size={16} className="text-[#2E86B8]" />
                 {COMPANY_CONFIG.phone}
@@ -178,7 +213,10 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden p-2 text-[#0B2A3C]"
+            className={cn(
+              'lg:hidden p-2 transition-colors',
+              transparent ? 'text-white' : 'text-[#0B2A3C]'
+            )}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

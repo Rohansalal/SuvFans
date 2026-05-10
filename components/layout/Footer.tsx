@@ -135,7 +135,7 @@ const Footer = () => {
             </div>
             <div className="w-px h-8 bg-white/10 hidden md:block" />
             <div className="space-y-0.5">
-              <div className="font-heading text-2xl font-black text-white">{COMPANY_CONFIG.yearsOfExperience}+</div>
+              <div className="font-heading text-2xl font-black text-white">{COMPANY_CONFIG.yearsOfExperience}</div>
               <div className="text-[#6B7280] text-[10px] font-bold uppercase tracking-widest">Years of Excellence</div>
             </div>
             <div className="w-px h-8 bg-white/10 hidden md:block" />
