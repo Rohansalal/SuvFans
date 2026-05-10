@@ -108,7 +108,7 @@ const GetQuotePage = () => {
           </svg>
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ const GetQuotePage = () => {
         </div>
       </section>
 
-      <div className="container mx-auto px-4 md:px-6 -mt-8 relative z-20">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 -mt-8 relative z-20">
         <div className="max-w-5xl mx-auto">
           <div className="bg-white p-8 md:p-12 rounded-sm border-2 border-[#D1D5DB] shadow-2xl">
             {isSubmitted ? (

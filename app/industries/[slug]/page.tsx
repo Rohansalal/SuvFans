@@ -31,7 +31,7 @@ const IndustryDetailPage = ({ params }: { params: Promise<{ slug: string }> }) =
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A2E5C]/80 via-[#0A2E5C]/60 to-[#0A2E5C]/90" />
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ const IndustryDetailPage = ({ params }: { params: Promise<{ slug: string }> }) =
       </section>
 
       {/* Main Content */}
-      <section className="container mx-auto px-4 md:px-6 -mt-20 relative z-20">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 -mt-20 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Detailed Info */}
           <div className="lg:col-span-2 space-y-12">

@@ -59,13 +59,13 @@ const CareersPage = () => {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* Hero Section - Matching Product & About Page Design */}
-      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-20 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-20 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
         
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pb-8 lg:pb-16">
             {/* Left Content */}
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -73,7 +73,7 @@ const CareersPage = () => {
                 <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
                   Join SUV FANS
                 </span> 
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
+                <h1 className="text-3xl sm:text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
                   Shape the Future of <br className="hidden md:block" /> 
                   <span className="text-[#2E86B8]">Air Technology</span>
                 </h1>
@@ -154,7 +154,7 @@ const CareersPage = () => {
       </section>
 
       {/* Why Join Us - Values Section */}
-      <section id="culture" className="py-24 container mx-auto px-4 md:px-6">
+      <section id="culture" className="py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto mb-20">
           <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.3em] mb-4 block">Our Culture</span>
           <h2 className="text-4xl md:text-5xl font-black font-heading text-[#0B2A3C] uppercase tracking-tighter mb-6">
@@ -186,7 +186,7 @@ const CareersPage = () => {
 
       {/* Open Positions Grid */}
       <section id="open-positions" className="py-24 bg-gray-50/50">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className="max-w-2xl">
               <span className="text-[10px] font-black text-[#2E86B8] uppercase tracking-[0.4em] mb-4 block">Current Openings</span>
@@ -244,7 +244,7 @@ const CareersPage = () => {
       </section>
 
       {/* Quick Apply Form Section */}
-      <section className="py-24 container mx-auto px-4 md:px-6">
+      <section className="py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <div id="apply" className="bg-[#0B2A3C] rounded-[3rem] p-10 md:p-16 relative overflow-hidden shadow-2xl">
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2E86B8]/10 rounded-full translate-x-1/3 translate-y-1/3 blur-[100px]" />
           

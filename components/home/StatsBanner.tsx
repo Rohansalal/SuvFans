@@ -57,7 +57,7 @@ const StatsBanner = () => {
       {/* Decorative Element */}
       <div className="absolute left-[-5%] top-[-50%] w-1/3 h-[200%] bg-[#F5A02E]/5 -rotate-12 blur-3xl pointer-events-none"></div>
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {stats.map((stat, index) => (
             <motion.div

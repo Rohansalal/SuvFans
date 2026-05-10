@@ -51,7 +51,7 @@ const ApplicationDetailPage = ({ params }: { params: Promise<{ slug: string }> }
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section className="relative h-[65vh] min-h-[420px] flex items-end overflow-hidden -mt-[88px]">
+      <section className="relative h-[65vh] min-h-[420px] flex items-end overflow-hidden">
         <Image
           src={application.image}
           alt={application.name}
@@ -62,7 +62,7 @@ const ApplicationDetailPage = ({ params }: { params: Promise<{ slug: string }> }
         />
         <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-primary/20" />
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 pb-16">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 pb-16">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <Link
               href="/application"
@@ -90,7 +90,7 @@ const ApplicationDetailPage = ({ params }: { params: Promise<{ slug: string }> }
 
       {/* Stats Bar */}
       <div className="bg-card border-b border-border shadow-md">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
             {application.stats.map((stat) => (
               <div key={stat.label} className="py-6 px-4 text-center">
@@ -103,7 +103,7 @@ const ApplicationDetailPage = ({ params }: { params: Promise<{ slug: string }> }
       </div>
 
       {/* Main Content */}
-      <section className="container mx-auto px-4 md:px-6 py-16">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
           {/* Left Column — Main Content */}

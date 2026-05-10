@@ -120,7 +120,7 @@ const Testimonials = () => {
       `}</style>
 
       {/* Section header */}
-      <div className="container mx-auto px-4 md:px-6 mb-14">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 mb-14">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -8,7 +8,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone, ChevronRight } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { CATALOGUE } from '@/lib/productdetail';
+import { getAllProducts } from '@/lib/productdetail';
 import { APPLICATIONS } from '@/lib/applications';
 import { COMPANY_CONFIG } from '@/lib/config';
 import {
@@ -18,13 +18,28 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const DARK_HERO_PATHS = ['/', '/about', '/products', '/application', '/careers', '/contact'];
+const FEATURED_NAV_PRODUCT_SLUGS = [
+  'direct-drive-duct-cabinet-inline-fan',
+  'kitchen-laundry-fan',
+  'direct-drive-wall-mount-fan',
+  'direct-drive-tube-axial-fan',
+  'insulated-housing-cabinet-fan',
+  'high-volume-low-speed-fan',
+  'industrial-cooler',
+  'commercial-kitchen-hood',
+  'pure-air-commercial-purifier',
+];
+
+const ALL_NAV_PRODUCTS = getAllProducts();
+const NAV_FEATURED_PRODUCTS = FEATURED_NAV_PRODUCT_SLUGS
+  .map((slug) => ALL_NAV_PRODUCTS.find((p) => p.slug === slug))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p))
+  .slice(0, 9);
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [productsOpen, setProductsOpen] = useState(false);
   const [applicationsOpen, setApplicationsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -33,41 +48,20 @@ const Navbar = () => {
     setApplicationsOpen(false);
   }, [pathname]);
 
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const isActive = (href: string) => pathname === href;
   const isProductsActive = pathname.startsWith('/products');
   const isApplicationsActive = pathname.startsWith('/application');
   const phoneIsPlaceholder = COMPANY_CONFIG.phone.includes('XXX');
-  const hasDarkHero =
-    DARK_HERO_PATHS.includes(pathname) ||
-    pathname.startsWith('/products/') ||
-    pathname.startsWith('/application/');
-  const transparent = !isScrolled && hasDarkHero;
 
   const linkClass = (active: boolean) =>
     cn(
       'text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 whitespace-nowrap',
-      active
-        ? 'text-[#F5A02E]'
-        : transparent
-        ? 'text-white hover:text-[#F5A02E]'
-        : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+      active ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
     );
 
   return (
-    <nav className={cn(
-      'fixed top-0 w-full z-50 transition-all duration-300',
-      transparent
-        ? 'bg-transparent'
-        : 'bg-white border-b border-gray-100 shadow-sm'
-    )}>
-      <div className="w-full px-4 sm:px-6 lg:px-8">
+    <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-100 shadow-sm">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="flex items-center justify-between h-[88px]">
 
           {/* Logo */}
@@ -83,7 +77,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-7 xl:gap-9">
+          <div className="hidden lg:flex items-center gap-7 xl:gap-9 ml-4 xl:ml-6">
 
             <Link href="/" className={linkClass(isActive('/'))}>
               Home
@@ -98,45 +92,64 @@ const Navbar = () => {
               <DropdownMenuTrigger
                 className={cn(
                   'flex items-center gap-1 text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 outline-none whitespace-nowrap',
-                  isProductsActive
-                    ? 'text-[#F5A02E]'
-                    : transparent
-                    ? 'text-white hover:text-[#F5A02E]'
-                    : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+                  isProductsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
                 Products <ChevronDown size={13} className="mt-px" />
               </DropdownMenuTrigger>
               <DropdownMenuContent
                 align="start"
-                className="w-64 p-0 bg-white shadow-xl border border-[#E5E7EB] rounded-sm z-[60]"
+                className="w-[420px] p-0 bg-white shadow-2xl border border-[#E5E7EB] rounded-xl z-[60] overflow-hidden"
               >
+                <div className="px-5 pt-4 pb-2 border-b border-[#E5E7EB] bg-gradient-to-r from-[#F4F6F8] to-white">
+                  <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#2E86B8]">
+                    Featured Products
+                  </span>
+                  <p className="text-[11px] text-[#6B7280] mt-0.5">
+                    Industrial fans &amp; ventilation systems
+                  </p>
+                </div>
+                <div className="py-2 max-h-[70vh] overflow-y-auto">
+                  {NAV_FEATURED_PRODUCTS.map((product) => (
+                    <DropdownMenuItem key={product.slug} asChild>
+                      <Link
+                        href={`/products/${product.slug}`}
+                        className="group cursor-pointer flex items-center gap-3 px-4 py-2.5 hover:bg-[#F4F6F8] focus:bg-[#F4F6F8] transition-colors"
+                      >
+                        <div className="relative w-12 h-12 shrink-0 rounded-lg overflow-hidden bg-[#F4F6F8] border border-[#E5E7EB] flex items-center justify-center">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            sizes="48px"
+                            className="object-contain p-1"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[13px] font-bold text-[#0B2A3C] group-hover:text-[#F5A02E] transition-colors line-clamp-1 leading-tight">
+                            {product.name}
+                          </div>
+                          <div className="text-[10px] font-bold uppercase tracking-wider text-[#2E86B8] mt-0.5 line-clamp-1">
+                            {product.categoryName}
+                          </div>
+                        </div>
+                        <ChevronRight
+                          size={14}
+                          className="shrink-0 text-[#D1D5DB] group-hover:text-[#F5A02E] group-hover:translate-x-0.5 transition-all"
+                        />
+                      </Link>
+                    </DropdownMenuItem>
+                  ))}
+                </div>
                 <DropdownMenuItem asChild>
                   <Link
                     href="/products"
-                    className="font-bold cursor-pointer hover:bg-[#F4F6F8] py-3 px-4 text-[#0B2A3C] border-b border-[#E5E7EB] text-xs uppercase tracking-widest"
+                    className="font-black cursor-pointer bg-[#0B2A3C] hover:bg-[#2E86B8] focus:bg-[#2E86B8] py-3.5 px-5 text-white text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-colors rounded-none"
                   >
-                    All Products
+                    View More Products
+                    <ChevronRight size={14} />
                   </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link
-                    href="/catalog"
-                    className="font-bold cursor-pointer hover:bg-[#F4F6F8] py-3 px-4 text-[#2E86B8] border-b border-[#E5E7EB] text-xs uppercase tracking-widest"
-                  >
-                    📄 Full Catalogue
-                  </Link>
-                </DropdownMenuItem>
-                {CATALOGUE.map((cat) => (
-                  <DropdownMenuItem key={cat.slug} asChild>
-                    <Link
-                      href={cat.slug === 'pure-air-purifiers' ? '/air-purifiers' : `/products#cat-${cat.slug}`}
-                      className="cursor-pointer hover:bg-[#F4F6F8] py-2.5 px-4 text-sm text-[#0B2A3C] font-medium"
-                    >
-                      {cat.name}
-                    </Link>
-                  </DropdownMenuItem>
-                ))}
               </DropdownMenuContent>
             </DropdownMenu>
 
@@ -145,11 +158,7 @@ const Navbar = () => {
               <DropdownMenuTrigger
                 className={cn(
                   'flex items-center gap-1 text-[15px] font-extrabold uppercase tracking-wider transition-colors duration-200 outline-none whitespace-nowrap',
-                  isApplicationsActive
-                    ? 'text-[#F5A02E]'
-                    : transparent
-                    ? 'text-white hover:text-[#F5A02E]'
-                    : 'text-[#0B2A3C] hover:text-[#F5A02E]'
+                  isApplicationsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
                 Applications <ChevronDown size={13} className="mt-px" />
@@ -190,17 +199,11 @@ const Navbar = () => {
           </div>
 
           {/* Right Actions */}
-          <div className={cn(
-            'hidden lg:flex items-center gap-4 xl:gap-5 pl-6 xl:pl-8 border-l',
-            transparent ? 'border-white/30' : 'border-gray-200'
-          )}>
+          <div className="hidden lg:flex items-center gap-4 xl:gap-5 ml-6 xl:ml-10 pl-6 xl:pl-8 border-l border-gray-200">
             {!phoneIsPlaceholder && (
               <a
                 href={`tel:${COMPANY_CONFIG.phone}`}
-                className={cn(
-                  'hidden xl:flex items-center gap-2 text-[15px] font-extrabold transition-colors whitespace-nowrap',
-                  transparent ? 'text-white hover:text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
-                )}
+                className="hidden xl:flex items-center gap-2 text-[15px] font-extrabold text-[#0B2A3C] hover:text-[#F5A02E] transition-colors whitespace-nowrap"
               >
                 <Phone size={16} className="text-[#2E86B8]" />
                 {COMPANY_CONFIG.phone}
@@ -216,10 +219,7 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button
-            className={cn(
-              'lg:hidden p-2 transition-colors',
-              transparent ? 'text-white' : 'text-[#0B2A3C]'
-            )}
+            className="lg:hidden p-2 text-[#0B2A3C]"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -264,24 +264,42 @@ const Navbar = () => {
                   <ChevronDown size={16} className={cn('transition-transform', productsOpen && 'rotate-180')} />
                 </button>
                 {productsOpen && (
-                  <div className="pb-2 pl-4 flex flex-col gap-1">
-                    <Link href="/products" className="py-2 text-sm font-bold text-[#2E86B8]" onClick={() => setIsOpen(false)}>
-                      All Products
-                    </Link>
-                    <Link href="/catalog" className="py-2 text-sm font-bold text-[#F5A02E]" onClick={() => setIsOpen(false)}>
-                      📄 Full Catalogue
-                    </Link>
-                    {CATALOGUE.map((cat) => (
+                  <div className="pb-3 flex flex-col gap-1">
+                    {NAV_FEATURED_PRODUCTS.map((product) => (
                       <Link
-                        key={cat.slug}
-                        href={cat.slug === 'pure-air-purifiers' ? '/air-purifiers' : `/products#cat-${cat.slug}`}
-                        className="py-2 text-sm text-[#0B2A3C]/80 hover:text-[#F5A02E] transition-colors flex items-center gap-2"
+                        key={product.slug}
+                        href={`/products/${product.slug}`}
+                        className="group flex items-center gap-3 py-2 px-2 rounded-lg hover:bg-[#F4F6F8] transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
-                        <ChevronRight size={12} className="text-[#2E86B8]" />
-                        {cat.name}
+                        <div className="relative w-11 h-11 shrink-0 rounded-lg overflow-hidden bg-[#F4F6F8] border border-[#E5E7EB] flex items-center justify-center">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            sizes="44px"
+                            className="object-contain p-1"
+                          />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[13px] font-bold text-[#0B2A3C] group-hover:text-[#F5A02E] transition-colors line-clamp-1 leading-tight">
+                            {product.name}
+                          </div>
+                          <div className="text-[10px] font-bold uppercase tracking-wider text-[#2E86B8] mt-0.5 line-clamp-1">
+                            {product.categoryName}
+                          </div>
+                        </div>
+                        <ChevronRight size={12} className="shrink-0 text-[#D1D5DB]" />
                       </Link>
                     ))}
+                    <Link
+                      href="/products"
+                      className="mt-2 py-3 px-4 text-xs font-black uppercase tracking-widest text-white bg-[#0B2A3C] hover:bg-[#2E86B8] flex items-center justify-center gap-2 rounded-lg transition-colors"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      View More Products
+                      <ChevronRight size={12} />
+                    </Link>
                   </div>
                 )}
               </div>

@@ -28,7 +28,7 @@ const PureAirPage = () => {
       <section className="relative py-24 md:py-32 overflow-hidden bg-[#F8FAFC]">
         <div className="absolute top-0 right-0 w-1/2 h-full bg-[#0A2E5C] skew-x-12 translate-x-1/4 hidden lg:block"></div>
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -103,13 +103,13 @@ const PureAirPage = () => {
       </section>
 
       {/* Calculator Section */}
-      <section className="py-24 container mx-auto px-4 md:px-6">
+      <section className="py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <CoverageCalculator />
       </section>
 
       {/* How it works */}
       <section className="py-24 bg-[#0A2E5C] text-white overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4">Precision Performance</h2>
             <div className="w-20 h-1.5 bg-accent mx-auto"></div>
@@ -160,7 +160,7 @@ const PureAirPage = () => {
 
       {/* Application Grid */}
       <section className="py-24 bg-[#F8FAFC]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-[#0A2E5C] mb-6">Designed for Excellence</h2>
             <p className="text-gray-600 text-lg leading-relaxed">
@@ -183,7 +183,7 @@ const PureAirPage = () => {
 
       {/* CTA Section */}
       <section className="py-24">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="bg-[#0A2E5C] rounded-[40px] p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
              <div className="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"></div>

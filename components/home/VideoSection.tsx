@@ -76,7 +76,7 @@ const VideoSection = () => {
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#2E86B8]/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#F5A02E]/5 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16">
           <motion.div

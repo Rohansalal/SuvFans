@@ -85,16 +85,16 @@ export default function ProductsPage() {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* HERO */}
-      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-16 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-20">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-0 pb-8 lg:pb-12">
             <div className="lg:col-span-7 text-center lg:text-left">
               <div className="max-w-4xl mx-auto lg:mx-0">
-                <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
+                <h1 className="text-3xl sm:text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
                   Air Ventilation <br className="hidden md:block" />
                   <span className="text-[#2E86B8]">Systems</span>
                 </h1>
@@ -182,7 +182,7 @@ export default function ProductsPage() {
 
       {/* FILTER BAR */}
       <section className="sticky top-[72px] z-40 bg-white border-b border-gray-200 shadow-[0_1px_8px_0_rgba(11,42,60,0.07)] py-3">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center gap-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -331,7 +331,7 @@ export default function ProductsPage() {
 
       {/* INDUSTRY SUPPORT CTA */}
       <section className="bg-white py-20 border-t">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="bg-[#0B2A3C] rounded-3xl p-8 md:p-16 relative overflow-hidden">
             <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#F5A02E]/10 rounded-full translate-x-1/3 translate-y-1/3 blur-3xl" />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">

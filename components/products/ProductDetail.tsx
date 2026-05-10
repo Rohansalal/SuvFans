@@ -89,7 +89,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* ── Breadcrumb bar (static, scrolls away) ── */}
       <div className="bg-[#F8FAFC] border-b border-gray-100">
-        <div className="container mx-auto px-4 md:px-6 py-2.5 flex items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-2.5 flex items-center justify-between gap-4">
           <Breadcrumb>
             <BreadcrumbList className="text-xs">
               <BreadcrumbItem>
@@ -138,7 +138,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* ── Sticky TOC nav — sits just below the fixed navbar ── */}
       <div className="sticky top-[72px] z-40 bg-white border-b border-gray-200 shadow-[0_1px_8px_0_rgba(11,42,60,0.07)]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="flex items-center gap-0">
 
             {/* Product name — visible when breadcrumb has scrolled away */}
@@ -177,7 +177,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Hero Section */}
       <section id="overview" className="py-12 md:py-20 border-b scroll-mt-[128px]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             {/* Image Side - 7 columns */}
             <div className="lg:col-span-7 space-y-4">
@@ -287,7 +287,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Engineering & Resources Section - Industry Standard */}
       <section id="engineering" className="py-16 bg-[#0B2A3C] text-white overflow-hidden relative scroll-mt-[128px]">
         <div className="absolute top-0 right-0 w-1/3 h-full bg-[#2E86B8]/10 -skew-x-12 translate-x-1/2 pointer-events-none" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-3xl font-bold font-heading mb-6 flex items-center justify-center gap-3">
               <Settings className="text-[#F5A02E]" /> Engineering Excellence
@@ -321,7 +321,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Detailed Description Section */}
       <section id="product-overview" className="py-16 bg-gray-50 scroll-mt-[128px]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-8 border-l-4 border-[#F5A02E] pl-6">
               Product Overview
@@ -424,7 +424,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Why Choose Section */}
       {product.whyChooseContent && (
         <section id="why-choose" className="py-16 bg-white border-b scroll-mt-[128px]">
-          <div className="container mx-auto px-4 md:px-6 text-center">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 text-center">
             <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-12 relative inline-block">
               Why {product.slug.includes('cubic') ? 'Cubic' : 'our'} Fans?
               <span className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-12 h-1 bg-[#F5A02E]"></span>
@@ -458,7 +458,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Performance Specification Table */}
       {product.specTable && product.specTable.length > 0 && (
         <section id="specs" className="py-16 bg-gray-50 border-t scroll-mt-[128px]">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
             <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-4 flex items-center gap-3">
               <Table2 className="text-[#F5A02E]" /> Performance Specifications
             </h2>
@@ -471,7 +471,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
       {/* Feature Specification Table (Air Purifiers / non-standard specs) */}
       {product.specFeatureTable && product.specFeatureTable.length > 0 && (
         <section id="specs" className="py-16 bg-gray-50 border-t scroll-mt-[128px]">
-          <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
             <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-4 flex items-center gap-3">
               <Table2 className="text-[#F5A02E]" /> Technical Specifications
             </h2>
@@ -483,7 +483,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Features & Applications */}
       <section id="features" className="py-16 scroll-mt-[128px]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Features */}
             <div>
@@ -520,7 +520,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Technical Trust Banner */}
       <section className="py-12 bg-[#0B2A3C] text-white">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="flex flex-col items-center">
               <ShieldCheck className="w-12 h-12 text-[#F5A02E] mb-4" />
@@ -543,7 +543,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Quick Inquiry Form */}
       <section id="quick-inquiry" className="py-20 bg-white border-t scroll-mt-[128px]">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             {/* Left: Product CTA text */}
             <div>
@@ -675,7 +675,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
       {/* Related Products CTA */}
       <section className="py-20 bg-gray-50 border-t">
-        <div className="container mx-auto px-4 md:px-6 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 text-center">
           <h2 className="text-3xl font-bold font-heading text-[#0B2A3C] mb-6">
             Explore Other Products
           </h2>

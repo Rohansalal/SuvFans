@@ -39,7 +39,7 @@ const SolutionsPage = () => {
     <div className="bg-[#F8FAFC]">
       {/* Header */}
       <section className="bg-[#0A2E5C] pt-20 pb-24 relative overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -57,7 +57,7 @@ const SolutionsPage = () => {
       </section>
 
       {/* Section A: Turnkey Solution */}
-      <section className="py-24 container mx-auto px-4 md:px-6">
+      <section className="py-24 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div>
             <div className="flex items-center gap-3 mb-6">
@@ -110,7 +110,7 @@ const SolutionsPage = () => {
       <section className="py-24 bg-[#0A2E5C] text-white overflow-hidden relative">
         <div className="absolute right-0 top-0 w-1/3 h-full bg-accent/5 -skew-x-12 translate-x-1/2 pointer-events-none"></div>
         
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl mb-16">
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">Integrated Clean Room Systems</h2>
             <p className="text-gray-300 text-lg leading-relaxed">

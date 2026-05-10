@@ -12,11 +12,11 @@ const ContactCTAStrip = () => {
       {/* Background Accent */}
       <div className="absolute right-0 top-0 w-1/3 h-full bg-[#2E86B8]/10 -skew-x-12 translate-x-1/4 pointer-events-none" />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
           <div className="max-w-2xl">
             {/* H2: Montserrat */}
-            <h2 className="font-heading text-3xl md:text-4xl font-black text-white mb-4 leading-tight uppercase tracking-tight">
+            <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl font-black text-white mb-4 leading-tight uppercase tracking-tight">
               Ready to <span className="text-[#F5A02E]">Transform Your Space</span> with Superior Ventilation?
             </h2>
             {/* Body: Inter */}
@@ -25,10 +25,10 @@ const ContactCTAStrip = () => {
             </p>
           </div>
           
-          <div className="flex flex-col sm:flex-row items-center gap-12">
+          <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-12 w-full lg:w-auto">
             {/* Contact Info - Larger */}
             <div className="flex flex-col items-center lg:items-end gap-4">
-              <a href={`tel:${COMPANY_CONFIG.phone}`} className="font-heading text-2xl font-black text-white hover:text-[#F5A02E] transition-all flex items-center gap-4 group">
+              <a href={`tel:${COMPANY_CONFIG.phone}`} className="font-heading text-lg sm:text-xl md:text-2xl font-black text-white hover:text-[#F5A02E] transition-all flex items-center gap-3 sm:gap-4 group whitespace-nowrap">
                 <div className="w-12 h-12 rounded-xl bg-[#F5A02E]/10 flex items-center justify-center shrink-0 border border-[#F5A02E]/20 group-hover:scale-110 transition-transform">
                   <Phone size={20} className="text-[#F5A02E]" />
                 </div>

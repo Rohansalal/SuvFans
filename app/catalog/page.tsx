@@ -75,7 +75,7 @@ export default function CatalogPage() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <div className="max-w-3xl">
             <p className="text-[#F5A02E] font-bold uppercase tracking-widest text-sm mb-4">Product Catalog 2024–25</p>
             <h1 className="text-4xl md:text-6xl font-bold font-heading leading-tight mb-6">
@@ -112,7 +112,7 @@ export default function CatalogPage() {
 
       {/* Table of Contents */}
       <section className="py-12 bg-[#F8FAFC] border-b">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <h2 className="text-2xl font-bold font-heading text-[#0B2A3C] mb-6">Table of Contents</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
             {catalogSections.map((section, idx) => (
@@ -141,7 +141,7 @@ export default function CatalogPage() {
           const sectionProducts = PRODUCTS.filter(p => section.slugs.includes(p.slug));
           return (
             <section key={sectionIdx} id={`section-${sectionIdx}`} className="py-20 scroll-mt-20">
-              <div className="container mx-auto px-4 md:px-6">
+              <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
                 {/* Section Header */}
                 <div className="flex items-start justify-between mb-12 flex-wrap gap-4">
                   <div>
@@ -245,7 +245,7 @@ export default function CatalogPage() {
 
       {/* Company Info Footer Strip */}
       <section className="py-16 bg-[#0B2A3C] text-white">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div>
               <h4 className="font-bold text-lg mb-2">Works</h4>

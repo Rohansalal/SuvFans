@@ -73,7 +73,7 @@ export default async function ProductDetailPage({
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* BREADCRUMB */}
       <div className="bg-white border-b border-gray-100">
-        <div className="container mx-auto px-4 md:px-6 py-3">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-3">
           <nav
             aria-label="Breadcrumb"
             className="flex items-center text-[10px] font-bold uppercase tracking-widest text-gray-400 gap-1.5 flex-wrap"
@@ -90,7 +90,7 @@ export default async function ProductDetailPage({
       </div>
 
       {/* HERO */}
-      <section className="container mx-auto px-4 md:px-6 py-10 md:py-14">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-10 md:py-14">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           <div className="lg:col-span-7">
             <ProductGallery images={galleryImages} alt={product.name} />
@@ -200,7 +200,7 @@ export default async function ProductDetailPage({
 
       {/* OVERVIEW */}
       {product.overview && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<FileText size={16} className="text-[#2E86B8]" />}
             eyebrow="Overview"
@@ -213,7 +213,7 @@ export default async function ProductDetailPage({
 
       {/* WHY CHOOSE THIS */}
       {product.whyChooseThis && product.whyChooseThis.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Sparkles size={16} className="text-[#F5A02E]" />}
             eyebrow="Why Choose This"
@@ -238,7 +238,7 @@ export default async function ProductDetailPage({
 
       {/* CONFIGURATIONS / OPTIONS */}
       {product.configurations && product.configurations.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Layers size={16} className="text-[#F5A02E]" />}
             eyebrow="Build Options"
@@ -266,7 +266,7 @@ export default async function ProductDetailPage({
 
       {/* FEATURES */}
       {product.features && product.features.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<CheckCircle2 size={16} className="text-[#2E86B8]" />}
             eyebrow="Features"
@@ -289,7 +289,7 @@ export default async function ProductDetailPage({
 
       {/* SPEC TABLE */}
       {product.specTable && product.specTable.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Cog size={16} className="text-[#2E86B8]" />}
             eyebrow="Specifications"
@@ -302,7 +302,7 @@ export default async function ProductDetailPage({
 
       {/* DUCT VARIANTS */}
       {product.ductVariants && product.ductVariants.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Layers size={16} className="text-[#2E86B8]" />}
             eyebrow="Variants"
@@ -340,7 +340,7 @@ export default async function ProductDetailPage({
 
       {/* SPEC SHEET (key/value) */}
       {product.specSheet && product.specSheet.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<FileText size={16} className="text-[#2E86B8]" />}
             eyebrow="Specification Sheet"
@@ -365,7 +365,7 @@ export default async function ProductDetailPage({
 
       {/* CONSTRUCTION */}
       {product.constructionDetails && product.constructionDetails.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Hammer size={16} className="text-[#2E86B8]" />}
             eyebrow="Construction"
@@ -388,7 +388,7 @@ export default async function ProductDetailPage({
 
       {/* SELECTION GUIDE */}
       {product.selectionGuide && product.selectionGuide.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Compass size={16} className="text-[#F5A02E]" />}
             eyebrow="Selection Guide"
@@ -410,7 +410,7 @@ export default async function ProductDetailPage({
 
       {/* INSTALLATION */}
       {product.installationNotes && product.installationNotes.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Wrench size={16} className="text-[#2E86B8]" />}
             eyebrow="Installation"
@@ -433,7 +433,7 @@ export default async function ProductDetailPage({
 
       {/* MAINTENANCE */}
       {product.maintenanceNotes && product.maintenanceNotes.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Cog size={16} className="text-[#2E86B8]" />}
             eyebrow="Maintenance"
@@ -456,7 +456,7 @@ export default async function ProductDetailPage({
 
       {/* INDUSTRIES */}
       {product.industries && product.industries.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Building2 size={16} className="text-[#2E86B8]" />}
             eyebrow="Industries"
@@ -478,7 +478,7 @@ export default async function ProductDetailPage({
 
       {/* STANDARDS */}
       {product.standards && product.standards.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<Award size={16} className="text-[#F5A02E]" />}
             eyebrow="Standards"
@@ -501,7 +501,7 @@ export default async function ProductDetailPage({
 
       {/* FAQ */}
       {product.faqs && product.faqs.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <SectionCard
             icon={<HelpCircle size={16} className="text-[#2E86B8]" />}
             eyebrow="FAQ"
@@ -529,7 +529,7 @@ export default async function ProductDetailPage({
 
       {/* NOTES */}
       {product.notes && product.notes.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-12">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-12">
           <div className="bg-[#0B2A3C]/5 border-l-4 border-[#F5A02E] rounded-r-xl px-5 py-4">
             <div className="text-[10px] font-black text-[#F5A02E] uppercase tracking-widest mb-1">
               Note
@@ -541,7 +541,7 @@ export default async function ProductDetailPage({
 
       {/* RELATED */}
       {related.length > 0 && (
-        <section className="container mx-auto px-4 md:px-6 pb-16">
+        <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-16">
           <div className="flex items-end justify-between mb-6 flex-wrap gap-3">
             <div>
               <div className="flex items-center gap-2 mb-2">
@@ -597,7 +597,7 @@ export default async function ProductDetailPage({
 
       {/* BOTTOM CTA */}
       <section className="bg-[#0B2A3C] text-white py-14">
-        <div className="container mx-auto px-4 md:px-6 text-center max-w-2xl">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 text-center max-w-2xl">
           <h2 className="text-3xl md:text-4xl font-black font-heading uppercase tracking-tighter mb-4">
             Need help selecting the right fan?
           </h2>

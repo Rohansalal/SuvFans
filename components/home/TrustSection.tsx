@@ -25,7 +25,7 @@ const TrustSection = () => {
 
   return (
     <section className="bg-[#0B2A3C] py-24 border-t border-white/5">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Trust Badges */}
         <motion.div
           initial={{ opacity: 0, y: 15 }}

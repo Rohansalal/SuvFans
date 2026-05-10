@@ -110,11 +110,11 @@ const ContactPage = () => {
     <div className="bg-[#F8FAFC] min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-16 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -124,7 +124,7 @@ const ContactPage = () => {
             <span className="inline-block px-4 py-1 rounded-full bg-[#F5A02E] text-[#0B2A3C] text-[10px] font-black uppercase tracking-[0.2em] mb-6">
               Connect with SUV FANS
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black font-heading text-white mb-6 leading-[1.05] uppercase tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black font-heading text-white mb-6 leading-[1.05] uppercase tracking-tight">
               Engineering Support &amp;<br />
               <span className="text-[#2E86B8]">Technical Inquiries</span>
             </h1>
@@ -136,7 +136,7 @@ const ContactPage = () => {
       </section>
 
       {/* ── Main grid ── */}
-      <section className="container mx-auto px-4 md:px-6 py-16">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* Left: contact info */}
@@ -416,7 +416,7 @@ const ContactPage = () => {
       </section>
 
       {/* ── Map ── */}
-      <section className="container mx-auto px-4 md:px-6 pb-16">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

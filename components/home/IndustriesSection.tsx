@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button';
 const IndustriesSection = () => {
   return (
     <section className="py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
           <div className="max-w-2xl">

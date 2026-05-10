@@ -116,7 +116,7 @@ export default function AboutPage() {
     <div className="bg-background min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden -mt-[88px]">
+      <section className="relative min-h-[88vh] flex flex-col justify-end overflow-hidden">
         {/* Full-bleed background image */}
         <Image
           src="/Aboutus.webp"
@@ -132,7 +132,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-br from-[#0B2A3C]/60 via-transparent to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-4 md:px-6 pb-20 pt-12">
+        <div className="relative z-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pb-20 pt-12">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Company Story ── */}
-      <section className="container mx-auto px-4 md:px-6 pt-16 pb-20">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 pt-16 pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -268,7 +268,7 @@ export default function AboutPage() {
 
       {/* ── What We Manufacture ── */}
       <section className="bg-muted py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -315,7 +315,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Core Values ── */}
-      <section className="py-20 container mx-auto px-4 md:px-6">
+      <section className="py-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -351,7 +351,7 @@ export default function AboutPage() {
 
       {/* ── Timeline ── */}
       <section className="bg-card border-t border-b border-border py-20">
-        <div className="container mx-auto px-4 md:px-6">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -402,7 +402,7 @@ export default function AboutPage() {
       </section>
 
       {/* ── Certifications ── */}
-      <section className="py-20 container mx-auto px-4 md:px-6">
+      <section className="py-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Certificate Image */}
           <motion.div
@@ -479,7 +479,7 @@ export default function AboutPage() {
             <rect width="100%" height="100%" fill="url(#ctaGrid)" />
           </svg>
         </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

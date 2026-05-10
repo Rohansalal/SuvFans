@@ -28,7 +28,7 @@ const ApplicationPage = () => {
   return (
     <div className="bg-background pb-24">
       {/* Hero Header */}
-      <section className="bg-primary -mt-[88px] pt-[120px] md:pt-[140px] pb-32 relative overflow-hidden">
+      <section className="bg-primary pt-12 md:pt-16 pb-32 relative overflow-hidden">
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
@@ -41,7 +41,7 @@ const ApplicationPage = () => {
           </svg>
         </div>
 
-        <div className="container mx-auto px-4 md:px-6 relative z-10 text-center">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -64,7 +64,7 @@ const ApplicationPage = () => {
         </div>
 
         {/* Stats Strip */}
-        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 container mx-auto px-4 md:px-6">
+        <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10">
           <div className="bg-card shadow-2xl border border-border grid grid-cols-2 md:grid-cols-4 rounded-sm">
             {totalStats.map((stat, i) => (
               <div
@@ -80,7 +80,7 @@ const ApplicationPage = () => {
       </section>
 
       {/* Application Cards Grid */}
-      <section className="container mx-auto px-4 md:px-6 mt-28">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 mt-28">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {APPLICATIONS.map((app, idx) => {
             const Icon = applicationIcons[app.slug] || Wind;
@@ -155,7 +155,7 @@ const ApplicationPage = () => {
       </section>
 
       {/* Bottom CTA */}
-      <section className="container mx-auto px-4 md:px-6 mt-20">
+      <section className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 mt-20">
         <div className="bg-primary rounded-sm p-12 md:p-16 text-center relative overflow-hidden">
           <div className="absolute inset-0 opacity-10 pointer-events-none">
             <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
