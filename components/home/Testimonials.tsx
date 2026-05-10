@@ -162,28 +162,6 @@ const Testimonials = () => {
         </div>
       </div>
 
-      {/* Social proof bar */}
-      <div className="container mx-auto px-4 md:px-6 mt-14">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-wrap items-center justify-center gap-10 md:gap-20 pt-10 border-t border-gray-200"
-        >
-          {[
-            { value: '19+', label: 'Years of Trust' },
-            { value: '98%', label: 'Client Retention' },
-            { value: '4.9★', label: 'Average Rating' },
-            { value: 'ISO 9001', label: 'Certified Quality' },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl font-black text-[#0B2A3C] font-heading">{stat.value}</div>
-              <div className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
     </section>
   );
 };
