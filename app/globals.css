@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
-  --font-body: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
-  --font-heading: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  --font-body: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
+  --font-heading: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
@@ -68,7 +68,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Roboto Condensed", var(--font-roboto-condensed), sans-serif !important;
+    font-family: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif !important;
   }
   
   html {
@@ -113,7 +113,7 @@
 .navbar, 
 .button, 
 .specs { 
-  font-family: var(--font-roboto-condensed); 
+  font-family: var(--font-jakarta);
   text-transform: uppercase; 
   letter-spacing: 1px; 
 } 
@@ -146,11 +146,11 @@
   
   /* Typography utilities */
   .font-heading {
-    font-family: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
+    font-family: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   }
   
   .font-body {
-    font-family: "Roboto Condensed", var(--font-roboto-condensed), ui-sans-serif, system-ui, sans-serif;
+    font-family: "Plus Jakarta Sans", var(--font-jakarta), -apple-system, BlinkMacSystemFont, Roboto, Arial, sans-serif;
   }
   
   /* Line height utilities */

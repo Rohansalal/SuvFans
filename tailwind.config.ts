@@ -57,9 +57,9 @@ const config: Config = {
   			}
   		},
   		fontFamily: {
-  			sans: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
-  			heading: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
-  			roboto: ['"Roboto Condensed"', 'var(--font-roboto-condensed)', 'sans-serif'],
+  			sans: ['"Plus Jakarta Sans"', 'var(--font-jakarta)', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Arial', 'sans-serif'],
+  			heading: ['"Plus Jakarta Sans"', 'var(--font-jakarta)', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Arial', 'sans-serif'],
+  			body: ['"Plus Jakarta Sans"', 'var(--font-jakarta)', '-apple-system', 'BlinkMacSystemFont', 'Roboto', 'Arial', 'sans-serif'],
   		},
   		borderRadius: {
   			lg: "var(--radius)",

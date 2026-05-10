@@ -33,32 +33,33 @@ const Navbar = () => {
   const isActive = (href: string) => pathname === href;
   const isProductsActive = pathname.startsWith('/products');
   const isApplicationsActive = pathname.startsWith('/application');
+  const phoneIsPlaceholder = COMPANY_CONFIG.phone.includes('XXX');
 
   const linkClass = (active: boolean) =>
     cn(
-      'text-sm font-bold uppercase tracking-wider transition-colors duration-200',
+      'text-[15px] font-bold uppercase tracking-wider transition-colors duration-200',
       active ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
     );
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white border-b border-gray-100 shadow-sm">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-[72px]">
+      <div className="max-w-[1400px] mx-auto px-6 lg:px-10">
+        <div className="flex items-center justify-between h-[88px]">
 
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center">
             <Image
               src="/logo.png"
               alt="SUV FANS"
-              width={160}
-              height={56}
-              className="h-11 w-auto"
+              width={200}
+              height={64}
+              className="h-14 w-auto"
               priority
             />
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-10">
 
             <Link href="/" className={linkClass(isActive('/'))}>
               Home
@@ -72,7 +73,7 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
-                  'flex items-center gap-1 text-sm font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
+                  'flex items-center gap-1 text-[15px] font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
                   isProductsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
@@ -115,7 +116,7 @@ const Navbar = () => {
             <DropdownMenu>
               <DropdownMenuTrigger
                 className={cn(
-                  'flex items-center gap-1 text-sm font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
+                  'flex items-center gap-1 text-[15px] font-bold uppercase tracking-wider transition-colors duration-200 outline-none',
                   isApplicationsActive ? 'text-[#F5A02E]' : 'text-[#0B2A3C] hover:text-[#F5A02E]'
                 )}
               >
@@ -157,17 +158,19 @@ const Navbar = () => {
           </div>
 
           {/* Right Actions */}
-          <div className="hidden lg:flex items-center gap-4 pl-6 border-l border-gray-200">
-            <a
-              href={`tel:${COMPANY_CONFIG.phone}`}
-              className="hidden xl:flex items-center gap-2 text-sm font-bold text-[#0B2A3C] hover:text-[#F5A02E] transition-colors"
-            >
-              <Phone size={15} className="text-[#2E86B8]" />
-              {COMPANY_CONFIG.phone}
-            </a>
+          <div className="hidden lg:flex items-center gap-5 pl-8 border-l border-gray-200">
+            {!phoneIsPlaceholder && (
+              <a
+                href={`tel:${COMPANY_CONFIG.phone}`}
+                className="hidden xl:flex items-center gap-2 text-[15px] font-bold text-[#0B2A3C] hover:text-[#F5A02E] transition-colors"
+              >
+                <Phone size={16} className="text-[#2E86B8]" />
+                {COMPANY_CONFIG.phone}
+              </a>
+            )}
             <Button
               asChild
-              className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-bold uppercase tracking-wide text-xs px-5 h-9 rounded-sm"
+              className="bg-[#F5A02E] hover:bg-[#E08F1F] text-[#0B2A3C] font-black uppercase tracking-wide text-sm px-7 h-11 rounded-md shadow-sm hover:shadow-md transition-shadow"
             >
               <Link href="/get-quote">Get Quote</Link>
             </Button>

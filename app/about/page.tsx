@@ -147,8 +147,8 @@ export default function AboutPage() {
 
             {/* Headline */}
             <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-white leading-[1.05] mb-6 uppercase tracking-tight">
-              Industrial Fan<br />
-              <span className="text-[#2E86B8]">&amp; HVAC</span><br />
+              Heating, Ventilation,<br />
+              <span className="text-[#2E86B8]">and Air Conditioning</span><br />
               <span className="text-white">Manufacturer</span><br />
               <span className="text-[#F5A02E] text-4xl md:text-5xl">— Built in India.</span>
             </h1>

@@ -1192,7 +1192,7 @@ export const CATALOGUE: CatalogueCategory[] = [
       {
         id: 'p-7-2',
         slug: 'hvac-air-distribution-products',
-        name: 'HVAC Air Distribution Products (ADPs)',
+        name: 'HVAC Air Distribution Products (ADP)',
         shortDescription:
           'Diffusers, grilles, registers and louvers — the terminal devices that deliver and return air in every HVAC system.',
         overview:

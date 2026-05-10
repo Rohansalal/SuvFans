@@ -71,4 +71,4 @@ Custom Tailwind colors are in `tailwind.config.ts`: `primary` (#0A2E5C), `accent
 - **`"use client"`** is added to any component that uses hooks, animations, or form state. Server components are the default.
 - Forms are client-side only — no server actions or API routes wired up yet. Form submissions currently `console.log` or show a success state.
 - Images are served from `public/products/` subdirectories. Remote image domains are allowlisted in `next.config.ts`.
-- The `<main>` wrapper in `app/layout.tsx` has `pt-[72px]` to offset the fixed navbar height.
+- The `<main>` wrapper in `app/layout.tsx` has `pt-[88px]` to offset the fixed navbar height.

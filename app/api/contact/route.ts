@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+export const runtime = 'edge';
 
 export async function POST(req: NextRequest) {
   try {
@@ -10,18 +12,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'All fields are required' }, { status: 400 });
     }
 
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST || 'smtp.gmail.com',
-      port: Number(process.env.SMTP_PORT) || 587,
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-    });
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await transporter.sendMail({
-      from: `"SUV FANS Website" <${process.env.SMTP_USER}>`,
+    const { error } = await resend.emails.send({
+      from: process.env.RESEND_FROM || 'SUV FANS Website <onboarding@resend.dev>',
       to: process.env.CONTACT_EMAIL || 'info@suvfans.in',
       replyTo: email,
       subject: `New Inquiry from ${name} — ${company} [${category}]`,
@@ -49,6 +43,11 @@ export async function POST(req: NextRequest) {
         </div>
       `,
     });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return NextResponse.json({ error: 'Failed to send message. Please try again.' }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (err) {

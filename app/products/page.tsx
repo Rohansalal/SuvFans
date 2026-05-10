@@ -98,8 +98,8 @@ export default function ProductsPage() {
                   Industrial Ventilation Solutions
                 </span>
                 <h1 className="text-4xl text-white md:text-6xl lg:text-7xl font-black font-heading mb-6 leading-[1.1] uppercase">
-                  Precision Engineered <br className="hidden md:block" />
-                  <span className="text-[#2E86B8]">Air Systems</span>
+                  Air Validation <br className="hidden md:block" />
+                  <span className="text-[#2E86B8]">System</span>
                 </h1>
                 <p className="text-lg md:text-xl font-body text-gray-300 mb-10 leading-relaxed max-w-2xl mx-auto lg:mx-0">
                   Explore the complete SUV FANS LLP product range &mdash; centrifugal fans, axial fans, HVLS, HVAC ducts, turnkey solutions and PURE AIR purifiers.
