@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 
@@ -9,7 +10,7 @@ const testimonials = [
     name: "Rajesh Kumar",
     role: "Plant Manager",
     company: "Industrial Dynamics Ltd.",
-    industry: "Manufacturing",
+    image: "/clients/rajesh-kumar.jpg",
     text: "SUV FANS provided us with a complete ventilation solution for our new facility. The axial fans are remarkably efficient and the installation was handled with extreme professionalism.",
     rating: 5,
   },
@@ -17,7 +18,7 @@ const testimonials = [
     name: "Sanjay Mehta",
     role: "Operations Director",
     company: "Global Logistics Park",
-    industry: "Warehousing",
+    image: "/clients/sanjay-mehta.jpg",
     text: "The HVLS fans from SUV FANS have significantly improved air quality and temperature in our 80,000 sq ft warehouse. Energy savings of 35% within the first quarter.",
     rating: 5,
   },
@@ -25,7 +26,7 @@ const testimonials = [
     name: "Amit Sharma",
     role: "Chief Engineer",
     company: "Apex Auto Components",
-    industry: "Automotive",
+    image: "/clients/amit-sharma.jpg",
     text: "We've been using their centrifugal fans for over 3 years now. The build quality is top-notch and we haven't faced any downtime. Highly recommended for industrial use.",
     rating: 5,
   },
@@ -33,7 +34,7 @@ const testimonials = [
     name: "Dr. Priya Nair",
     role: "Facility Head",
     company: "Fortis Healthcare Jaipur",
-    industry: "Healthcare",
+    image: "/clients/priya-nair.jpg",
     text: "SUV FANS engineered a hospital-grade HVAC solution meeting NABH standards. The air purification system has been critical for our ICU and operation theatre environments.",
     rating: 5,
   },
@@ -41,7 +42,7 @@ const testimonials = [
     name: "Vinod Agarwal",
     role: "GM – Projects",
     company: "Reliance Food Processing",
-    industry: "Food & Beverage",
+    image: "/clients/vinod-agarwal.jpg",
     text: "Their industrial exhaust fans meet food-grade compliance requirements. The custom SS impeller fans for our cold chain facilities have worked flawlessly across 2 years.",
     rating: 5,
   },
@@ -49,20 +50,11 @@ const testimonials = [
     name: "Suresh Patel",
     role: "Technical Director",
     company: "Gujarat Textiles Ltd.",
-    industry: "Textiles",
+    image: "/clients/suresh-patel.jpg",
     text: "Fan sizing was perfectly matched to our spinning floor. The low-noise axial fans reduced workplace sound levels by 12 dB and improved productivity across all shifts.",
     rating: 5,
   },
 ];
-
-const industryColor: Record<string, string> = {
-  Manufacturing:    'bg-blue-50 text-blue-700 border border-blue-100',
-  Warehousing:      'bg-purple-50 text-purple-700 border border-purple-100',
-  Automotive:       'bg-orange-50 text-orange-700 border border-orange-100',
-  Healthcare:       'bg-green-50 text-green-700 border border-green-100',
-  'Food & Beverage':'bg-yellow-50 text-yellow-700 border border-yellow-100',
-  Textiles:         'bg-pink-50 text-pink-700 border border-pink-100',
-};
 
 /* Duplicate so the strip loops seamlessly */
 const track = [...testimonials, ...testimonials];
@@ -76,16 +68,11 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
       fill="currentColor"
     />
 
-    {/* Stars + industry tag */}
-    <div className="flex items-center justify-between">
-      <div className="flex gap-0.5">
-        {[...Array(t.rating)].map((_, i) => (
-          <Star key={i} size={13} className="text-[#F5A02E] fill-[#F5A02E]" />
-        ))}
-      </div>
-      <span className={`text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${industryColor[t.industry]}`}>
-        {t.industry}
-      </span>
+    {/* Stars */}
+    <div className="flex gap-0.5">
+      {[...Array(t.rating)].map((_, i) => (
+        <Star key={i} size={13} className="text-[#F5A02E] fill-[#F5A02E]" />
+      ))}
     </div>
 
     {/* Review text */}
@@ -95,8 +82,14 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 
     {/* Author */}
     <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
-      <div className="w-9 h-9 rounded-xl bg-[#0B2A3C] flex items-center justify-center text-white font-black text-sm shrink-0">
-        {t.name.charAt(0)}
+      <div className="w-11 h-11 rounded-full overflow-hidden bg-[#0B2A3C] shrink-0 relative">
+        <Image
+          src={t.image}
+          alt={t.name}
+          fill
+          sizes="44px"
+          className="object-cover"
+        />
       </div>
       <div>
         <p className="font-black text-[#0B2A3C] text-xs uppercase tracking-tight leading-tight">{t.name}</p>

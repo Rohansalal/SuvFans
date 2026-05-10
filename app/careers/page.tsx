@@ -59,7 +59,7 @@ const CareersPage = () => {
   return (
     <div className="bg-[#F8FAFC] min-h-screen">
       {/* Hero Section - Matching Product & About Page Design */}
-      <section className="relative bg-[#0B2A3C] text-white pt-[84px] md:pt-[104px] pb-20 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-20 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />

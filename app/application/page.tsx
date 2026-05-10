@@ -28,7 +28,7 @@ const ApplicationPage = () => {
   return (
     <div className="bg-background pb-24">
       {/* Hero Header */}
-      <section className="bg-primary pt-20 pb-32 relative overflow-hidden">
+      <section className="bg-primary -mt-[88px] pt-[120px] md:pt-[140px] pb-32 relative overflow-hidden">
         {/* Grid pattern */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">

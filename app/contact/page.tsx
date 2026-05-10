@@ -110,7 +110,7 @@ const ContactPage = () => {
     <div className="bg-[#F8FAFC] min-h-screen">
 
       {/* ── Hero ── */}
-      <section className="relative bg-[#0B2A3C] text-white pt-12 md:pt-16 pb-16 overflow-hidden">
+      <section className="relative bg-[#0B2A3C] text-white -mt-[88px] pt-[120px] md:pt-[140px] pb-16 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 right-0 w-1/2 h-full bg-[#2E86B8]/20 -skew-x-12 translate-x-1/4" />
         </div>

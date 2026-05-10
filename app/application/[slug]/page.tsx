@@ -51,7 +51,7 @@ const ApplicationDetailPage = ({ params }: { params: Promise<{ slug: string }> }
   return (
     <div className="bg-background">
       {/* Hero */}
-      <section className="relative h-[65vh] min-h-[420px] flex items-end overflow-hidden">
+      <section className="relative h-[65vh] min-h-[420px] flex items-end overflow-hidden -mt-[88px]">
         <Image
           src={application.image}
           alt={application.name}

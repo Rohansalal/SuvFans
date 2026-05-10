@@ -28,20 +28,20 @@ const WhatsAppButton = () => {
 
           {/* Pulse Effect */}
           <div className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20 group-hover:opacity-40 transition-opacity"></div>
-          
+
           {/* Main Button */}
           <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative flex items-center justify-center w-14 h-14 bg-[#25D366] rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_12px_40px_rgb(37,211,102,0.6)] transition-all border-4 border-white"
+            className="relative block w-14 h-14 rounded-full shadow-[0_8px_30px_rgb(37,211,102,0.4)] hover:shadow-[0_12px_40px_rgb(37,211,102,0.6)] transition-all overflow-hidden"
           >
             <Image
               src="/whatsapp.1897bfc4.svg"
               alt="WhatsApp"
-              width={28}
-              height={28}
-              className="brightness-0 invert group-hover:rotate-[15deg] transition-transform duration-300"
+              width={56}
+              height={56}
+              className="w-full h-full group-hover:rotate-[15deg] transition-transform duration-300"
             />
           </a>
         </motion.div>

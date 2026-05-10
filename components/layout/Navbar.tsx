@@ -18,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 
-const DARK_HERO_PATHS = ['/', '/about', '/products'];
+const DARK_HERO_PATHS = ['/', '/about', '/products', '/application', '/careers', '/contact'];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,7 +44,10 @@ const Navbar = () => {
   const isProductsActive = pathname.startsWith('/products');
   const isApplicationsActive = pathname.startsWith('/application');
   const phoneIsPlaceholder = COMPANY_CONFIG.phone.includes('XXX');
-  const hasDarkHero = DARK_HERO_PATHS.includes(pathname) || pathname.startsWith('/products/');
+  const hasDarkHero =
+    DARK_HERO_PATHS.includes(pathname) ||
+    pathname.startsWith('/products/') ||
+    pathname.startsWith('/application/');
   const transparent = !isScrolled && hasDarkHero;
 
   const linkClass = (active: boolean) =>
