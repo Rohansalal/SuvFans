@@ -6,7 +6,6 @@ export interface Application {
   longDescription: string;
   image: string;
   applications: string[];
-  keyProducts: string[];
   environments: string[];
   industryRequirements: string[];
   challenges: { title: string; description: string }[];
@@ -30,7 +29,6 @@ export const APPLICATIONS: Application[] = [
       'Air conditioning systems demand fans that deliver high efficiency, low noise, and reliable performance under continuous operation. Our comprehensive range of centrifugal and axial fans are designed for supply and exhaust applications in AHUs, packaged units, and clean room environments. Every fan is tested in accordance with AMCA210 and AMCA300 Standards, with wheels statically and dynamically balanced to ISO1940 and AMCA204 G2.5 Standards.',
     image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&h=600&fit=crop',
     applications: ['AHU Supply & Exhaust', 'Clean Room Ventilation', 'Packaged Units', 'HVAC Systems', 'Pressure Control'],
-    keyProducts: ['BDB Series – DIDW Backward Curved', 'ADA Series – Airfoil Wheels', 'FDA Series – Forward Curved', 'BNC Series – Plenum Fans', 'KAT Series – Forward Curved'],
     environments: [
       'Corporate Office Towers',
       'Hospital & Healthcare Facilities',
@@ -106,7 +104,6 @@ export const APPLICATIONS: Application[] = [
       'Car park ventilation requires specialised jet fans and axial fans to ensure adequate air quality and emergency smoke control. Our solutions include induced jet fans, cabinet jet fans, and vane axial fans with smokespill capability rated up to 400°C/2 hours. All systems comply with fire safety regulations and integrate with CO/NO2 monitoring for demand-controlled ventilation.',
     image: 'https://images.unsplash.com/photo-1590674899484-d5640e854abe?w=800&h=600&fit=crop',
     applications: ['CO/NO2 Dilution', 'Emergency Smoke Extraction', 'General Ventilation', 'Jet Thrust Ventilation', 'Fire Safety Compliance'],
-    keyProducts: ['IJC Series – Cabinet Jet Fan', 'IJC II Series – Induced Jet Fan', 'IJM-N Series – Jet Fan', 'IJB Series – Jet Fan', 'TDC/TDD Series – Vane Axial'],
     environments: [
       'Underground Basement Parking',
       'Multi-Storey Car Parks',
@@ -182,7 +179,6 @@ export const APPLICATIONS: Application[] = [
       'Commercial buildings demand ventilation systems that balance performance, energy efficiency, and occupant comfort. Our range includes vane axial fans, mixed flow fans, in-line duct fans, and ceiling mount solutions designed for shopping malls, office complexes, hotels, and high-rise developments. All systems support both standard ventilation and emergency smokespill applications.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop',
     applications: ['General Building Ventilation', 'Smoke Extraction', 'Stairwell Pressurisation', 'Kitchen Exhaust', 'Car Park Ventilation'],
-    keyProducts: ['TDC/TDD Series – Vane Axial', 'MXA/MXC Series – Mixed Flow', 'CFQ-B/CCE Series – In-Line', 'KCE Series – Ceiling Mount', 'CFC Series – Cabinet Fan'],
     environments: [
       'Grade A Office Towers',
       'Shopping Malls & Retail Complexes',
@@ -258,7 +254,6 @@ export const APPLICATIONS: Application[] = [
       'Industrial environments require robust ventilation solutions capable of handling high temperatures, corrosive atmospheres, and heavy dust loads. Our manufacturing and industrial range includes roof extractors, centrifugal fans, axial fans, and HVLS fans designed for factories, warehouses, processing plants, and production facilities. Every fan is built for continuous duty and long service life.',
     image: 'https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&h=600&fit=crop',
     applications: ['General Factory Ventilation', 'Heat & Fume Exhaust', 'Dust Collection', 'Process Cooling', 'Warehouse Climate Control'],
-    keyProducts: ['RCU/RCV Series – Roof Extractors', 'APN/APL Series – Propeller Fans', 'KVS Series – HVLS Fan', 'BSB Series – Centrifugal', 'RCD Series – Roof Fans'],
     environments: [
       'Automobile Assembly Plants',
       'Steel & Metal Processing Units',
@@ -334,7 +329,6 @@ export const APPLICATIONS: Application[] = [
       'Commercial kitchens require fans that can handle high-temperature, grease-laden air while maintaining reliable performance. Our kitchen ventilation range includes bifurcated fans, mixed flow fans, and centrifugal fans specifically rated for grease and high-temperature applications up to 205°C. All kitchen fans are designed for easy cleaning and maintenance.',
     image: 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop',
     applications: ['Kitchen Exhaust', 'Make-up Air Supply', 'Grease-Laden Air Handling', 'Restaurant Ventilation', 'Food Processing Exhaust'],
-    keyProducts: ['TDB II Series – Bifurcated Fan', 'MXC Series – Mixed Flow (Kitchen Rated)', 'CFC Series – Cabinet Fan', 'CPF Series – In-Line Smokespill', 'RDC Series – Roof Centrifugal'],
     environments: [
       'Restaurant & Hotel Kitchens',
       'Hospital & Institutional Cafeterias',
@@ -410,7 +404,6 @@ export const APPLICATIONS: Application[] = [
       'Residential ventilation demands low-noise, energy-efficient fans that integrate seamlessly with modern architectural designs. Our residential range includes ceiling mount fans, slimline axial fans, compact axial fans, and in-line duct fans designed for toilet exhaust, kitchen ventilation, and whole-house ventilation systems. All products are engineered for quiet operation and long maintenance-free life.',
     image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&h=600&fit=crop',
     applications: ['Toilet & Bathroom Exhaust', 'Kitchen Ventilation', 'Living Area Fresh Air', 'Basement Ventilation', 'Whole-House Ventilation'],
-    keyProducts: ['KCE Series – Ceiling Mount Fan', 'DWA Series – Slimline Axial', 'APM Series – Compact Axial', 'TSK II Series – In-Line Duct', 'MTD Series – Mixed Flow Duct'],
     environments: [
       'High-Rise Apartment Complexes',
       'Luxury Condominiums & Villas',
@@ -486,7 +479,6 @@ export const APPLICATIONS: Application[] = [
       'Transportation infrastructure requires high-reliability ventilation systems for tunnels, metro stations, railway platforms, and airport terminals. Our transport range includes tunnel jet fans, tunnel axial fans, and HVLS fans designed for emergency smoke control and passenger comfort. All products meet stringent fire safety requirements and are built for continuous operation in demanding environments.',
     image: 'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop',
     applications: ['Tunnel Ventilation', 'Metro Station Ventilation', 'Railway Platform Cooling', 'Airport Terminal HVAC', 'Emergency Smoke Control'],
-    keyProducts: ['KJF Series – Tunnel Jet Fan', 'KTF Series – Tunnel Axial Fan', 'KVS Series – HVLS Fan', 'TDA Series – Tube Axial', 'MXA Series – Mixed Flow'],
     environments: [
       'Road & Highway Tunnels',
       'Metro Rail Stations & Tunnels',
