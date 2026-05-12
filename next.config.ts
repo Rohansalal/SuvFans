@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
+    // Cache optimized images for 1 year — sets Cache-Control on /_next/image responses
+    minimumCacheTTL: 31536000,
+    // Trim default device sizes to ones we actually use
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 64, 96, 128, 256, 384],
     remotePatterns: [
       {
         protocol: 'https',
@@ -51,6 +56,27 @@ const nextConfig: NextConfig = {
       {
         source: '/robots.txt',
         headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+      },
+      // Long-lived cache for optimized image responses
+      {
+        source: '/_next/image(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      // Static product images live in /public/products — safe to cache for a year
+      {
+        source: '/products/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      // Hero and brand assets in /public
+      {
+        source: '/:file(home|home1|homepage1|homepage2|logo|logo1|Aboutus|ProductImage|pureair).:ext(webp|png|jpg|jpeg|svg)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
       },
     ];
   },

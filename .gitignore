@@ -44,3 +44,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# uncompressed image originals kept locally as backup
+/public/_originals_backup/

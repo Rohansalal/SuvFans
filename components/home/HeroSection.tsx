@@ -180,30 +180,15 @@ const HeroSection = () => {
               src={slide.image}
               alt=""
               fill
-              priority
-              quality={80}
+              priority={current === 0}
+              loading={current === 0 ? undefined : 'eager'}
+              fetchPriority={current === 0 ? 'high' : 'auto'}
+              quality={75}
               sizes="100vw"
               className="object-cover object-center"
             />
           </motion.div>
         </AnimatePresence>
-
-        {/* Preload remaining slides so cross-fades are instant when they fire */}
-        <div className="hidden" aria-hidden="true">
-          {SLIDES.map((s, i) =>
-            i === current ? null : (
-              <Image
-                key={s.image}
-                src={s.image}
-                alt=""
-                width={1}
-                height={1}
-                priority
-                quality={80}
-              />
-            )
-          )}
-        </div>
 
         {/* Light readability scrim — keeps text legible without hiding the image */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
