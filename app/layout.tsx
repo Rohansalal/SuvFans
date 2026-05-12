@@ -123,26 +123,15 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager — placed as high in <head> as possible */}
-        <Script id="gtm-init" strategy="beforeInteractive">
+        {/* Google Tag Manager — deferred until after hydration to avoid
+            blocking the main thread and LCP. GTM container should host
+            the GA4 tag for G-EZFVQWWRKP so we don't double-fire. */}
+        <Script id="gtm-init" strategy="afterInteractive">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','GTM-TPRQ529K');`}
-        </Script>
-        {/* Google Analytics (gtag.js) */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-EZFVQWWRKP"
-          strategy="afterInteractive"
-        />
-        <Script id="ga-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-EZFVQWWRKP');
-          `}
         </Script>
         {/* Site-wide JSON-LD: Organization + LocalBusiness + WebSite */}
         <JsonLd

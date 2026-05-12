@@ -3,13 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -131,22 +125,6 @@ const HeroSection = () => {
     return () => clearTimeout(id);
   }, [current, paused]);
 
-  // Mouse parallax — lighter, smoother spring
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 40, damping: 28, mass: 0.6 });
-  const sy = useSpring(my, { stiffness: 40, damping: 28, mass: 0.6 });
-  const bgTx = useTransform(sx, [-1, 1], [8, -8]);
-  const bgTy = useTransform(sy, [-1, 1], [6, -6]);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
-    // Only run parallax on devices with a fine pointer (mice) — avoids cost on touch / coarse.
-    if (typeof window !== 'undefined' && !window.matchMedia('(pointer: fine)').matches) return;
-    const rect = e.currentTarget.getBoundingClientRect();
-    mx.set(((e.clientX - rect.left) / rect.width) * 2 - 1);
-    my.set(((e.clientY - rect.top) / rect.height) * 2 - 1);
-  };
-
   const next = () => setCurrent((c) => (c + 1) % SLIDES.length);
   const prev = () => setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length);
 
@@ -157,43 +135,34 @@ const HeroSection = () => {
       className="relative min-h-[56vh] sm:min-h-[60vh] md:min-h-[64vh] flex items-start overflow-hidden pt-5 sm:pt-6 md:pt-10 pb-6 sm:pb-8 md:pb-10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onMouseMove={handleMouseMove}
     >
-      {/* Background Carousel — eager-loaded slides with smooth cross-fade + Ken Burns + parallax */}
-      <motion.div
-        className="absolute inset-0 will-change-transform"
-        style={{ x: bgTx, y: bgTy }}
-      >
-        <AnimatePresence mode="sync" initial={false}>
-          <motion.div
-            key={slide.image}
-            className="absolute inset-0 will-change-[opacity,transform]"
-            initial={{ opacity: 0, scale: 1.06 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 1.02 }}
-            transition={{
-              opacity: { duration: 0.9, ease: [0.4, 0, 0.2, 1] },
-              scale: { duration: SLIDE_DURATION / 1000 + 0.9, ease: 'linear' },
-            }}
+      {/* Background Carousel — cross-fade between slides */}
+      <div className="absolute inset-0">
+        {SLIDES.map((s, i) => (
+          <div
+            key={s.image}
+            aria-hidden={i !== current}
+            className="absolute inset-0 transition-opacity duration-700 ease-out"
+            style={{ opacity: i === current ? 1 : 0 }}
           >
             <Image
-              src={slide.image}
+              src={s.image}
               alt=""
               fill
-              priority={current === 0}
-              loading={current === 0 ? undefined : 'eager'}
-              fetchPriority={current === 0 ? 'high' : 'auto'}
-              quality={75}
+              priority={i === 0}
+              loading={i === 0 ? undefined : 'lazy'}
+              fetchPriority={i === 0 ? 'high' : 'auto'}
+              quality={70}
               sizes="100vw"
               className="object-cover object-center"
             />
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        ))}
 
         {/* Light readability scrim — keeps text legible without hiding the image */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-      </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/25 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none" />
+      </div>
 
       {/* Main content grid */}
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 relative z-10 w-full">
@@ -309,7 +278,7 @@ const HeroSection = () => {
                     {i === current && (
                       <span
                         key={`progress-${current}-${paused ? 'p' : 'r'}`}
-                        className="absolute inset-y-0 left-0 bg-[#F5A02E]"
+                        className="absolute inset-0 bg-[#F5A02E] origin-left will-change-transform"
                         style={{
                           animation: `hero-progress ${SLIDE_DURATION}ms linear forwards`,
                           animationPlayState: paused ? 'paused' : 'running',
