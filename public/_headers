@@ -1,0 +1,39 @@
+# Long-lived cache for Next.js content-hashed bundles
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Long-lived cache for optimized image responses (URLs include w & q params)
+/_next/image*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Static product images live under /public/products
+/products/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Hero & brand assets in /public root
+/home.webp
+  Cache-Control: public, max-age=31536000, immutable
+/home1.webp
+  Cache-Control: public, max-age=31536000, immutable
+/homepage1.webp
+  Cache-Control: public, max-age=31536000, immutable
+/homepage2.webp
+  Cache-Control: public, max-age=31536000, immutable
+/logo.png
+  Cache-Control: public, max-age=31536000, immutable
+/logo1.png
+  Cache-Control: public, max-age=31536000, immutable
+/Aboutus.webp
+  Cache-Control: public, max-age=31536000, immutable
+/ProductImage.webp
+  Cache-Control: public, max-age=31536000, immutable
+/pureair.webp
+  Cache-Control: public, max-age=31536000, immutable
+/favicon/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Site favicons / web manifest
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/site.webmanifest
+  Cache-Control: public, max-age=604800

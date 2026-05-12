@@ -128,10 +128,11 @@ const WhyChooseUs = () => {
             className="relative"
           >
             <div className="aspect-square relative rounded-sm overflow-hidden border-8 border-[#F4F6F8] shadow-2xl">
-              <Image 
-                src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" 
+              <Image
+                src="/applications/engineering.jpg"
                 alt="Industrial Engineering Excellence"
                 fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-tr from-[#0B2A3C]/40 to-transparent" />

@@ -10,35 +10,35 @@ const applications = [
     icon: Factory,
     title: "Industrial",
     description: "Heavy-duty ventilation for manufacturing plants, assembly lines, and high-temperature production floors. Engineered for durability and maximum air exchange in demanding environments.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80",
+    image: "/applications/industrial.jpg",
     features: ["Heat & Smoke Exhaust", "Dust Collection Systems", "Process Cooling", "Corrosion Resistance"]
   },
   {
     icon: Building2,
     title: "Commercial",
     description: "Premium ventilation solutions for shopping malls, office complexes, hotels, and restaurants. Focused on customer comfort, air quality, and ultra-quiet operation.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80",
+    image: "/applications/commercial.jpg",
     features: ["Kitchen Grease Exhaust", "Office Fresh Air Supply", "Basement Ventilation", "Energy Efficient AHUs"]
   },
   {
     icon: School,
     title: "Institutional",
     description: "Reliable airflow management for hospitals, educational institutions, and government facilities. Ensuring healthy indoor air quality (IAQ) for students, patients, and staff.",
-    image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80",
+    image: "/applications/institutional.jpg",
     features: ["Hospital Grade Filtration", "Silent Lab Exhaust", "Classroom Ventilation", "Clean Room Solutions"]
   },
   {
     icon: Home,
     title: "Residential",
     description: "Discreet and efficient ventilation for premium residential complexes and high-rise apartments. Designed to blend seamlessly with modern architecture while providing superior air quality.",
-    image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80",
+    image: "/applications/residential.jpg",
     features: ["Toilet Exhaust Systems", "Circular Inline Fans", "Compact Cabinet Fans", "Low Power Consumption"]
   },
   {
     icon: Users,
     title: "For OEM Customers",
     description: "Custom-designed fan components and sub-assemblies for original equipment manufacturers. We provide precision-engineered impellers, motors, and housings tailored to your specifications.",
-    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80",
+    image: "/applications/oem.jpg",
     features: ["Custom Fan Wheels", "Precision Balancing", "Special Grade Coatings", "Volume Manufacturing"]
   }
 ];

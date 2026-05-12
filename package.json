@@ -43,5 +43,13 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^4.90.0"
-  }
+  },
+  "browserslist": [
+    "chrome >= 96",
+    "edge >= 96",
+    "firefox >= 90",
+    "safari >= 14",
+    "ios_saf >= 14",
+    "and_chr >= 96"
+  ]
 }

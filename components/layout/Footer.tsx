@@ -18,7 +18,7 @@ const Footer = () => {
       {/* Fan Manufacturing Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center opacity-5 pointer-events-none"
-        style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80)' }}
+        style={{ backgroundImage: 'url(/applications/engineering.jpg)' }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-[#0B2A3C] via-transparent to-[#0B2A3C]" />
       </div>
