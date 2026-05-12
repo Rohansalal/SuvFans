@@ -123,6 +123,14 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className="scroll-smooth" data-scroll-behavior="smooth" suppressHydrationWarning>
       <head>
+        {/* Google Tag Manager — placed as high in <head> as possible */}
+        <Script id="gtm-init" strategy="beforeInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TPRQ529K');`}
+        </Script>
         {/* DNS prefetch / preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -145,6 +153,15 @@ export default function RootLayout({
         />
       </head>
       <body className={`${jakarta.variable} font-body bg-[#F4F6F8] text-[#0B2A3C] dark:bg-[#0B1A26] dark:text-white`} suppressHydrationWarning>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TPRQ529K"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
         <Providers>
           <Navbar />
           <main className="min-h-screen pt-[88px]">
