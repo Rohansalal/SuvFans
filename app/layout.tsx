@@ -110,7 +110,7 @@ export const metadata: Metadata = {
     address: true,
   },
   verification: {
-    // Add when verified: google: 'xxxxx', yandex: 'xxxxx', etc.
+    google: 'Ueu31jAvptCNWISz7N-BFam6onPXcLvq6npl6u5_1Rg',
   },
 };
 
