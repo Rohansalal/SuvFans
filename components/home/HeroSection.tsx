@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -116,15 +116,9 @@ const HeroSection = () => {
   const [current, setCurrent] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Auto-advance with single timeout — progress bar is CSS-driven (no re-renders).
-  useEffect(() => {
-    if (paused) return;
-    const id = setTimeout(() => {
-      setCurrent((c) => (c + 1) % SLIDES.length);
-    }, SLIDE_DURATION);
-    return () => clearTimeout(id);
-  }, [current, paused]);
-
+  // Slide advances when the CSS progress animation finishes. Pausing the
+  // animation (via animationPlayState) naturally pauses the slide too —
+  // no parallel JS timer to drift out of sync with the visual progress bar.
   const next = () => setCurrent((c) => (c + 1) % SLIDES.length);
   const prev = () => setCurrent((c) => (c - 1 + SLIDES.length) % SLIDES.length);
 
@@ -277,12 +271,13 @@ const HeroSection = () => {
                     <span className="absolute inset-0 bg-white/25 group-hover:bg-white/50 transition-colors" />
                     {i === current && (
                       <span
-                        key={`progress-${current}-${paused ? 'p' : 'r'}`}
+                        key={`progress-${current}`}
                         className="absolute inset-0 bg-[#F5A02E] origin-left will-change-transform"
                         style={{
                           animation: `hero-progress ${SLIDE_DURATION}ms linear forwards`,
                           animationPlayState: paused ? 'paused' : 'running',
                         }}
+                        onAnimationEnd={next}
                       />
                     )}
                   </button>
