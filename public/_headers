@@ -19,6 +19,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /homepage2.webp
   Cache-Control: public, max-age=31536000, immutable
+/box-fan.webp
+  Cache-Control: public, max-age=31536000, immutable
 /logo.png
   Cache-Control: public, max-age=31536000, immutable
 /logo1.png

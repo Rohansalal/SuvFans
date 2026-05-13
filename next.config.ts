@@ -73,7 +73,7 @@ const nextConfig: NextConfig = {
       },
       // Hero and brand assets in /public
       {
-        source: '/:file(home|home1|homepage1|homepage2|logo|logo1|Aboutus|ProductImage|pureair).:ext(webp|png|jpg|jpeg|svg)',
+        source: '/:file(home|home1|homepage1|homepage2|box-fan|logo|logo1|Aboutus|ProductImage|pureair).:ext(webp|png|jpg|jpeg|svg)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],

@@ -108,6 +108,24 @@ const SLIDES: Slide[] = [
     secondaryCta: { label: 'View Products', href: '/products' },
     stat: { value: 'IE5', label: 'Premium Motor Efficiency' },
   },
+  {
+    image: '/box-fan.webp',
+    eyebrow: 'Insulated Box Fans',
+    headline: 'Built Tough for Every Environment.',
+    highlight: 'Compact, powerful, industry-ready.',
+    description: (
+      <>
+        Heavy-duty <strong className="text-white">insulated box fans</strong> engineered for factories, warehouses, and process plants.
+      </>
+    ),
+    benefits: [
+      { icon: Factory, text: 'Industrial Grade' },
+      { icon: Shield, text: 'ISO 9001:2015' },
+    ],
+    primaryCta: { label: 'Get Quote', href: '/get-quote' },
+    secondaryCta: { label: 'View Products', href: '/products' },
+    stat: { value: '9+', label: 'Fan Categories' },
+  },
 ];
 
 const SLIDE_DURATION = 6500;
